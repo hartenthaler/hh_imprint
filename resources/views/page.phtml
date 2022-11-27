@@ -12,6 +12,7 @@ use Fisharebest\Webtrees\I18N;
  * @var string                      $fax
  * @var string                      $email
  * @var array                       $contactLinks
+ * @var string                      $img                complete html image link for gravatar
  */
 
 ?>
@@ -59,3 +60,5 @@ use Fisharebest\Webtrees\I18N;
         <li><?= $link ?></li>
     <?php endforeach; ?>
 </ul>
+
+<?= $img ?>

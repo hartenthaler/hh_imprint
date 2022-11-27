@@ -74,7 +74,7 @@ return new class()
      */
     public const CUSTOM_TITLE       = 'Imprint';
     public const CUSTOM_MODULE      = 'hh_imprint';
-    public const CUSTOM_DESCRIPTION = 'A footer element showing the imprint for this site.';
+    public const CUSTOM_DESCRIPTION = 'Imprint as a footer element for this site.';
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const CUSTOM_GITHUB_USER = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
@@ -118,6 +118,7 @@ return new class()
             'fax',
             'email',
             'simpleEmail',
+            'vatNumber',
         ];
     }
 
@@ -326,10 +327,12 @@ return new class()
             'city'              => $this->city(),
             'phone'             => $this->phone(),
             'fax'               => $this->fax(),
-            'email'             => $this->email(),
+            'email'             => $this->email(true),  // tbd: remove true after test
             'simpleEmail'       => $this->simpleEmail(),
+            'vatNumber'         => $this->vatNumber(),
             'administrators'    => $administrators,
             'contactLinks'      => $contactLinks,
+            'img'               => $this->get_gravatar($this->email(true)),
         ]);
     }
 
@@ -416,14 +419,16 @@ return new class()
     /**
      * E-Mail address of responsible person
      *
+     * @param bool $simpleEmail use true to force a simple Email address without subject and body
+     *
      * @return string
      */
-    private function email(): string
+    private function email(bool $simpleEmail = false): string
     {
         $emailAddress = $this->getPreference('email', '');
 
         if ($emailAddress !== '') {
-            if ($this->simpleEmail()) {
+            if ($simpleEmail || $this->simpleEmail()) {
                 $emailLink = '<a href="mailto:' .
                     e($emailAddress) .
                     '" style="background-color:transparent;color:rgb(85,85,85);text-decoration:none;">' .
@@ -473,6 +478,16 @@ return new class()
     }
 
     /**
+     * VAT number or other registration number
+     *
+     * @return string
+     */
+    private function vatNumber(): string
+    {
+        return $this->getPreference('vatNumber', '');
+    }
+
+    /**
      * Create a contact link for a user.
      *
      * @param User $user
@@ -483,5 +498,31 @@ return new class()
     {
         $request = app(ServerRequestInterface::class);
         return $this->userService->contactLink($user, $request);
+    }
+
+    /**
+     * Get either a Gravatar URL or complete image tag for a specified email address.
+     *
+     * @param string $email The email address
+     * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
+     * @param string $d Default imageset to use [ 404 | mp | identicon | monsterid | wavatar ]
+     * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
+     * @param bool $img True to return a complete IMG tag False for just the URL
+     * @param array $atts Optional, additional key/value attributes to include in the IMG tag
+     * @return String containing either just a URL or a complete image tag
+     * @source https://gravatar.com/site/implement/images/php/
+     */
+    function get_gravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = true, $atts = array() )
+    {
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        return $url;
     }
 };
