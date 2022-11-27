@@ -11,3 +11,36 @@ msgstr ""
 msgid "Imprint"
 msgstr "Impressum"
 
+msgid "A footer element showing the imprint for this site."
+
+msgid "Responsible person"
+
+msgid "First name(s)"
+
+msgid "Surname(s)"
+
+msgid "Sex of responsible person"
+
+msgid "male"
+
+msgid "female"
+
+msgid "Registration data"
+
+msgid "VAT ID No. or other registration number (enter label and value)
+msgstr "Umsatzsteuer-Identifikationsnummer"
+
+msgid "Communication data"
+
+msgid "Street name and house number"
+
+msgid "City including zip code, e.g. D-79108 Freiburg im Breisgau"
+
+msgid "Phone number including country prefix, e.g. +49 30 123456"
+
+msgid "Fax number including country prefix, e.g. +49 30 654321"
+
+msgid "E-Mail address"
+
+msgid "Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?"
+
