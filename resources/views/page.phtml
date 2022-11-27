@@ -1,0 +1,61 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string                      $title              name of this module
+ * @var \Fisharebest\Webtrees\Tree  $tree
+ * @var string                      $responsibleName    name of responsible person
+ * @var string                      $street
+ * @var string                      $city
+ * @var string                      $phone
+ * @var string                      $fax
+ * @var string                      $email
+ * @var array                       $contactLinks
+ */
+
+?>
+
+<h2><?= e($title) ?></h2>
+
+<h4><?= I18N::translate('Responsible person') ?></h4>
+
+<p><?= I18N::translate('This website is operated by the following responsible person:') ?></p>
+
+<table cellpadding="5">
+    <tbody>
+        <tr>
+            <td valign="top"><?= $responsibleName ?></td>
+            <?php if ($street <> ''): ?>
+                <td><?= $street ?><br />
+            <?php endif ?>
+            <?php if ($city <> ''): ?>
+                <?= $city ?></td>
+            <?php endif ?>
+        </tr>
+        <?php if ($phone <> ''): ?>
+            <tr>
+                <td><?= I18N::translate('Phone') ?>:</td>
+                <td><?= $phone ?></td>
+            </tr>
+        <?php endif ?>
+        <?php if ($fax <> ''): ?>
+            <tr>
+                <td><?= I18N::translate('Fax') ?>:</td>
+                <td><?= $fax ?></td>
+            </tr>
+        <?php endif ?>
+        <?php if ($email <> ''): ?>
+            <tr>
+                <td><?= I18N::translate('E-Mail') ?>:</td>
+                <td><?= $email ?></td>
+            </tr>
+        <?php endif ?>
+    </tbody>
+</table>
+
+<ul>
+    <?php foreach ($contactLinks as $link): ?>
+        <li><?= $link ?></li>
+    <?php endforeach; ?>
+</ul>
