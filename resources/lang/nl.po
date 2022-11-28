@@ -63,4 +63,4 @@ msgid "Should a simple eMail link be used (otherwise subject and body of eMail a
 msgstr "Eenvoudige e-maillink gebruiken (anders wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)?"
 
 msgid "This website is operated by the following responsible person:"
-msgstr "Deze website wordt beheerd door de volgende verantwoordelijke persoon:"
+msgstr "Deze website wordt beheerd door:"
