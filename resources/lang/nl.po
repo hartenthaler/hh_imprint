@@ -12,10 +12,10 @@ msgstr ""
 "X-Generator: Poedit 3.2\n"
 
 msgid "Imprint"
-msgstr "Colofon"
+msgstr "Impressum"
 
 msgid "Imprint as a footer element for this site."
-msgstr "Colofon als voettekstelement voor deze site."
+msgstr "Impressum als voettekstelement voor deze site."
 
 msgid "Responsible person"
 msgstr "Verantwoordelijk persoon"
@@ -39,7 +39,7 @@ msgid "Registration data"
 msgstr "Registratiegegevens"
 
 msgid "VAT ID No. or other registration number (enter label and value)"
-msgstr "BTW-nummer of ander registratienummer (label en waarde invullen)"
+msgstr "Btw-nummer of ander registratienummer (label en waarde invullen)"
 
 msgid "Communication data"
 msgstr "Contactgegevens"
@@ -48,7 +48,7 @@ msgid "Street name and house number"
 msgstr "Straatnaam en huisnummer"
 
 msgid "City including zip code, e.g. \"D-79108 Freiburg im Breisgau\""
-msgstr "Plaats en postcode"
+msgstr "Postcode en plaats"
 
 msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
 msgstr "Telefoonnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
@@ -60,7 +60,7 @@ msgid "eMail address"
 msgstr "E-mailadres"
 
 msgid "Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?"
-msgstr "Moet een eenvoudige e-maillink worden gebruikt (anders wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)?"
+msgstr "Eenvoudige e-maillink gebruiken (anders wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)?"
 
 msgid "This website is operated by the following responsible person:"
 msgstr "Deze website wordt beheerd door de volgende verantwoordelijke persoon:"
