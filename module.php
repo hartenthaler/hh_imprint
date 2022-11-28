@@ -22,16 +22,23 @@
  */
 
 /*
- * tbd
- * Strings automatisch für po extrahieren
- * Abgleich mit anderen Impressums-Seiten
+ * tbd for next release
+ * ==============================================================
  * Problem mit Option simpleEmail beheben
- * README.md aktualisieren mit Hinweis auf Übersetzung und Hinweis auf die Rechtslage und Screenshot des erzeugten Impressums
- * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail)
- * Gravatar weiter testen
+ *
+ * tbd later on
+ * ==============================================================
+ * Strings automatisch für po extrahieren
+ * Woher bekommt man den join-Link für neue Übersetzer auf https://poeditor.com?
+ * Muss man Sprachen vorab bereits anlegen? pot verwenden?
+ * Abgleich mit anderen Impressums-Seiten
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
  * E-Mail-Funktion: korrekten site name einfügen
- * Labels in page.html als bereits übersetzte Parameter übergeben
+ * README.md aktualisieren mit korrektem Link für neue Übersetzer (join) und
+ *      Screenshot des erzeugten Impressums
+ * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * Gravatar weiter testen
+ * Dokumentation in Deutsch für webtrees-Handbuch erstellen
  * Refactoring
  */
 
@@ -76,7 +83,7 @@ return new class()
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const CUSTOM_GITHUB_USER = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.8.0';
+    public const CUSTOM_VERSION     = '2.1.8.1';
     public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::CUSTOM_GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
 
@@ -107,13 +114,14 @@ return new class()
             'responsibleFirst',
             'responsibleSurname',
             'responsibleSex',
-            'vatNumber',
             'street',
             'city',
             'phone',
             'fax',
             'email',
             'simpleEmail',
+            'vatNumberLabel',
+            'vatNumber',
         ];
     }
 
@@ -317,15 +325,19 @@ return new class()
             'title'             => $this->title(),
             'tree'              => Validator::attributes($request)->tree(),
             'imprintHead1'      => I18N::translate('Responsible person'),
-            'imprintHead2'      => I18N::translate('This website is operated by the following responsible person:'),
+            'imprintHead2'      => I18N::translate('This website is operated by:'),
             'responsibleName'   => $this->responsibleName(),
-            'vatNumber'         => $this->vatNumber(),
             'street'            => $this->street(),
             'city'              => $this->city(),
+            'phoneLabel'        => I18N::translate('Phone'),
             'phone'             => $this->phone(),
+            'faxLabel'          => I18N::translate('Fax'),
             'fax'               => $this->fax(),
+            'emailLabel'        => I18N::translate('eMail'),
             'email'             => $this->email(),
             'simpleEmail'       => $this->simpleEmail(),
+            'vatNumberLabel'    => $this->vatNumberLabel(),
+            'vatNumber'         => $this->vatNumber(),
             'administrators'    => $administrators,                                         // tbd
             'contactLinks'      => $contactLinks,                                           // tbd
             'img'               => $this->get_gravatar('hartenthaler@gmail.com'),     // tbd
@@ -371,16 +383,6 @@ return new class()
     private function responsibleSex(): string
     {
         return $this->getPreference('responsibleSex', 'M');
-    }
-
-    /**
-     * VAT number or other registration number
-     *
-     * @return string
-     */
-    private function vatNumber(): string
-    {
-        return $this->getPreference('vatNumber', '');
     }
 
     /**
@@ -481,6 +483,26 @@ return new class()
     private function simpleEmail(): bool
     {
         return ($this->getPreference('simpleEmail', '0') == '0');
+    }
+
+    /**
+     * Label for VAT number or other registration number
+     *
+     * @return string
+     */
+    private function vatNumberLabel(): string
+    {
+        return $this->getPreference('vatNumberLabel', '');
+    }
+
+    /**
+     * VAT number or other registration number
+     *
+     * @return string
+     */
+    private function vatNumber(): string
+    {
+        return $this->getPreference('vatNumber', '');
     }
 
     /**

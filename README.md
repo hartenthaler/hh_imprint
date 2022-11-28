@@ -8,6 +8,8 @@
 
 This [webtrees](https://www.webtrees.net) module creates an imprint notice in the footer of the web page.
 
+There is a German [manual page](https://wiki.genealogy.net/Webtrees_Handbuch/Anleitung_f%C3%BCr_Webmaster/Erweiterungsmodule/Impressum) available, too.
+
 <a name="Contents"></a>
 ## Contents
 
@@ -29,15 +31,19 @@ This Readme contains the following main sections
 
 This module adds an imprint notice to all pages of a webtrees site.
 
-Such an imprint is maybe necessary, depending on your local law. In Germany there
-is a need based on two laws: xxxx
+Such an imprint is maybe necessary, depending on your local law.
+
+There is maybe a need to present on your website an "Imprint" (depending on the character of your site)
+* Germany: [§5 Telemediengesetz (TMG)](https://dejure.org/gesetze/TMG/5.html)
+* Austria: § 5 Abs. 1 E-Commerce-Gesetz (ECG)
+* Switzerland: Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
 
 The webtrees admin can define the following data fields in the control panel for the responsible person
 * name
-* VAT ID number or other registration number
 * address
 * phone and fax numbers
 * eMail address
+* VAT ID number or other registration number
 
 <a name="screenshots"></a>
 ## Screenshots
@@ -90,7 +96,7 @@ Discussion on translating can be done by creating an [issue](https://github.com/
 
 Updated translations will be included in the next release of this module.
 
-There are now, beside English and German, no other translations available.
+There are now, beside English, Dutch (by TheDutchJewel) and German, no other translations available.
 
 <a name="support"></a>
 ## Support

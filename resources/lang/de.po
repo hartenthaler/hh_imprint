@@ -26,8 +26,8 @@ msgstr "Vorname(n)"
 msgid "Surname(s)"
 msgstr "Nachname(n)"
 
-msgid "Sex of responsible person"
-msgstr "Geschlecht der verantwortlichen Person"
+msgid "Sex"
+msgstr "Geschlecht"
 
 msgid "male"
 msgstr "männlich"
@@ -38,8 +38,11 @@ msgstr "weiblich"
 msgid "Registration data"
 msgstr "Registrierungsdaten"
 
-msgid "VAT ID No. or other registration number (enter label and value)"
-msgstr "Umsatzsteuer-Identifikationsnummer oder andere Registrierungsnummer (Beschriftung und Wert eingeben)"
+msgid "Label like VAT ID No. or other registration number label"
+msgstr "Bezeichnung wie \"Umsatzsteuer-Identifikationsnummer\" oder andere Registrierungsnummer-Bezeichnung"
+
+msgid "VAT ID No. or other registration number"
+msgstr "Umsatzsteuer-Identifikationsnummer oder andere Registrierungsnummer"
 
 msgid "Communication data"
 msgstr "Kommunikationsdaten"
@@ -59,8 +62,23 @@ msgstr "Telefaxnummer inkl. Landesvorwahl, z.B. \"+49 30 654321\""
 msgid "eMail address"
 msgstr "E-Mail-Adresse"
 
+msgid "eMail"
+msgstr "E-Mail"
+
 msgid "Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?"
 msgstr "Soll ein einfacher Verweis auf die E-Mail-Adresse verwendet werden (andernfalls werden der Betreff und der Inhalt der E-Mail mit erzeugt)?"
 
-msgid "This website is operated by the following responsible person:"
-msgstr "Diese Website wird von der folgenden, verantwortlichen Person betrieben:"
+msgid "This website is operated by:"
+msgstr "Diese Website wird betrieben von:"
+
+msgid "message via imprint of site %s"
+msgstr "Nachricht über das Impressum der Website %s"
+
+msgid "Dear Mr. %s"
+msgstr "Sehr geehrter Herr %s"
+
+msgid "Dear Mrs. %s"
+msgstr "Sehr geehrte Frau %s"
+
+msgid "Dear %s"
+msgstr "Sehr geehrte/r %s"

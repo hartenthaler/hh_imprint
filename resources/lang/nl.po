@@ -38,8 +38,11 @@ msgstr "vrouw"
 msgid "Registration data"
 msgstr "Registratiegegevens"
 
-msgid "VAT ID No. or other registration number (enter label and value)"
-msgstr "Btw-nummer of ander registratienummer (label en waarde invullen)"
+msgid "Label like VAT ID No. or other registration number label"
+msgstr "Label xxx \"Btw-nummer\" of ander registratienummer label"
+
+msgid "VAT ID No. or other registration number"
+msgstr "Btw-nummer of ander registratienummer"
 
 msgid "Communication data"
 msgstr "Contactgegevens"
@@ -59,8 +62,23 @@ msgstr "Faxnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
 msgid "eMail address"
 msgstr "E-mailadres"
 
+msgid "eMail"
+msgstr "E-mail"
+
 msgid "Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?"
 msgstr "Eenvoudige e-maillink gebruiken (anders wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)?"
 
-msgid "This website is operated by the following responsible person:"
+msgid "This website is operated by:"
 msgstr "Deze website wordt beheerd door:"
+
+msgid "message via imprint of site %s"
+msgstr "xxx Nachricht über das Impressum der Website %s"
+
+msgid "Dear Mr. %s"
+msgstr "xxx Sehr geehrter Herr %s"
+
+msgid "Dear Mrs. %s"
+msgstr "xxx Sehr geehrte Frau %s"
+
+msgid "Dear %s"
+msgstr "xxx Sehr geehrte/r %s"

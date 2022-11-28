@@ -1,19 +1,21 @@
 <?php
 
-use Fisharebest\Webtrees\I18N;
-
 /**
  * @var string                      $title              title of this module
  * @var Fisharebest\Webtrees\Tree   $tree
  * @var string                      $imprintHead1       main title of this page
  * @var string                      $imprintHead2       subtitle of this page
  * @var string                      $responsibleName    name of responsible person
- * @var string                      $vatNumber
  * @var string                      $street
  * @var string                      $city
+ * @var string                      $phoneLabel
  * @var string                      $phone
+ * @var string                      $faxLabel
  * @var string                      $fax
+ * @var string                      $emailLabel
  * @var string                      $email
+ * @var string                      $vatNumberLabel
+ * @var string                      $vatNumber
  * @var array                       $contactLinks
  * @var string                      $img                complete html image link for gravatar
  */
@@ -36,27 +38,28 @@ use Fisharebest\Webtrees\I18N;
                 <?= $city ?></td>
             <?php endif ?>
         </tr>
-        <?php if ($vatNumber <> ''): ?>
-            <tr>
-                <td><?= $vatNumber ?></td>
-            </tr>
-        <?php endif ?>
         <?php if ($phone <> ''): ?>
             <tr>
-                <td><?= I18N::translate('Phone') ?>:</td>
+                <td><?= $phoneLabel ?>:</td>
                 <td><?= $phone ?></td>
             </tr>
         <?php endif ?>
         <?php if ($fax <> ''): ?>
             <tr>
-                <td><?= I18N::translate('Fax') ?>:</td>
+                <td><?= $faxLabel ?>:</td>
                 <td><?= $fax ?></td>
             </tr>
         <?php endif ?>
         <?php if ($email <> ''): ?>
             <tr>
-                <td><?= I18N::translate('eMail') ?>:</td>
+                <td><?= $emailLabel ?>:</td>
                 <td><?= $email ?></td>
+            </tr>
+        <?php endif ?>
+        <?php if ($vatNumberLabel <> '' && $vatNumber <> ''): ?>
+            <tr>
+                <td><?= $vatNumberLabel ?>:</td>
+                <td><?= $vatNumber ?></td>
             </tr>
         <?php endif ?>
     </tbody>
