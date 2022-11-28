@@ -43,7 +43,7 @@ The webtrees admin can define the following data fields in the control panel for
 ## Screenshots
 
 Screenshot of control panel page
-<p align="center"><img src="docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
+<p align="center"><img src="resources/docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
 
 <a name="webtrees"></a>
 ## webtrees
