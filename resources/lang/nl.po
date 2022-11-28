@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Imprint for webtrees 2\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2\n"
+
+msgid "Imprint"
+msgstr "Colofon"
+
+msgid "Imprint as a footer element for this site."
+msgstr "Colofon als voettekstelement voor deze site."
+
+msgid "Responsible person"
+msgstr "Verantwoordelijk persoon"
+
+msgid "First name(s)"
+msgstr "Voornaam"
+
+msgid "Surname(s)"
+msgstr "Achternaam"
+
+msgid "Sex of responsible person"
+msgstr "Geslacht"
+
+msgid "male"
+msgstr "man"
+
+msgid "female"
+msgstr "vrouw"
+
+msgid "Registration data"
+msgstr "Registratiegegevens"
+
+msgid "VAT ID No. or other registration number (enter label and value)"
+msgstr "BTW-nummer of ander registratienummer (label en waarde invullen)"
+
+msgid "Communication data"
+msgstr "Contactgegevens"
+
+msgid "Street name and house number"
+msgstr "Straatnaam en huisnummer"
+
+msgid "City including zip code, e.g. \"D-79108 Freiburg im Breisgau\""
+msgstr "Plaats en postcode"
+
+msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
+msgstr "Telefoonnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
+
+msgid "Fax number including country prefix, e.g. \"+49 30 654321\""
+msgstr "Faxnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
+
+msgid "eMail address"
+msgstr "E-mailadres"
+
+msgid "Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?"
+msgstr "Moet een eenvoudige e-maillink worden gebruikt (anders wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)?"
+
+msgid "This website is operated by the following responsible person:"
+msgstr "Deze website wordt beheerd door de volgende verantwoordelijke persoon:"
