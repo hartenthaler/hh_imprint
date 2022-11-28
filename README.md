@@ -15,11 +15,13 @@ This Readme contains the following main sections
 
 * [Description](#description)
 * [Screenshots](#screenshots)
+* [webtrees](#webtrees)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Upgrade](#upgrade)
 * [Translation](#translation)
 * [Contact Support](#support)
+* [Programming and Testing](#programming)
 * [License](#license)
 
 <a name="description"></a>
@@ -27,17 +29,29 @@ This Readme contains the following main sections
 
 This module adds an imprint notice to all pages of a webtrees site.
 
-The admin can define the following data fields in the control panel for the responsible person
+Such an imprint is maybe necessary, depending on your local law. In Germany there
+is a need based on two laws: xxxx
+
+The webtrees admin can define the following data fields in the control panel for the responsible person
 * name
+* VAT ID number or other registration number
 * address
 * phone and fax numbers
-* E-Mail address
+* eMail address
 
 <a name="screenshots"></a>
 ## Screenshots
 
 Screenshot of control panel page
-<p align="center"><img src="docs/screenshot.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
+<p align="center"><img src="docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
+
+<a name="webtrees"></a>
+## webtrees
+
+**[webtrees](https://webtrees.net/)** is an online collaborative genealogy application.
+This can be hosted on your own server by following the [Install instructions](https://webtrees.net/install/).
+If you are familiar with Docker, you might like to install **webtrees** using [this unofficial docker image](https://hub.docker.com/r/nathanvaughn/webtrees), [or this one](https://github.com/H2CK/webtrees).
+
 
 <a name="requirements"></a>
 ## Requirements
@@ -45,7 +59,7 @@ Screenshot of control panel page
 This module requires **webtrees** version 2.1 or later.
 This module has the same requirements as [webtrees#system-requirements](https://github.com/fisharebest/webtrees#system-requirements).
 
-This module was tested with **webtrees** 2.1.7 version
+This module was tested with **webtrees** 2.1.8 version
 and all available themes and all other custom modules.
 
 <a name="installation"></a>
@@ -53,7 +67,7 @@ and all available themes and all other custom modules.
 
 This section documents installation instructions for this module.
 
-1. Make database backup
+1. Make a database backup
 2. Download the [latest release](https://github.com/hartenthaler/hh_imprint/releases/latest)
 3. Unzip the package into your `webtrees/modules_v4` directory of your web server
 4. Rename the folder to `hh_imprint`
@@ -70,18 +84,28 @@ with the new ones from the latest release.
 <a name="translation"></a>
 ## Translation
 
-You can help to translate this module.
-You can do this via a pull request (if you know how) or by e-mail.
+You can translate into a language you are fluent in by joining the
+[PO Editor project](https://poeditor.com/join/project/576265).
+Discussion on translating can be done by creating an [issue](https://github.com/hartenthaler/hh_imprint/issues).
+
 Updated translations will be included in the next release of this module.
 
-There are now, beside English and German, no other translations.
+There are now, beside English and German, no other translations available.
 
 <a name="support"></a>
 ## Support
 
-<span style="font-weight: bold;">Issues: </span>you can report errors raising an issue in this GitHub repository.
+**Issues**: for any ideas you have, or when finding a bug you can raise an [issue](https://github.com/hartenthaler/hh_imprint/issues).
 
-<span style="font-weight: bold;">Forum: </span>general webtrees support can be found at the [webtrees forum](http://www.webtrees.net/).
+**Forum**: general webtrees support can be found at the [webtrees forum](http://www.webtrees.net/).
+
+<a name="programming"></a>
+## Programming and Testing
+
+If you'd like to contribute to this module, great! You can contribute by
+
+- Contributing code - check out the issues for things that need attention. If you have changes you want to make not listed in an issue, please create one, then you can link your pull request.
+- Testing - it's all manual currently, please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for any bugs you find.
 
 <a name="license"></a>
 ## License

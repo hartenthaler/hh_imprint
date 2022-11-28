@@ -9,13 +9,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
  * @var string                  $responsibleFirst   first name(s) of responsible person
  * @var string                  $responsibleSurname surname(s) of responsible person
  * @var string                  $responsibleSex     gender of responsible person ('M', 'F', 'X')
+ * @var string                  $vatNumber          VAT ID No. or other registration number
  * @var string                  $street
  * @var string                  $city
  * @var string                  $phone
  * @var string                  $fax
  * @var string                  $email
  * @var bool                    $simpleEmail
- * @var string                  $vatNumber          VAT ID No. or other registration number
  */
 
 ?>
@@ -115,7 +115,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
 
             <label class="col-sm-3 col-form-label wt-page-options-label" for="email">
-                <?= I18N::translate('E-Mail address') ?>
+                <?= I18N::translate('eMail address') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="email" name="email" type="text" value="<?= $email ?>">

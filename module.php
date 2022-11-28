@@ -23,15 +23,15 @@
 
 /*
  * tbd
- * mo/po erzeugen und mit Webdienst verknüpfen
- * Übersetzung ins Deutsche mit Webdienst
+ * Strings automatisch für po extrahieren
  * Abgleich mit anderen Impressums-Seiten
  * Problem mit Option simpleEmail beheben
- * lokalen GitHub-Clone anlegen und synchronisieren
- * README.md aktualisieren mit Hinweis auf Übersetzung und Hinweis auf die Rechtslage und Screenshot des Admin-Menüs
+ * README.md aktualisieren mit Hinweis auf Übersetzung und Hinweis auf die Rechtslage und Screenshot des erzeugten Impressums
  * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * Gravatar weiter testen
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
  * E-Mail-Funktion: korrekten site name einfügen
+ * Labels in page.html als bereits übersetzte Parameter übergeben
  * Refactoring
  */
 
@@ -46,7 +46,6 @@ namespace Hartenthaler\Webtrees\Module\Imprint;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
@@ -64,7 +63,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 return new class()
     extends PrivacyPolicy implements ModuleCustomInterface, ModuleFooterInterface, ModuleConfigInterface {
-   //     extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface, ModuleConfigInterface {
     use ModuleCustomTrait;
     use ModuleFooterTrait;
     use ModuleConfigTrait;
@@ -78,12 +76,9 @@ return new class()
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const CUSTOM_GITHUB_USER = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.7.0';
+    public const CUSTOM_VERSION     = '2.1.8.0';
     public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::CUSTOM_GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
-
-    /** @var string */
-    private string $languageSwitch;         // tbd: replace by I18N::..
 
     /** @var ModuleService */
     private ModuleService $moduleService;
@@ -112,13 +107,13 @@ return new class()
             'responsibleFirst',
             'responsibleSurname',
             'responsibleSex',
+            'vatNumber',
             'street',
             'city',
             'phone',
             'fax',
             'email',
             'simpleEmail',
-            'vatNumber',
         ];
     }
 
@@ -260,7 +255,6 @@ return new class()
      */
     public function customTranslations(string $language): array
     {
-        $this->languageSwitch = $language;
         $lang_dir   = $this->resourcesFolder() . 'lang/';
         $file       = $lang_dir . $language . '.mo';
         if (file_exists($file)) {
@@ -322,17 +316,20 @@ return new class()
         return $this->viewResponse($this->name() . '::page', [
             'title'             => $this->title(),
             'tree'              => Validator::attributes($request)->tree(),
+            'imprintHead1'      => I18N::translate('Responsible person'),
+            'imprintHead2'      => I18N::translate('This website is operated by the following responsible person:'),
             'responsibleName'   => $this->responsibleName(),
+            'vatNumber'         => $this->vatNumber(),
             'street'            => $this->street(),
             'city'              => $this->city(),
             'phone'             => $this->phone(),
             'fax'               => $this->fax(),
-            'email'             => $this->email(true),  // tbd: remove true after test
+            'email'             => $this->email(),
             'simpleEmail'       => $this->simpleEmail(),
-            'vatNumber'         => $this->vatNumber(),
-            'administrators'    => $administrators,
-            'contactLinks'      => $contactLinks,
-            'img'               => $this->get_gravatar($this->email(true)),
+            'administrators'    => $administrators,                                         // tbd
+            'contactLinks'      => $contactLinks,                                           // tbd
+            'img'               => $this->get_gravatar('hartenthaler@gmail.com'),     // tbd
+          //  'img'               => $this->get_gravatar($this->email(true)),
         ]);
     }
 
@@ -377,6 +374,16 @@ return new class()
     }
 
     /**
+     * VAT number or other registration number
+     *
+     * @return string
+     */
+    private function vatNumber(): string
+    {
+        return $this->getPreference('vatNumber', '');
+    }
+
+    /**
      * street name and house number of responsible person
      *
      * @return string
@@ -417,9 +424,11 @@ return new class()
     }
 
     /**
-     * E-Mail address of responsible person
+     * E-Mail address of responsible person in two versions
+     * - only eMail address
+     * - eMail address and additionally parameter for subject and first line of body
      *
-     * @param bool $simpleEmail use true to force a simple Email address without subject and body
+     * @param bool $simpleEmail Optional, use true to force a simple Email address without subject and body
      *
      * @return string
      */
@@ -436,10 +445,7 @@ return new class()
                     '</a>';
             } else {
                 $subject = /* I18N: subject of e-mail */
-                    I18N::translate('message via imprint of site') .    // Nachricht%20%C3%BCber%20Impressum%20der%20Website
-                    ' ' .
-                    'ahnen.hartenthaler.eu';
-
+                    I18N::translate('message via imprint of site %s', 'ahnen.hartenthaler.eu');
                 if ($this->responsibleSex() == 'M') {
                     $body = /* I18N: first line of body of e-mail using surname */
                         I18N::translate('Dear Mr. %s', $this->responsibleSurname()) . ',';
@@ -478,16 +484,6 @@ return new class()
     }
 
     /**
-     * VAT number or other registration number
-     *
-     * @return string
-     */
-    private function vatNumber(): string
-    {
-        return $this->getPreference('vatNumber', '');
-    }
-
-    /**
      * Create a contact link for a user.
      *
      * @param User $user
@@ -504,15 +500,16 @@ return new class()
      * Get either a Gravatar URL or complete image tag for a specified email address.
      *
      * @param string $email The email address
-     * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
-     * @param string $d Default imageset to use [ 404 | mp | identicon | monsterid | wavatar ]
-     * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
-     * @param bool $img True to return a complete IMG tag False for just the URL
-     * @param array $atts Optional, additional key/value attributes to include in the IMG tag
-     * @return String containing either just a URL or a complete image tag
+     * @param string $s Optional, size in pixels, defaults to 80px [ 1 - 2048 ]
+     * @param string $d Optional, default imageset to use [ 404 | mp | identicon | monsterid | wavatar ]
+     * @param string $r Optional, maximum rating (inclusive) [ g | pg | r | x ]
+     * @param bool   $img Optional, true to return a complete IMG tag False for just the URL
+     * @param array  $atts Optional, additional key/value attributes to include in the IMG tag
+     *
+     * @return string containing either just a URL or a complete image tag
      * @source https://gravatar.com/site/implement/images/php/
      */
-    function get_gravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = true, $atts = array() )
+    function get_gravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) : string
     {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5( strtolower( trim( $email ) ) );

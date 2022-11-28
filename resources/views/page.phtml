@@ -3,9 +3,12 @@
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var string                      $title              name of this module
- * @var \Fisharebest\Webtrees\Tree  $tree
+ * @var string                      $title              title of this module
+ * @var Fisharebest\Webtrees\Tree   $tree
+ * @var string                      $imprintHead1       main title of this page
+ * @var string                      $imprintHead2       subtitle of this page
  * @var string                      $responsibleName    name of responsible person
+ * @var string                      $vatNumber
  * @var string                      $street
  * @var string                      $city
  * @var string                      $phone
@@ -16,12 +19,11 @@ use Fisharebest\Webtrees\I18N;
  */
 
 ?>
-
 <h2><?= e($title) ?></h2>
+<p>&nbsp;</p>
+<h4><?= $imprintHead1 ?></h4>
 
-<h4><?= I18N::translate('Responsible person') ?></h4>
-
-<p><?= I18N::translate('This website is operated by the following responsible person:') ?></p>
+<p><?= $imprintHead2 ?></p>
 
 <table cellpadding="5">
     <tbody>
@@ -34,6 +36,11 @@ use Fisharebest\Webtrees\I18N;
                 <?= $city ?></td>
             <?php endif ?>
         </tr>
+        <?php if ($vatNumber <> ''): ?>
+            <tr>
+                <td><?= $vatNumber ?></td>
+            </tr>
+        <?php endif ?>
         <?php if ($phone <> ''): ?>
             <tr>
                 <td><?= I18N::translate('Phone') ?>:</td>
@@ -48,17 +55,9 @@ use Fisharebest\Webtrees\I18N;
         <?php endif ?>
         <?php if ($email <> ''): ?>
             <tr>
-                <td><?= I18N::translate('E-Mail') ?>:</td>
+                <td><?= I18N::translate('eMail') ?>:</td>
                 <td><?= $email ?></td>
             </tr>
         <?php endif ?>
     </tbody>
 </table>
-
-<ul>
-    <?php foreach ($contactLinks as $link): ?>
-        <li><?= $link ?></li>
-    <?php endforeach; ?>
-</ul>
-
-<?= $img ?>
