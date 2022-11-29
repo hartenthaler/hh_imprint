@@ -9,19 +9,21 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
  * @var string                  $responsibleFirst   first name(s) of responsible person
  * @var string                  $responsibleSurname surname(s) of responsible person
  * @var string                  $responsibleSex     gender of responsible person ('M', 'F', 'X')
+ * @var string                  $organization       Club name or organization
  * @var string                  $street
  * @var string                  $city
  * @var string                  $phone
  * @var string                  $fax
  * @var string                  $email
- * @var bool                    $simpleEmail
+ * @var string                  $simpleEmail
  * @var string                  $vatNumberLabel     Label like "VAT ID No." or other registration number label
  * @var string                  $vatNumber          VAT ID No. or other registration number
  */
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
+<?= view('components/breadcrumbs', [
+        'links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 <p><?= $description ?></p>
@@ -33,29 +35,31 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p></p>
 
-        <h4><?= I18N::translate('Responsible person') ?></h4>
+        <h4><?= I18N::translate('Responsible person') . ' (' . I18N::translate('mandatory') . ')' ?></h4>
 
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleFirst">
                 <?= I18N::translate('First name(s)') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <input class="form-control" id="responsibleFirst" name="responsibleFirst" type="text" value="<?= $responsibleFirst ?>">
+                <input class="form-control" id="responsibleFirst" name="responsibleFirst" type="text"
+                       value="<?= $responsibleFirst ?>">
             </div>
 
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleSurname">
                 <?= I18N::translate('Surname(s)') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <input class="form-control" id="responsibleSurname" name="responsibleSurname" type="text" value="<?= $responsibleSurname ?>">
+                <input class="form-control" id="responsibleSurname" name="responsibleSurname" type="text"
+                       value="<?= $responsibleSurname ?>">
             </div>
 
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleSex">
                 <?= I18N::translate('Sex') ?>
             </label>
-
-            <div class="row">
+            <div class="col-sm-9 wt-page-options-value">
                 <?= view('components/radios', [
+                    'id' => 'responsibleSex',
                     'name' => 'responsibleSex',
                     'selected' => $responsibleSex,
                     'options' => [
@@ -69,7 +73,20 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p></p>
 
-        <h4><?= I18N::translate('Communication data') ?></h4>
+        <h4><?= I18N::translate('Club or Organization') . ' (' . I18N::translate('optional') . ')'  ?></h4>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="organization">
+                <?= I18N::translate('Name of club or organization') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="organization" name="organization" type="text" value="<?= $organization ?>">
+            </div>
+        </div>
+
+        <p></p>
+
+        <h4><?= I18N::translate('Address data') . ' (' . I18N::translate('mandatory') . ')'  ?></h4>
 
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="street">
@@ -80,12 +97,17 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
 
             <label class="col-sm-3 col-form-label wt-page-options-label" for="city">
-                <?= I18N::translate('City including zip code, e.g. "D-79108 Freiburg im Breisgau"') ?>
+                <?= I18N::translate('City including zip code') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="city" name="city" type="text" value="<?= $city ?>">
             </div>
         </div>
+
+        <p></p>
+
+        <h4><?= I18N::translate('Communication data') . ' (' .
+                                    I18N::translate('Phone and eMail are mandatory') . ')'  ?></h4>
 
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="phone">
@@ -109,12 +131,19 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                 <input class="form-control" id="email" name="email" type="text" value="<?= $email ?>">
             </div>
 
-        <?= view('components/checkbox', ['label' => I18N::translate('Should a simple eMail link be used (otherwise subject and body of eMail are generated, too)?'), 'id' => 'simpleEmail', 'name' => 'simpleEmail', 'checked' => $simpleEmail]) ?>
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="simpleEmail">
+                <?= I18N::translate('Should a simple eMail link be used?') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <?= view('components/checkbox', [
+                    'label' => I18N::translate('(if not marked: subject and body of eMail are generated, too)'),
+                    'id' => 'simpleEmail', 'name' => 'simpleEmail', 'checked' => $simpleEmail]) ?>
+            </div>
         </div>
 
         <p></p>
 
-        <h4><?= I18N::translate('Registration data') ?></h4>
+        <h4><?= I18N::translate('Registration data') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="vatNumberLabel">
@@ -125,7 +154,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
 
             <label class="col-sm-3 col-form-label wt-page-options-label" for="vatNumber">
-                <?= I18N::translate('VAT ID No. or other registration number') ?>
+                <?= I18N::translate('Registration number') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="vatNumber" name="vatNumber" type="text" value="<?= $vatNumber ?>">

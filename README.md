@@ -31,10 +31,10 @@ This Readme contains the following main sections
 
 This module adds an imprint notice to all pages of a webtrees site.
 
-Such an imprint is maybe necessary, depending on your local law.
-
-There is maybe a need to present on your website an "Imprint" (depending on the character of your site)
-* Germany: [§5 Telemediengesetz (TMG)](https://dejure.org/gesetze/TMG/5.html)
+There is maybe a need to present on your website an "Imprint"
+(depending on your local law and the character of your site)
+* Germany: [§5 Telemediengesetz (TMG)](https://lxgesetze.de/tmg/5), 
+and [§4 Medienstaatsvertrag (MStV)](https://lxgesetze.de/mstv/4)
 * Austria: § 5 Abs. 1 E-Commerce-Gesetz (ECG)
 * Switzerland: Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
 

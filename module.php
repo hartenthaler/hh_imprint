@@ -24,19 +24,19 @@
 /*
  * tbd for next release
  * ==============================================================
+ * alle offenen bugs
  * Problem mit Option simpleEmail beheben
+ * Link auf eMail wird nicht ausgeführt
+ * E-Mail-Funktion: korrekten site name einfügen
+ * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * README.md: Screenshot des erzeugten Impressums, Aktualisierung des Screenshots des Verwaltungsmenüs
  *
  * tbd later on
  * ==============================================================
- * Strings automatisch für po extrahieren
  * Woher bekommt man den join-Link für neue Übersetzer auf https://poeditor.com?
+ * README.md aktualisieren mit korrektem Link für neue Übersetzer (join)
  * Muss man Sprachen vorab bereits anlegen? pot verwenden?
- * Abgleich mit anderen Impressums-Seiten
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
- * E-Mail-Funktion: korrekten site name einfügen
- * README.md aktualisieren mit korrektem Link für neue Übersetzer (join) und
- *      Screenshot des erzeugten Impressums
- * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail)
  * Gravatar weiter testen
  * Dokumentation in Deutsch für webtrees-Handbuch erstellen
  * Refactoring
@@ -79,11 +79,10 @@ return new class()
      */
     public const CUSTOM_TITLE       = 'Imprint';
     public const CUSTOM_MODULE      = 'hh_imprint';
-    public const CUSTOM_DESCRIPTION = 'Imprint as a footer element for this site.';
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const CUSTOM_GITHUB_USER = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.8.1';
+    public const CUSTOM_VERSION     = '2.1.8.2';
     public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::CUSTOM_GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
 
@@ -114,6 +113,7 @@ return new class()
             'responsibleFirst',
             'responsibleSurname',
             'responsibleSex',
+            'organization',
             'street',
             'city',
             'phone',
@@ -137,6 +137,15 @@ return new class()
         $preferences = $this->listOfPreferences();
         foreach ($preferences as $preference) {
             $response[$preference] = $this->getPreference($preference);
+        }
+
+        if ($response['responsibleFirst'] == '' && $response['responsibleSurname'] == '') {
+            $response['responsibleFirst'] = 'aaa';          // tbd
+            $response['responsibleSurname'] = 'bbb';        // tbd
+        }
+
+        if ($response['email'] == '') {
+            $response['email'] = 'ccc';                      // tbd
         }
 
         $response['title'] = $this->title();
@@ -192,7 +201,7 @@ return new class()
      */
     public function description(): string
     {
-        return /* I18N: Description of this module */ I18N::translate(self::CUSTOM_DESCRIPTION);
+        return /* I18N: Description of this module */ I18N::translate('Imprint as a footer element for this site.');
     }
 
     /**
@@ -327,6 +336,8 @@ return new class()
             'imprintHead1'      => I18N::translate('Responsible person'),
             'imprintHead2'      => I18N::translate('This website is operated by:'),
             'responsibleName'   => $this->responsibleName(),
+            'organization'      => $this->organization(),
+            'representedBy'     => I18N::translate('Represented by:'),
             'street'            => $this->street(),
             'city'              => $this->city(),
             'phoneLabel'        => I18N::translate('Phone'),
@@ -383,6 +394,16 @@ return new class()
     private function responsibleSex(): string
     {
         return $this->getPreference('responsibleSex', 'M');
+    }
+
+    /**
+     * organization
+     *
+     * @return string
+     */
+    private function organization(): string
+    {
+        return $this->getPreference('organization', '');
     }
 
     /**

@@ -6,6 +6,8 @@
  * @var string                      $imprintHead1       main title of this page
  * @var string                      $imprintHead2       subtitle of this page
  * @var string                      $responsibleName    name of responsible person
+ * @var string                      $organization       name of club or organization
+ * @var string                      $representedBy
  * @var string                      $street
  * @var string                      $city
  * @var string                      $phoneLabel
@@ -29,6 +31,12 @@
 
 <table cellpadding="5">
     <tbody>
+        <?php if ($organization <> ''): ?>
+            <tr>
+            <td valign="top"><?= $organization ?><br /><br />
+                <?= $representedBy ?></td>
+            </tr>
+        <?php endif ?>
         <tr>
             <td valign="top"><?= $responsibleName ?></td>
             <?php if ($street <> ''): ?>
