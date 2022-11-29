@@ -157,3 +157,7 @@ msgstr ""
 #: resources/views/settings.phtml:157
 msgid "Registration number"
 msgstr ""
+
+#:
+msgid "Represented by:"
+msgstr ""

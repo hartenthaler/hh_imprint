@@ -156,3 +156,7 @@ msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
 #: resources/views/settings.phtml:157
 msgid "Registration number"
 msgstr "Registratienummer"
+
+#:
+msgid "Represented by:"
+msgstr "xxx"

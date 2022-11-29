@@ -154,3 +154,7 @@ msgstr "Registrierungsnummer"
 
 msgid "Imprint as a footer element for this site."
 msgstr "Impressum als Element im Fußzeilenbereich."
+
+#:
+msgid "Represented by:"
+msgstr "Vertreten durch:"
