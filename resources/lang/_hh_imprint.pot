@@ -1,11 +1,12 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Imprint for webtrees 2\n"
-"POT-Creation-Date: 2022-11-29 17:07+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2022-11-29 16:56+0100\n"
+"PO-Revision-Date: 2022-11-29 18:43+0100\n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,138 +20,140 @@ msgstr ""
 
 #: module.php:333 resources/views/settings.phtml:38
 msgid "Responsible person"
-msgstr "Verantwortliche Person"
+msgstr ""
 
 #: module.php:334
 msgid "This website is operated by:"
-msgstr "Diese Website wird betrieben von:"
+msgstr ""
 
 #: module.php:338 resources/views/page_test.phtml:46
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 #: module.php:340 resources/views/page_test.phtml:52
 msgid "Fax"
-msgstr "Fax"
+msgstr ""
 
 #: module.php:342 resources/views/page_test.phtml:58
 msgid "eMail"
-msgstr "E-Mail"
+msgstr ""
 
 #: module.php:456
 #, php-format
 msgid "message via imprint of site %s"
-msgstr "Nachricht über das Impressum der Website %s"
+msgstr ""
 
 #: module.php:459
 #, php-format
 msgid "Dear Mr. %s"
-msgstr "Sehr geehrter Herr %s"
+msgstr ""
 
 #: module.php:462
 #, php-format
 msgid "Dear Mrs. %s"
-msgstr "Sehr geehrte Frau %s"
+msgstr ""
 
 #: module.php:465
 #, php-format
 msgid "Dear %s"
-msgstr "Sehr geehrte/r %s"
+msgstr ""
 
 #: resources/views/footer.phtml:8
 msgid "Imprint"
-msgstr "Impressum"
+msgstr ""
+
+#: resources/views/settings.phtml:26
+msgid "Control panel"
+msgstr ""
 
 #: resources/views/settings.phtml:38 resources/views/settings.phtml:89
 msgid "mandatory"
-msgstr "erforderlich"
+msgstr ""
 
 #: resources/views/settings.phtml:42
 msgid "First name(s)"
-msgstr "Vorname(n)"
+msgstr ""
 
 #: resources/views/settings.phtml:50
 msgid "Surname(s)"
-msgstr "Nachname(n)"
+msgstr ""
 
 #: resources/views/settings.phtml:58
 msgid "Sex"
-msgstr "Geschlecht"
+msgstr ""
 
 #: resources/views/settings.phtml:66
 msgid "male"
-msgstr "männlich"
+msgstr ""
 
 #: resources/views/settings.phtml:67
 msgid "female"
-msgstr "weiblich"
+msgstr ""
+
+#: resources/views/settings.phtml:68
+msgid "other"
+msgstr ""
 
 #: resources/views/settings.phtml:76
 msgid "Club or Organization"
-msgstr "Verein oder Organisation"
+msgstr ""
 
 #: resources/views/settings.phtml:76 resources/views/settings.phtml:146
 msgid "optional"
-msgstr "optional"
+msgstr ""
 
 #: resources/views/settings.phtml:80
 msgid "Name of club or organization"
-msgstr "Name des Vereins oder der Orgaisation"
+msgstr ""
 
 #: resources/views/settings.phtml:89
 msgid "Address data"
-msgstr "Adressdaten"
+msgstr ""
 
 #: resources/views/settings.phtml:93
 msgid "Street name and house number"
-msgstr "Straße und Hausnummer"
+msgstr ""
 
 #: resources/views/settings.phtml:100
 msgid "City including zip code"
-msgstr "Ort mit Postleitzahl"
+msgstr ""
 
 #: resources/views/settings.phtml:109
 msgid "Communication data"
-msgstr "Kommunikationsdaten"
+msgstr ""
 
 #: resources/views/settings.phtml:110
 msgid "Phone and eMail are mandatory"
-msgstr "Telefon und E-Mail sind erforderlich"
+msgstr ""
 
 #: resources/views/settings.phtml:114
 msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
-msgstr "Telefonnummer inkl. Landesvorwahl, z.B. \"+49 30 123456\""
+msgstr ""
 
 #: resources/views/settings.phtml:121
 msgid "Fax number including country prefix, e.g. \"+49 30 654321\""
-msgstr "Telefaxnummer inkl. Landesvorwahl, z.B. \"+49 30 654321\""
+msgstr ""
 
 #: resources/views/settings.phtml:128
 msgid "eMail address"
-msgstr "E-Mail-Adresse"
+msgstr ""
 
 #: resources/views/settings.phtml:135
 msgid "Should a simple eMail link be used?"
-msgstr "Soll ein einfacher Verweis auf die E-Mail-Adresse verwendet werden?"
+msgstr ""
 
 #: resources/views/settings.phtml:139
 msgid "(if not marked: subject and body of eMail are generated, too)"
 msgstr ""
-"(falls nicht angekreuzt: Betreff und Inhalt der E-Mail werden auch erzeugt)"
 
 #: resources/views/settings.phtml:146
 msgid "Registration data"
-msgstr "Registrierungsdaten"
+msgstr ""
 
 #: resources/views/settings.phtml:150
 msgid "Label like VAT ID No. or other registration number label"
 msgstr ""
-"Bezeichnung wie \"Umsatzsteuer-Identifikationsnummer\" oder andere "
-"Registrierungsnummer-Bezeichnung"
 
 #: resources/views/settings.phtml:157
 msgid "Registration number"
-msgstr "Registrierungsnummer"
-
-msgid "Imprint as a footer element for this site."
-msgstr "Impressum als Element im Fußzeilenbereich."
+msgstr ""
