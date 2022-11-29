@@ -95,7 +95,7 @@ msgstr "optional"
 
 #: resources/views/settings.phtml:80
 msgid "Name of club or organization"
-msgstr "Name des Vereins oder der Orgaisation"
+msgstr "Name des Vereins oder der Organisation"
 
 #: resources/views/settings.phtml:89
 msgid "Address data"
@@ -155,6 +155,5 @@ msgstr "Registrierungsnummer"
 msgid "Imprint as a footer element for this site."
 msgstr "Impressum als Element im Fußzeilenbereich."
 
-#:
 msgid "Represented by:"
 msgstr "Vertreten durch:"
