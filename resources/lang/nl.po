@@ -39,10 +39,10 @@ msgid "Registration data"
 msgstr "Registratiegegevens"
 
 msgid "Label like VAT ID No. or other registration number label"
-msgstr "Label xxx \"Btw-nummer\" of ander registratienummer label"
+msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
 
 msgid "VAT ID No. or other registration number"
-msgstr "Btw-nummer of ander registratienummer"
+msgstr "Registratienummer"
 
 msgid "Communication data"
 msgstr "Contactgegevens"
@@ -72,13 +72,13 @@ msgid "This website is operated by:"
 msgstr "Deze website wordt beheerd door:"
 
 msgid "message via imprint of site %s"
-msgstr "xxx Nachricht über das Impressum der Website %s"
+msgstr "bericht via impressum van site %s"
 
 msgid "Dear Mr. %s"
-msgstr "xxx Sehr geehrter Herr %s"
+msgstr "Geachte heer %s"
 
 msgid "Dear Mrs. %s"
-msgstr "xxx Sehr geehrte Frau %s"
+msgstr "Geachte mevrouw %s"
 
 msgid "Dear %s"
-msgstr "xxx Sehr geehrte/r %s"
+msgstr "Geachte %s"
