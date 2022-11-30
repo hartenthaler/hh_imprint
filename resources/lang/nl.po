@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Imprint for webtrees 2\n"
 "POT-Creation-Date: 2022-11-29 17:23+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -31,11 +31,11 @@ msgstr "Deze website wordt beheerd door:"
 
 #: module.php:337 resources/views/page_test.phtml:46
 msgid "Phone"
-msgstr "xxx"
+msgstr "Telefoon"
 
 #: module.php:339 resources/views/page_test.phtml:52
 msgid "Fax"
-msgstr "xxx"
+msgstr "Fax"
 
 #: module.php:341 resources/views/page_test.phtml:58
 msgid "eMail"
@@ -67,7 +67,7 @@ msgstr "Impressum"
 
 #: resources/views/settings.phtml:38 resources/views/settings.phtml:89
 msgid "mandatory"
-msgstr "xxx"
+msgstr "verplicht"
 
 #: resources/views/settings.phtml:42
 msgid "First name(s)"
@@ -91,23 +91,23 @@ msgstr "vrouw"
 
 #: resources/views/settings.phtml:68
 msgid "other"
-msgstr ""
+msgstr "overig"
 
 #: resources/views/settings.phtml:76
 msgid "Club or Organization"
-msgstr "xxx"
+msgstr "Vereniging of organisatie"
 
 #: resources/views/settings.phtml:76 resources/views/settings.phtml:146
 msgid "optional"
-msgstr "xxx"
+msgstr "optioneel"
 
 #: resources/views/settings.phtml:80
 msgid "Name of club or organization"
-msgstr "xxx"
+msgstr "Naam van vereniging of organisatie"
 
 #: resources/views/settings.phtml:89
 msgid "Address data"
-msgstr "xxx"
+msgstr "Adresgegevens"
 
 #: resources/views/settings.phtml:93
 msgid "Street name and house number"
@@ -123,7 +123,7 @@ msgstr "Contactgegevens"
 
 #: resources/views/settings.phtml:110
 msgid "Phone and eMail are mandatory"
-msgstr "xxx"
+msgstr "telefoon en e-mail zijn verplicht"
 
 #: resources/views/settings.phtml:114
 msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
@@ -143,7 +143,7 @@ msgstr "Eenvoudige e-maillink gebruiken?"
 
 #: resources/views/settings.phtml:139
 msgid "(if not marked: subject and body of eMail are generated, too)"
-msgstr "(xxx: ook het onderwerp en de inhoud van de e-mail gegenereerd)"
+msgstr "(indien niet aangevinkt wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)"
 
 #: resources/views/settings.phtml:146
 msgid "Registration data"
@@ -157,6 +157,5 @@ msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
 msgid "Registration number"
 msgstr "Registratienummer"
 
-#:
 msgid "Represented by:"
-msgstr "xxx"
+msgstr "Vertegenwoordigd door:"
