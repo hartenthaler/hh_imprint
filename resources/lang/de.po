@@ -18,6 +18,10 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
 #: module.php:333 resources/views/settings.phtml:38
+msgid "This is a test."
+msgstr "Dies ist ein Test."
+
+#: module.php:333 resources/views/settings.phtml:38
 msgid "Responsible person"
 msgstr "Verantwortliche Person"
 
