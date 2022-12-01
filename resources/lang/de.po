@@ -143,7 +143,5 @@ msgstr "Registrierungsnummer"
 msgid "Represented by:"
 msgstr "Vertreten durch:"
 
-#: module.php:333 resources/views/settings.phtml:38
-msgid "This is a test."
-msgstr "Huzelefuzle."
+
 

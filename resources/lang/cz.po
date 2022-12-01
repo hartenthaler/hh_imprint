@@ -143,7 +143,4 @@ msgstr ""
 msgid "Represented by:"
 msgstr ""
 
-#: module.php:333 resources/views/settings.phtml:38
-msgid "This is a test."
-msgstr "noch ein test"
 
