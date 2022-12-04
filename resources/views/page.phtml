@@ -1,74 +1,122 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @var string                      $title              title of this module
+ * @var string                      $title                  title of this module
  * @var Fisharebest\Webtrees\Tree   $tree
- * @var string                      $imprintHead1       main title of this page
- * @var string                      $imprintHead2       subtitle of this page
- * @var string                      $responsibleName    name of responsible person
- * @var string                      $organization       name of club or organization
+ * @var string                      $imprintHead1           main title of this page
+ * @var string                      $imprintHead2           subtitle of this page
+ *
+ * @var string                      $responsibleName        name of responsible person
+ * @var bool                        $showGravatar
+ * @var string                      $imgage                 image from Gravatar (string containing complete html tag)
+ * @var string                      $organization           name of club or organization
  * @var string                      $representedBy
+ *
  * @var string                      $street
  * @var string                      $city
+ *
  * @var string                      $phoneLabel
  * @var string                      $phone
  * @var string                      $faxLabel
  * @var string                      $fax
  * @var string                      $emailLabel
  * @var string                      $email
+ *
  * @var string                      $vatNumberLabel
  * @var string                      $vatNumber
- * @var array                       $contactLinks
- * @var string                      $img                complete html image link for gravatar
+ *
+ * @var bool                        $showTreeContacts
+ * @var string                      $headTreeContacts       heading of list of tree contacts
+ * @var int                         $countTreeContacts
+ * @var array                       $contactsTreeContacts
+ *
+ * @var bool                        $showAdministrators
+ * @var string                      $headAdministrators     heading of list of tree contacts
+ * @var string                      $commentAdministrators  comment about administrator role
+ * @var int                         $countAdministrators
+ * @var array                       $contactsAdministrators
  */
 
 ?>
-<h2><?= e($title) ?></h2>
-<p>&nbsp;</p>
-<h4><?= $imprintHead1 ?></h4>
 
-<p><?= $imprintHead2 ?></p>
+<div class="wt-footer wt-footer-contact my-2">
+    <h2><?= e($title) ?></h2>
+    <p>&nbsp;</p>
+    <h4><?= $imprintHead1 ?></h4>
 
-<table cellpadding="5">
-    <tbody>
-        <?php if ($organization <> ''): ?>
-            <tr>
-            <td valign="top"><?= $organization ?><br /><br />
-                <?= $representedBy ?></td>
-            </tr>
-        <?php endif ?>
-        <tr>
-            <td valign="top"><?= $responsibleName ?></td>
-            <?php if ($street <> ''): ?>
-                <td><?= $street ?><br />
+    <p><?= $imprintHead2 ?></p>
+
+    <table cellpadding="5">
+        <tbody>
+            <?php if ($organization <> ''): ?>
+                <tr>
+                    <td valign="top">
+                        <i><?= $organization ?></i><br /><br />
+                        <?= $representedBy ?>
+                    </td>
+                </tr>
             <?php endif ?>
-            <?php if ($city <> ''): ?>
-                <?= $city ?></td>
+            <tr>
+                <td valign="top">
+                    <i><?= $responsibleName ?></i>
+                    <?php if ($showGravatar): ?>
+                        <br />
+                        <?= $image ?>
+                    <?php endif ?>
+                </td>
+                <?php if ($street <> ''): ?>
+                    <td valign="top"><?= $street ?><br />
+                <?php endif ?>
+                <?php if ($city <> ''): ?>
+                    <?= $city ?></td>
+                <?php endif ?>
+            </tr>
+            <?php if ($phone <> ''): ?>
+                <tr>
+                    <td><?= $phoneLabel ?>:</td>
+                    <td><?= $phone ?></td>
+                </tr>
             <?php endif ?>
-        </tr>
-        <?php if ($phone <> ''): ?>
-            <tr>
-                <td><?= $phoneLabel ?>:</td>
-                <td><?= $phone ?></td>
-            </tr>
+            <?php if ($fax <> ''): ?>
+                <tr>
+                    <td><?= $faxLabel ?>:</td>
+                    <td><?= $fax ?></td>
+                </tr>
+            <?php endif ?>
+            <?php if ($email <> ''): ?>
+                <tr>
+                    <td><?= $emailLabel ?>:</td>
+                    <td><?= $email ?></td>
+                </tr>
+            <?php endif ?>
+            <?php if ($vatNumberLabel <> '' && $vatNumber <> ''): ?>
+                <tr>
+                    <td><?= $vatNumberLabel ?>:</td>
+                    <td><?= $vatNumber ?></td>
+                </tr>
+            <?php endif ?>
+        </tbody>
+    </table>
+
+    <?php if ($showTreeContacts && $countTreeContacts > 0): ?>
+        <p>&nbsp;</p>
+        <h4><?= $headTreeContacts ?> (<?= $countTreeContacts ?>)</h4>
+        <?= $contactsTreeContacts[0] ?>
+        <?php if ($countTreeContacts == 2): ?>
+            </br><?= $contactsTreeContacts[1] ?>
         <?php endif ?>
-        <?php if ($fax <> ''): ?>
-            <tr>
-                <td><?= $faxLabel ?>:</td>
-                <td><?= $fax ?></td>
-            </tr>
-        <?php endif ?>
-        <?php if ($email <> ''): ?>
-            <tr>
-                <td><?= $emailLabel ?>:</td>
-                <td><?= $email ?></td>
-            </tr>
-        <?php endif ?>
-        <?php if ($vatNumberLabel <> '' && $vatNumber <> ''): ?>
-            <tr>
-                <td><?= $vatNumberLabel ?>:</td>
-                <td><?= $vatNumber ?></td>
-            </tr>
-        <?php endif ?>
-    </tbody>
-</table>
+    <?php endif ?>
+
+    <?php if ($showAdministrators): ?>
+        <p>&nbsp;</p>
+        <h4><?= $headAdministrators ?> (<?= $countAdministrators ?>)</h4>
+        <p><?= $commentAdministrators ?></p>
+        <ul>
+            <?php foreach ($contactsAdministrators as $link): ?>
+                <li><?= $link ?></li>
+            <?php endforeach ?>
+        </ul>
+    <?php endif ?>
+</div>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
@@ -9,6 +11,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
  * @var string                  $responsibleFirst   first name(s) of responsible person
  * @var string                  $responsibleSurname surname(s) of responsible person
  * @var string                  $responsibleSex     gender of responsible person ('M', 'F', 'X')
+ * @var string                  $showGravatar       show image from www.gravatar.com site for this user
  * @var string                  $organization       Club name or organization
  * @var string                  $street
  * @var string                  $city
@@ -18,6 +21,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
  * @var string                  $simpleEmail
  * @var string                  $vatNumberLabel     Label like "VAT ID No." or other registration number label
  * @var string                  $vatNumber          VAT ID No. or other registration number
+ * @var string                  $showTreeContacts
+ * @var string                  $showAdministrators
  */
 
 ?>
@@ -68,6 +73,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                         'X' => I18N::translate('other'),
                     ],
                 ]) ?>
+            </div>
+
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="showGravatar">
+                <?= I18N::translate('Should a gravatar image be shown?') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <?= view('components/checkbox', [
+                    'label' => '',
+                    'id' => 'showGravatar', 'name' => 'showGravatar', 'checked' => $showGravatar]) ?>
             </div>
         </div>
 
@@ -158,6 +172,30 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="vatNumber" name="vatNumber" type="text" value="<?= $vatNumber ?>">
+            </div>
+        </div>
+
+        <p></p>
+
+        <h4><?= I18N::translate('Additional contacts to be shown') ?></h4>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="showTreeContacts">
+                <?= I18N::translate('Should the tree contacts be shown?') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <?= view('components/checkbox', [
+                    'label' => I18N::translate('(there are maybe genealogical and technical contacts defined)'),
+                    'id' => 'showTreeContacts', 'name' => 'showTreeContacts', 'checked' => $showTreeContacts]) ?>
+            </div>
+
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="showAdministrators">
+                <?= I18N::translate('Should the administrators be shown?') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <?= view('components/checkbox', [
+                    'label' => '',
+                    'id' => 'showAdministrators', 'name' => 'showAdministrators', 'checked' => $showAdministrators]) ?>
             </div>
         </div>
 
