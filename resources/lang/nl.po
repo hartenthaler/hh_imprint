@@ -1,62 +1,88 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Imprint for webtrees 2\n"
-"POT-Creation-Date: 2022-11-29 17:23+0100\n"
+"POT-Creation-Date: 2022-12-04 12:58+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2;translateContext:2,1c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: module.php:200
+#: ImprintFooterModule.php:222
 msgid "Imprint as a footer element for this site."
 msgstr "Impressum als voettekstelement voor deze site."
 
-#: module.php:332 resources/views/settings.phtml:38
+#: ImprintFooterModule.php:362 resources/views/settings.phtml:43
 msgid "Responsible person"
 msgstr "Verantwoordelijk persoon"
 
-#: module.php:333
+#: ImprintFooterModule.php:363
 msgid "This website is operated by:"
 msgstr "Deze website wordt beheerd door:"
 
-#: module.php:337 resources/views/page_test.phtml:46
+#: ImprintFooterModule.php:368
+msgid "Represented by:"
+msgstr "Vertegenwoordigd door:"
+
+#: ImprintFooterModule.php:371
 msgid "Phone"
 msgstr "Telefoon"
 
-#: module.php:339 resources/views/page_test.phtml:52
+#: ImprintFooterModule.php:373
 msgid "Fax"
 msgstr "Fax"
 
-#: module.php:341 resources/views/page_test.phtml:58
+#: ImprintFooterModule.php:375
 msgid "eMail"
 msgstr "E-mail"
 
-#: module.php:455
+#: ImprintFooterModule.php:381
+msgid "Additional contact"
+msgid_plural "Additional contacts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ImprintFooterModule.php:386
+msgid "Website administrator"
+msgid_plural "Website administrators"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ImprintFooterModule.php:387
+msgid ""
+"The webtrees administrator is responsible to manage users and to set the "
+"preferences for this website."
+msgid_plural ""
+"The webtrees administrators are responsible to manage users and to set the "
+"preferences for this website."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ImprintFooterModule.php:506
 #, php-format
 msgid "message via imprint of site %s"
 msgstr "bericht via impressum van site %s"
 
-#: module.php:458
+#: ImprintFooterModule.php:509
 #, php-format
 msgid "Dear Mr. %s"
 msgstr "Geachte heer %s"
 
-#: module.php:461
+#: ImprintFooterModule.php:512
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr "Geachte mevrouw %s"
 
-#: module.php:464
+#: ImprintFooterModule.php:515
 #, php-format
 msgid "Dear %s"
 msgstr "Geachte %s"
@@ -65,97 +91,121 @@ msgstr "Geachte %s"
 msgid "Imprint"
 msgstr "Impressum"
 
-#: resources/views/settings.phtml:38 resources/views/settings.phtml:89
+#: resources/views/settings.phtml:31
+msgid "Control panel"
+msgstr ""
+
+#: resources/views/settings.phtml:43 resources/views/settings.phtml:103
 msgid "mandatory"
 msgstr "verplicht"
 
-#: resources/views/settings.phtml:42
+#: resources/views/settings.phtml:47
 msgid "First name(s)"
 msgstr "Voornaam"
 
-#: resources/views/settings.phtml:50
+#: resources/views/settings.phtml:55
 msgid "Surname(s)"
 msgstr "Achternaam"
 
-#: resources/views/settings.phtml:58
+#: resources/views/settings.phtml:63
 msgid "Sex"
 msgstr "Geslacht"
 
-#: resources/views/settings.phtml:66
+#: resources/views/settings.phtml:71
 msgid "male"
 msgstr "man"
 
-#: resources/views/settings.phtml:67
+#: resources/views/settings.phtml:72
 msgid "female"
 msgstr "vrouw"
 
-#: resources/views/settings.phtml:68
+#: resources/views/settings.phtml:73
 msgid "other"
 msgstr "overig"
 
-#: resources/views/settings.phtml:76
+#: resources/views/settings.phtml:79
+msgid "Should a gravatar image be shown?"
+msgstr ""
+
+#: resources/views/settings.phtml:90
 msgid "Club or Organization"
 msgstr "Vereniging of organisatie"
 
-#: resources/views/settings.phtml:76 resources/views/settings.phtml:146
+#: resources/views/settings.phtml:90 resources/views/settings.phtml:160
 msgid "optional"
 msgstr "optioneel"
 
-#: resources/views/settings.phtml:80
+#: resources/views/settings.phtml:94
 msgid "Name of club or organization"
 msgstr "Naam van vereniging of organisatie"
 
-#: resources/views/settings.phtml:89
+#: resources/views/settings.phtml:103
 msgid "Address data"
 msgstr "Adresgegevens"
 
-#: resources/views/settings.phtml:93
+#: resources/views/settings.phtml:107
 msgid "Street name and house number"
 msgstr "Straatnaam en huisnummer"
 
-#: resources/views/settings.phtml:100
+#: resources/views/settings.phtml:114
 msgid "City including zip code"
 msgstr "Postcode en plaats"
 
-#: resources/views/settings.phtml:109
+#: resources/views/settings.phtml:123
 msgid "Communication data"
 msgstr "Contactgegevens"
 
-#: resources/views/settings.phtml:110
+#: resources/views/settings.phtml:124
 msgid "Phone and eMail are mandatory"
 msgstr "telefoon en e-mail zijn verplicht"
 
-#: resources/views/settings.phtml:114
+#: resources/views/settings.phtml:128
 msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
 msgstr "Telefoonnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
 
-#: resources/views/settings.phtml:121
+#: resources/views/settings.phtml:135
 msgid "Fax number including country prefix, e.g. \"+49 30 654321\""
 msgstr "Faxnummer inclusief landnummer, bijvoorbeeld \"+31 12 3456789\"."
 
-#: resources/views/settings.phtml:128
+#: resources/views/settings.phtml:142
 msgid "eMail address"
 msgstr "E-mailadres"
 
-#: resources/views/settings.phtml:135
+#: resources/views/settings.phtml:149
 msgid "Should a simple eMail link be used?"
 msgstr "Eenvoudige e-maillink gebruiken?"
 
-#: resources/views/settings.phtml:139
+#: resources/views/settings.phtml:153
 msgid "(if not marked: subject and body of eMail are generated, too)"
-msgstr "(indien niet aangevinkt wordt ook het onderwerp en de inhoud van de e-mail gegenereerd)"
+msgstr ""
+"(indien niet aangevinkt wordt ook het onderwerp en de inhoud van de e-mail "
+"gegenereerd)"
 
-#: resources/views/settings.phtml:146
+#: resources/views/settings.phtml:160
 msgid "Registration data"
 msgstr "Registratiegegevens"
 
-#: resources/views/settings.phtml:150
+#: resources/views/settings.phtml:164
 msgid "Label like VAT ID No. or other registration number label"
 msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
 
-#: resources/views/settings.phtml:157
+#: resources/views/settings.phtml:171
 msgid "Registration number"
 msgstr "Registratienummer"
 
-msgid "Represented by:"
-msgstr "Vertegenwoordigd door:"
+#: resources/views/settings.phtml:180
+msgid "Additional contacts to be shown"
+msgstr ""
+
+#: resources/views/settings.phtml:184
+msgid "Should the tree contacts be shown?"
+msgstr ""
+
+#: resources/views/settings.phtml:188
+msgid "(there are maybe genealogical and technical contacts defined)"
+msgstr ""
+
+#: resources/views/settings.phtml:193
+msgid "Should the administrators be shown?"
+msgstr ""
+
