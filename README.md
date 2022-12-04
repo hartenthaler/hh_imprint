@@ -39,7 +39,8 @@ and [§4 Medienstaatsvertrag (MStV)](https://lxgesetze.de/mstv/4)
 * Switzerland: Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
 
 The webtrees admin can define the following data fields in the control panel for the responsible person
-* name
+* name of genealogical club or organization
+* name of responsible person
 * address
 * phone and fax numbers
 * eMail address
@@ -91,7 +92,12 @@ with the new ones from the latest release.
 ## Translation
 
 You can translate into a language you are fluent in by joining the
-[PO Editor project](https://poeditor.com/join/project/576265).
+[PO Editor project](https://poeditor.com/join/project/zscMiujN1m).
+
+But you can also use a local editor,
+like Poedit or Notepad++ to make the translations and send them back to me.
+You can do this via a pull request (if you know how) or by e-mail.
+
 Discussion on translating can be done by creating an [issue](https://github.com/hartenthaler/hh_imprint/issues).
 
 Updated translations will be included in the next release of this module.
