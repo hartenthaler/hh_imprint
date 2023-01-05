@@ -54,7 +54,10 @@ The webtrees admin can choose if the following additional parts should be shown
 <a name="screenshots"></a>
 ## Screenshots
 
-Screenshot of control panel page
+Screenshot of imprint (in German language)
+<p align="center"><img src="resources/docs/imprint.png" alt="Screenshot of imprint" align="center" width="100%"></p>
+
+Screenshot of control panel page (in German language)
 <p align="center"><img src="resources/docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
 
 <a name="webtrees"></a>
@@ -85,7 +88,8 @@ This section documents installation instructions for this module.
 4. Rename the folder to `hh_imprint`
 5. Login to **webtrees** as administrator, go to <span class="pointer">Control Panel/Modules/Website/Footers</span>, and find the module. It will be called "Imprint". Check if it has a tick for "Enabled".
 6. Click at the wrench symbol and add all desired information fields
-7. Finally, click SAVE, to complete the installation.
+7. Maybe you like to deactivate the module "contact information" (depending whether you have activated this in the imprint module).
+8. Finally, click SAVE, to complete the installation.
 
 <a name="upgrade"></a>
 ## Upgrade

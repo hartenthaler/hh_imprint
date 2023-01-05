@@ -24,12 +24,6 @@
 /*
  * tbd for next release
  * ==============================================================
- * Fehlermeldung: Der Parameter "tree" fehlt, wenn die verantwortliche Person leer ist
- * Formatierung: Name und Adresse oben auf einer Linie
- * alle Übersetzungen aktualisieren (u.a. "Adreßzusatz")
- * Test der Übersetzung "other" = "divers"
- * Test ohne einen sichtbaren Baum
- * Test der Initialisierung bei Erstverwendung mit erstem Admin (Name und E-Mail)
  * Test: alle Kombinationen von: Adreßzusatz = leer und Straße = leer und Ort = leer
  * README.md: Screenshot des erzeugten Impressums
  * README.md: Aktualisierung des Screenshots des Verwaltungsmenüs
@@ -37,7 +31,11 @@
  * tbd later on
  * ==============================================================
  * alle offenen issues aus GitHub
- * Validierung der Base_URL
+ * Fehlermeldung: Der Parameter "tree" fehlt, wenn die verantwortliche Person leer ist
+ * Vorbelegung der verantwortlichen Person aus den Angaben für den ersten Website-Administrator (Vor-, Nachname, E-Mail)
+ * Formatierung: Name und Adresse oben auf einer Linie
+ * Test der Initialisierung bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * Validierung der Base_URL aktivieren
  * Warum is require_once nötig?
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
  * Dokumentation in Deutsch für webtrees-Handbuch fertigstellen und README anpassen (Rückportierung)
@@ -64,7 +62,6 @@ use Fisharebest\Webtrees\Module\ModuleConfigTrait;
 use Fisharebest\Webtrees\Module\PrivacyPolicy;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
@@ -372,8 +369,8 @@ class ImprintFooterModule extends PrivacyPolicy
 
         return $this->viewResponse($this->name() . '::page', [
             'title'                     => $this->title(),
-            'tree'                      => Validator::attributes($request)->tree(),
-            //'tree'                      => Validator::attributes($request)->treeOptional(),
+            //'tree'                      => Validator::attributes($request)->tree(),
+            'tree'                      => Validator::attributes($request)->treeOptional(),
             'imprintHead1'              => I18N::translate('Responsible person'),
             'imprintHead2'              => I18N::translate('This website is operated by:'),
             'responsibleName'           => $this->responsibleName(),
@@ -644,14 +641,14 @@ class ImprintFooterModule extends PrivacyPolicy
      * @source https://gravatar.com/site/implement/images/php/
      */
     private function getGravatar( string $email, string $s = '80', string $d = 'mp', string $r = 'g',
-                                 bool $img = true,  array $atts = array() ) : string
+                                 bool $img = true,  array $attributes = array() ) : string
     {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5( strtolower( trim( $email ) ) );
         $url .= "?s=$s&d=$d&r=$r";
         if ( $img ) {
             $url = '<img src="' . $url . '"';
-            foreach ( $atts as $key => $val )
+            foreach ( $attributes as $key => $val )
                 $url .= ' ' . $key . '="' . $val . '"';
             $url .= ' />';
         }

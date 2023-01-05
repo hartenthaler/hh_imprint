@@ -149,7 +149,7 @@ msgstr[0] "Der Website-Verwalter ist für die Benutzerverwaltung zuständig und 
 msgstr[1] "Die Website-Verwalter sind für die Benutzerverwaltung zuständig und definieren die Einstellungen für diese Website."
 
 #: resources/views/settings.phtml:77
-msgid "other"
+msgid "other sex"
 msgstr "divers"
 
 #: resources/views/settings.phtml:215
