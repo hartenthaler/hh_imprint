@@ -91,10 +91,6 @@ msgstr "Geachte %s"
 msgid "Imprint"
 msgstr "Impressum"
 
-#: resources/views/settings.phtml:34
-msgid "Control panel"
-msgstr ""
-
 #: resources/views/settings.phtml:45 resources/views/settings.phtml:116
 msgid "mandatory"
 msgstr "verplicht"
