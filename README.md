@@ -55,7 +55,7 @@ The webtrees admin can choose if the following additional parts should be shown
 ## Screenshots
 
 Screenshot of imprint (in German language)
-<p align="center"><img src="resources/docs/imprint.png" alt="Screenshot of imprint" align="center" width="100%"></p>
+<p align="center"><img src="resources/docs/imprint.png" alt="Screenshot of imprint" align="center" width="60%"></p>
 
 Screenshot of control panel page (in German language)
 <p align="center"><img src="resources/docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
