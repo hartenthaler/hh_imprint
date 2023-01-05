@@ -6,7 +6,7 @@
 
 ![Latest Release](https://img.shields.io/github/v/release/hartenthaler/hh_imprint)
 
-This [webtrees](https://www.webtrees.net) module creates an imprint notice in the footer of the web page.
+This [webtrees](https://www.webtrees.net) module creates an imprint/legal notice in the footer of the web page.
 
 There is a German [manual page](https://wiki.genealogy.net/Webtrees_Handbuch/Anleitung_f%C3%BCr_Webmaster/Erweiterungsmodule/Impressum) available, too.
 
@@ -43,8 +43,13 @@ The webtrees admin can define the following data fields in the control panel for
 * name of responsible person
 * address
 * phone and fax numbers
-* eMail address
-* VAT ID number or other registration number
+* eMail address (with or without subject and body of eMail)
+* VAT ID number or other registration number (like a club registration number)
+
+The webtrees admin can choose if the following additional parts should be shown
+* image of the responsible person using the [Gravatar](https://gravatar.com/)
+* list of contact persons for a tree (genealogical and technical)
+* list of administrators of this site with their contact links
 
 <a name="screenshots"></a>
 ## Screenshots
@@ -66,7 +71,7 @@ If you are familiar with Docker, you might like to install **webtrees** using [t
 This module requires **webtrees** version 2.1 or later.
 This module has the same requirements as [webtrees#system-requirements](https://github.com/fisharebest/webtrees#system-requirements).
 
-This module was tested with **webtrees** 2.1.8 version
+This module was tested with **webtrees** 2.1.15 version
 and all available themes and all other custom modules.
 
 <a name="installation"></a>
@@ -85,7 +90,7 @@ This section documents installation instructions for this module.
 <a name="upgrade"></a>
 ## Upgrade
 
-To update simply replace the hh_imprint files
+To update simply replace the `hh_imprint` files
 with the new ones from the latest release.
 
 <a name="translation"></a>
@@ -122,8 +127,8 @@ If you'd like to contribute to this module, great! You can contribute by
 <a name="license"></a>
 ## License
 
-* Copyright (C) 2022 Hermann Hartenthaler
-* Derived from **webtrees** - Copyright 2022 webtrees development team.
+* Copyright (C) 2023 Hermann Hartenthaler
+* Derived from **webtrees** - Copyright 2023 webtrees development team.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

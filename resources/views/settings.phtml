@@ -3,26 +3,29 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
 /**
- * @var string                  $title
- * @var string                  $description
- * @var string                  $responsibleFirst   first name(s) of responsible person
- * @var string                  $responsibleSurname surname(s) of responsible person
- * @var string                  $responsibleSex     gender of responsible person ('M', 'F', 'X')
- * @var string                  $showGravatar       show image from www.gravatar.com site for this user
- * @var string                  $organization       Club name or organization
- * @var string                  $street
- * @var string                  $city
- * @var string                  $phone
- * @var string                  $fax
- * @var string                  $email
- * @var string                  $simpleEmail
- * @var string                  $vatNumberLabel     Label like "VAT ID No." or other registration number label
- * @var string                  $vatNumber          VAT ID No. or other registration number
- * @var string                  $showTreeContacts
- * @var string                  $showAdministrators
+ * @var string                      $title              title of this custom module
+ * @var string                      $description        description of this module
+ * @var string                      $responsibleFirst   first name(s) of responsible person
+ * @var string                      $responsibleSurname surname(s) of responsible person
+ * @var string                      $responsibleSex     gender of responsible person ('M', 'F', 'X')
+ * @var string                      $showGravatar       option whether to show image from www.gravatar.com site for this user
+ * @var string                      $organization       club name or organization name
+ * @var string                      $additionalAddress  additional address line
+ * @var string                      $street             street in address of responsible person
+ * @var string                      $city               city in address of responsible person
+ * @var string                      $phone              phone number of responsible person (optional)
+ * @var string                      $fax                fax number of responsible person (optional)
+ * @var string                      $email              eMail address of responsible person (optional)
+ * @var string                      $simpleEmail        option whether to show only eMail address or to show additional header and body of eMail
+ * @var string                      $vatNumberLabel     Label like "VAT ID No." or other registration number label
+ * @var string                      $vatNumber          VAT ID No. or other registration number
+*  @var string                      $showTreeContacts   option whether to show tree contacts
+ * @var string                      $showAdministrators option whether to show administrators of webtrees
  */
 
 ?>
@@ -30,8 +33,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 <?= view('components/breadcrumbs', [
         'links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
-<h1><?= $title ?></h1>
-<p><?= $description ?></p>
+<h1><?= e($title) ?></h1>
+<p><?= e($description) ?></p>
 
 <div class="hh-imprint mb-5">
     <form method="post">
@@ -39,10 +42,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
         <input type="hidden" name="save" id="save" value="1">
 
         <p></p>
-
         <h4><?= I18N::translate('Responsible person') . ' (' . I18N::translate('mandatory') . ')' ?></h4>
 
         <div class="row">
+            <!-- first names of responsible person -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleFirst">
                 <?= I18N::translate('First name(s)') ?>
             </label>
@@ -51,6 +54,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                        value="<?= $responsibleFirst ?>">
             </div>
 
+            <!-- surnames of responsible person -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleSurname">
                 <?= I18N::translate('Surname(s)') ?>
             </label>
@@ -59,37 +63,46 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                        value="<?= $responsibleSurname ?>">
             </div>
 
+            <!-- sex of responsible person -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="responsibleSex">
                 <?= I18N::translate('Sex') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/radios', [
+                <?= view('components/radios-inline', [
                     'id' => 'responsibleSex',
                     'name' => 'responsibleSex',
-                    'selected' => $responsibleSex,
                     'options' => [
                         'M' => I18N::translate('male'),
                         'F' => I18N::translate('female'),
                         'X' => I18N::translate('other'),
                     ],
+                    'selected' => $responsibleSex,
                 ]) ?>
             </div>
 
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="showGravatar">
-                <?= I18N::translate('Should a gravatar image be shown?') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', [
-                    'label' => '',
-                    'id' => 'showGravatar', 'name' => 'showGravatar', 'checked' => $showGravatar]) ?>
-            </div>
-        </div>
+            <!-- show gravatar -->
+            <fieldset class="form-group mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 wt-page-options-label">
+                        <?= I18N::translate('Should a gravatar image be shown (see www.gravatar.com)?') ?>
+                    </legend>
+                    <div class="col-sm-9 wt-page-options-value">
+                        <?= view('components/radios-inline', [
+                            'id' => 'showGravatar',
+                            'name' => 'showGravatar',
+                            'options' => [I18N::translate('no'), I18N::translate('yes')],
+                            'selected' => (int)$showGravatar
+                        ]) ?>
+                    </div>
+                </div>
+            </fieldset>
 
         <p></p>
 
         <h4><?= I18N::translate('Club or Organization') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
+            <!-- name of organization -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="organization">
                 <?= I18N::translate('Name of club or organization') ?>
             </label>
@@ -103,6 +116,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
         <h4><?= I18N::translate('Address data') . ' (' . I18N::translate('mandatory') . ')'  ?></h4>
 
         <div class="row">
+            <!-- additional address line -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="additionalAddress">
+                <?= I18N::translate('Additional address line') . ' (' . I18N::translate('optional') . ')' ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="additionalAddress" name="additionalAddress" type="text" value="<?= $additionalAddress ?>">
+            </div>
+
+            <!-- street name and house number -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="street">
                 <?= I18N::translate('Street name and house number') ?>
             </label>
@@ -110,6 +132,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                 <input class="form-control" id="street" name="street" type="text" value="<?= $street ?>">
             </div>
 
+            <!-- city and zip code -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="city">
                 <?= I18N::translate('City including zip code') ?>
             </label>
@@ -120,24 +143,26 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p></p>
 
-        <h4><?= I18N::translate('Communication data') . ' (' .
-                                    I18N::translate('Phone and eMail are mandatory') . ')'  ?></h4>
+        <h4><?= I18N::translate('Communication data') . ' (' . I18N::translate('optional') . ')'   ?></h4>
 
         <div class="row">
+            <!-- phone number -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="phone">
-                <?= I18N::translate('Phone number including country prefix, e.g. "+49 30 123456"') ?>
+                <?= I18N::translate('Phone number (including country prefix, e.g. "+49 30 123456")') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="phone" name="phone" type="text" value="<?= $phone ?>">
             </div>
 
+            <!--fax number -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="fax">
-                <?= I18N::translate('Fax number including country prefix, e.g. "+49 30 654321"') ?>
+                <?= I18N::translate('Fax number (including country prefix, e.g. "+49 30 654321")') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="fax" name="fax" type="text" value="<?= $fax ?>">
             </div>
 
+            <!-- eMail address -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="email">
                 <?= I18N::translate('eMail address') ?>
             </label>
@@ -145,14 +170,22 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                 <input class="form-control" id="email" name="email" type="text" value="<?= $email ?>">
             </div>
 
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="simpleEmail">
-                <?= I18N::translate('Should a simple eMail link be used?') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', [
-                    'label' => I18N::translate('(if not marked: subject and body of eMail are generated, too)'),
-                    'id' => 'simpleEmail', 'name' => 'simpleEmail', 'checked' => $simpleEmail]) ?>
-            </div>
+            <!-- use simple eMail link -->
+            <fieldset class="form-group mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 wt-page-options-label">
+                        <?= I18N::translate('Should a simple eMail link be used (if "no": subject and body of eMail are generated, too)?') ?>
+                    </legend>
+                    <div class="col-sm-9 wt-page-options-value">
+                        <?= view('components/radios-inline', [
+                            'id' => 'simpleEmail',
+                            'name' => 'simpleEmail',
+                            'options' => [I18N::translate('no'), I18N::translate('yes')],
+                            'selected' => (int)$simpleEmail
+                        ]) ?>
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
         <p></p>
@@ -160,13 +193,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
         <h4><?= I18N::translate('Registration data') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
+            <!-- label for VAT ID or other registration number -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="vatNumberLabel">
-                <?= I18N::translate('Label like VAT ID No. or other registration number label') ?>
+                <?= I18N::translate('Label like "VAT ID No." or other registration number label') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="vatNumberLabel" name="vatNumberLabel" type="text" value="<?= $vatNumberLabel ?>">
             </div>
 
+            <!-- registration number -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="vatNumber">
                 <?= I18N::translate('Registration number') ?>
             </label>
@@ -180,23 +215,39 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
         <h4><?= I18N::translate('Additional contacts to be shown') ?></h4>
 
         <div class="row">
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="showTreeContacts">
-                <?= I18N::translate('Should the tree contacts be shown?') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', [
-                    'label' => I18N::translate('(there are maybe genealogical and technical contacts defined)'),
-                    'id' => 'showTreeContacts', 'name' => 'showTreeContacts', 'checked' => $showTreeContacts]) ?>
-            </div>
+            <!-- show tree contacts -->
+            <fieldset class="form-group mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 wt-page-options-label">
+                        <?= I18N::translate('Should the tree contacts be shown (there are maybe genealogical and technical contacts defined)?') ?>
+                    </legend>
+                    <div class="col-sm-9 wt-page-options-value">
+                        <?= view('components/radios-inline', [
+                            'id' => 'showTreeContacts',
+                            'name' => 'showTreeContacts',
+                            'options' => [I18N::translate('no'), I18N::translate('yes')],
+                            'selected' => (int)$showTreeContacts
+                        ]) ?>
+                    </div>
+                </div>
+            </fieldset>
 
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="showAdministrators">
-                <?= I18N::translate('Should the administrators be shown?') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', [
-                    'label' => '',
-                    'id' => 'showAdministrators', 'name' => 'showAdministrators', 'checked' => $showAdministrators]) ?>
-            </div>
+            <!-- show administrators -->
+            <fieldset class="form-group mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 wt-page-options-label">
+                        <?= I18N::translate('Should the administrators of this website be shown?') ?>
+                    </legend>
+                    <div class="col-sm-9 wt-page-options-value">
+                        <?= view('components/radios-inline', [
+                            'id' => 'showAdministrators',
+                            'name' => 'showAdministrators',
+                            'options' => [I18N::translate('no'), I18N::translate('yes')],
+                            'selected' => (int)$showAdministrators
+                        ]) ?>
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
         <p></p>

@@ -1,11 +1,11 @@
 <?php
 /*
- * webtrees - imprint
+ * webtrees - imprint as footer element
  *
- * Copyright (C) 2022 Hermann Hartenthaler. All rights reserved.
+ * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
  *
  * webtrees: online genealogy / web based family history software
- * Copyright (C) 2022 webtrees development team.
+ * Copyright (C) 2023 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -37,25 +36,19 @@ use Psr\Http\Message\ServerRequestInterface;
  *
  * support methods for module hh_imprint
  *
- * generate list of contacts to be displayed in the footer "Imprint" page:
+ * generate lists of additional contacts to be displayed in the footer "Imprint" page
  *      - list of contact persons for a tree (genealogical and technical)
- *      - list of contact links to administrators of a site
+ *      - list of administrators of a site including their contact links
  */
 class ContactsList
 {
     // ------------ definition of data structures
 
-    /** @var array $treeContactsList */
+    /** @var array<int|string> $treeContactsList */
     private array $treeContactsList;
 
-    /** @var array $administratorsList of objects */
+    /** @var array<int|object> $administratorsList */
     private array $administratorsList;
-
-    /** @var UserService $userService */
-    private UserService $userService;
-
-    /** @var ServerRequestInterface $request */
-    private ServerRequestInterface $request;
 
     // ------------ definition of methods
 
@@ -67,17 +60,14 @@ class ContactsList
      */
     public function __construct(UserService $userService, ServerRequestInterface $request)
     {
-        $this->userService = $userService;
-        $this->request = $request;
-
-        $this->treeContactsList = [];
-        $this->administratorsList = [];
-        $this->findTreeContacts();
-        $this->findAdministrators();
+        $this->findTreeContacts($userService, $request);
+        $this->findAdministrators($userService, $request);
     }
 
     /**
-     * @return array
+     * get list of contact persons for a tree (genealogical and technical)
+     *
+     * @return array<int|string>
      */
     public function getTreeContactsList(): array
     {
@@ -85,7 +75,9 @@ class ContactsList
     }
 
     /**
-     * @return array of object
+     * get list of administrators of a site including their contact links
+     *
+     * @return array<int|object>
      */
     public function getAdministratorsList(): array
     {
@@ -93,66 +85,55 @@ class ContactsList
     }
 
     /**
-     * Create a list of genealogical and technical contacts of this tree.
+     * create a list of genealogical and technical contacts of this tree
      * (those strings are already translated)
+     *
+     * @param UserService $userService
+     * @param ServerRequestInterface $request
      */
-    private function findTreeContacts()
+    private function findTreeContacts(UserService $userService, ServerRequestInterface $request): void
     {
-        $tree = Validator::attributes($this->request)->treeOptional();
+        $this->treeContactsList = [];
+
+        $tree = Validator::attributes($request)->treeOptional();
         if ($tree === null) {
             return;
         }
 
-        $footerClass = new ContactsFooterModule($this->userService);
+        $footerClass = new ContactsFooterModule($userService);
 
-        $contactUser   = $this->userService->find((int) $tree->getPreference('CONTACT_USER_ID'));
-        $webmasterUser = $this->userService->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+        $contactUser   = $userService->find((int) $tree->getPreference('CONTACT_USER_ID'));
+        $webmasterUser = $userService->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($contactUser instanceof User && $contactUser === $webmasterUser) {
-            $this->treeContactsList[] = $footerClass->contactLinkEverything($contactUser, $this->request);
-        }
-
-        if ($contactUser instanceof User && $webmasterUser instanceof User) {
-            $this->treeContactsList[] = $footerClass->contactLinkGenealogy($contactUser, $this->request);
-            $this->treeContactsList[] = $footerClass->contactLinkTechnical($webmasterUser, $this->request);
-        }
-
-        if ($contactUser instanceof User) {
-            $this->treeContactsList[] = $footerClass->contactLinkGenealogy($contactUser, $this->request);
-        }
-
-        if ($webmasterUser instanceof User) {
-            $this->treeContactsList[] = $footerClass->contactLinkTechnical($webmasterUser, $this->request);
+            $this->treeContactsList[] = $footerClass->contactLinkEverything($contactUser, $request);
+        } elseif ($contactUser instanceof User && $webmasterUser instanceof User) {
+            $this->treeContactsList[] = $footerClass->contactLinkGenealogy($contactUser, $request);
+            $this->treeContactsList[] = $footerClass->contactLinkTechnical($webmasterUser, $request);
+        } elseif ($contactUser instanceof User) {
+            $this->treeContactsList[] = $footerClass->contactLinkGenealogy($contactUser, $request);
+        } elseif ($webmasterUser instanceof User) {
+            $this->treeContactsList[] = $footerClass->contactLinkTechnical($webmasterUser, $request);
         }
     }
 
     /**
      * Create a list of administrators of this site.
+     *
+     * @param UserService $userService
+     * @param ServerRequestInterface $request
      */
-    private function findAdministrators()
+    private function findAdministrators(UserService $userService, ServerRequestInterface $request): void
     {
-        $administrators = $this->userService->administrators();     // Collection<int,User>
+        $this->administratorsList = [];
+        $administrators = $userService->administrators();     // Collection<int,User>
         foreach ($administrators as $admin) {
             $administrator = (object)[];
             $administrator->userId = $admin->id();
             $administrator->realName = $admin->realName();
             $administrator->email = $admin->email();
-            $administrator->contact = $this->userService->contactLink($admin, $this->request);
+            $administrator->contact = $userService->contactLink($admin, $request);
             $this->administratorsList[] = $administrator;
         }
     }
-
-    /**
-     * Create a contact link for a user.
-     *
-     * @param User $user
-     *
-     * @return string
-
-    private function contactLink(User $user): string
-    {
-        $request = app(ServerRequestInterface::class);
-        return $this->userService->contactLink($user, $request);
-    }
-     */
 }

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Imprint for webtrees 2\n"
-"POT-Creation-Date: 2022-12-04 12:55+0100\n"
+"POT-Creation-Date: 2023-01-05 18:44+0100\n"
 "PO-Revision-Date: 2022-11-29 18:43+0100\n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -18,68 +18,68 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: ImprintFooterModule.php:222
+#: ImprintFooterModule.php:131
 msgid "Imprint as a footer element for this site."
 msgstr ""
 
-#: ImprintFooterModule.php:362 resources/views/settings.phtml:43
+#: ImprintFooterModule.php:377 resources/views/settings.phtml:45
 msgid "Responsible person"
 msgstr ""
 
-#: ImprintFooterModule.php:363
+#: ImprintFooterModule.php:378
 msgid "This website is operated by:"
 msgstr ""
 
-#: ImprintFooterModule.php:368
+#: ImprintFooterModule.php:383
 msgid "Represented by:"
 msgstr ""
 
-#: ImprintFooterModule.php:371
+#: ImprintFooterModule.php:387
 msgid "Phone"
 msgstr ""
 
-#: ImprintFooterModule.php:373
+#: ImprintFooterModule.php:389
 msgid "Fax"
 msgstr ""
 
-#: ImprintFooterModule.php:375
+#: ImprintFooterModule.php:391
 msgid "eMail"
 msgstr ""
 
-#: ImprintFooterModule.php:381
+#: ImprintFooterModule.php:396
 msgid "Additional contact"
 msgid_plural "Additional contacts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:386
+#: ImprintFooterModule.php:400
 msgid "Website administrator"
 msgid_plural "Website administrators"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:387
+#: ImprintFooterModule.php:401
 msgid "The webtrees administrator is responsible to manage users and to set the preferences for this website."
 msgid_plural "The webtrees administrators are responsible to manage users and to set the preferences for this website."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:506
+#: ImprintFooterModule.php:541
 #, php-format
 msgid "message via imprint of site %s"
 msgstr ""
 
-#: ImprintFooterModule.php:509
+#: ImprintFooterModule.php:544
 #, php-format
 msgid "Dear Mr. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:512
+#: ImprintFooterModule.php:547
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:515
+#: ImprintFooterModule.php:550
 #, php-format
 msgid "Dear %s"
 msgstr ""
@@ -88,119 +88,111 @@ msgstr ""
 msgid "Imprint"
 msgstr ""
 
-#: resources/views/settings.phtml:31
+#: resources/views/settings.phtml:34
 msgid "Control panel"
 msgstr ""
 
-#: resources/views/settings.phtml:43 resources/views/settings.phtml:103
+#: resources/views/settings.phtml:45 resources/views/settings.phtml:116
 msgid "mandatory"
 msgstr ""
 
-#: resources/views/settings.phtml:47
+#: resources/views/settings.phtml:50
 msgid "First name(s)"
 msgstr ""
 
-#: resources/views/settings.phtml:55
+#: resources/views/settings.phtml:59
 msgid "Surname(s)"
 msgstr ""
 
-#: resources/views/settings.phtml:63
+#: resources/views/settings.phtml:68
 msgid "Sex"
 msgstr ""
 
-#: resources/views/settings.phtml:71
-msgid "male"
-msgstr ""
-
-#: resources/views/settings.phtml:72
-msgid "female"
-msgstr ""
-
-#: resources/views/settings.phtml:73
+#: resources/views/settings.phtml:77
 msgid "other"
 msgstr ""
 
-#: resources/views/settings.phtml:79
-msgid "Should a gravatar image be shown?"
+#: resources/views/settings.phtml:87
+msgid "Should a gravatar image be shown (see www.gravatar.com)?"
 msgstr ""
 
-#: resources/views/settings.phtml:90
+#: resources/views/settings.phtml:102
 msgid "Club or Organization"
 msgstr ""
 
-#: resources/views/settings.phtml:90 resources/views/settings.phtml:160
+#: resources/views/settings.phtml:102 resources/views/settings.phtml:121
+#: resources/views/settings.phtml:146 resources/views/settings.phtml:194
 msgid "optional"
 msgstr ""
 
-#: resources/views/settings.phtml:94
+#: resources/views/settings.phtml:107
 msgid "Name of club or organization"
 msgstr ""
 
-#: resources/views/settings.phtml:103
+#: resources/views/settings.phtml:116
 msgid "Address data"
 msgstr ""
 
-#: resources/views/settings.phtml:107
+#: resources/views/settings.phtml:121
+msgid "Additional address line"
+msgstr ""
+
+#: resources/views/settings.phtml:129
 msgid "Street name and house number"
 msgstr ""
 
-#: resources/views/settings.phtml:114
+#: resources/views/settings.phtml:137
 msgid "City including zip code"
 msgstr ""
 
-#: resources/views/settings.phtml:123
+#: resources/views/settings.phtml:146
 msgid "Communication data"
 msgstr ""
 
-#: resources/views/settings.phtml:124
-msgid "Phone and eMail are mandatory"
-msgstr ""
-
-#: resources/views/settings.phtml:128
+#: resources/views/settings.phtml:151
 msgid "Phone number including country prefix, e.g. \"+49 30 123456\""
 msgstr ""
 
-#: resources/views/settings.phtml:135
+#: resources/views/settings.phtml:159
 msgid "Fax number including country prefix, e.g. \"+49 30 654321\""
 msgstr ""
 
-#: resources/views/settings.phtml:142
+#: resources/views/settings.phtml:167
 msgid "eMail address"
 msgstr ""
 
-#: resources/views/settings.phtml:149
+#: resources/views/settings.phtml:177
 msgid "Should a simple eMail link be used?"
 msgstr ""
 
-#: resources/views/settings.phtml:153
+#: resources/views/settings.phtml:183
 msgid "(if not marked: subject and body of eMail are generated, too)"
 msgstr ""
 
-#: resources/views/settings.phtml:160
+#: resources/views/settings.phtml:194
 msgid "Registration data"
 msgstr ""
 
-#: resources/views/settings.phtml:164
-msgid "Label like VAT ID No. or other registration number label"
+#: resources/views/settings.phtml:199
+msgid "Label like \"VAT ID No.\" or other registration number label"
 msgstr ""
 
-#: resources/views/settings.phtml:171
+#: resources/views/settings.phtml:207
 msgid "Registration number"
 msgstr ""
 
-#: resources/views/settings.phtml:180
+#: resources/views/settings.phtml:216
 msgid "Additional contacts to be shown"
 msgstr ""
 
-#: resources/views/settings.phtml:184
+#: resources/views/settings.phtml:223
 msgid "Should the tree contacts be shown?"
 msgstr ""
 
-#: resources/views/settings.phtml:188
+#: resources/views/settings.phtml:229
 msgid "(there are maybe genealogical and technical contacts defined)"
 msgstr ""
 
-#: resources/views/settings.phtml:193
+#: resources/views/settings.phtml:241
 msgid "Should the administrators be shown?"
 msgstr ""
-

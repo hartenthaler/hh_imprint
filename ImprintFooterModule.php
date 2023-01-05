@@ -2,10 +2,10 @@
 /*
  * webtrees - imprint
  *
- * Copyright (C) 2022 Hermann Hartenthaler. All rights reserved.
+ * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
  *
  * webtrees: online genealogy / web based family history software
- * Copyright (C) 2022 webtrees development team.
+ * Copyright (C) 2023 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,19 +24,20 @@
 /*
  * tbd for next release
  * ==============================================================
- * Module ContactsList testen
- * alle offenen bugs
- * Problem mit allen 4 bool Optionen beheben
- * Übersetzungen vervollständigen
- * Test der Übersetzung other = divers
+ * Fehlermeldung: Der Parameter "tree" fehlt, wenn die verantwortliche Person leer ist
+ * Formatierung: Name und Adresse oben auf einer Linie
+ * alle Übersetzungen aktualisieren (u.a. "Adreßzusatz")
+ * Test der Übersetzung "other" = "divers"
  * Test ohne einen sichtbaren Baum
- * Link auf eMail wird nicht ausgeführt
- * E-Mail-Funktion: korrekten site name einfügen
- * Initialisieren bei Erstverwendung mit erstem Admin (Name und E-Mail) als Funktion in ContactsList
- * README.md: Screenshot des erzeugten Impressums, Aktualisierung des Screenshots des Verwaltungsmenüs
+ * Test der Initialisierung bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * Test: alle Kombinationen von: Adreßzusatz = leer und Straße = leer und Ort = leer
+ * README.md: Screenshot des erzeugten Impressums
+ * README.md: Aktualisierung des Screenshots des Verwaltungsmenüs
  *
  * tbd later on
  * ==============================================================
+ * alle offenen issues aus GitHub
+ * Validierung der Base_URL
  * Warum is require_once nötig?
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
  * Dokumentation in Deutsch für webtrees-Handbuch fertigstellen und README anpassen (Rückportierung)
@@ -69,6 +70,11 @@ use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function str_replace;
+use function strtolower;
+use function trim;
+use function md5;
+
 require_once('src/ContactsList.php');                           // tbd why is this necessary (see autoload.php)?
 
 class ImprintFooterModule extends PrivacyPolicy
@@ -85,7 +91,7 @@ class ImprintFooterModule extends PrivacyPolicy
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const CUSTOM_GITHUB_USER = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.9.0';
+    public const CUSTOM_VERSION     = '2.1.15.0';
     public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::CUSTOM_GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
 
@@ -103,103 +109,6 @@ class ImprintFooterModule extends PrivacyPolicy
             $this->moduleService = new ModuleService(),
             $this->userService = new UserService()
         );
-    }
-
-    /**
-     * generate list of preferences (control panel options)
-     *
-     * @return array<int,string>
-     */
-    private function listOfPreferences(): array
-    {
-        return [
-            'responsibleFirst',
-            'responsibleSurname',
-            'responsibleSex',
-            'showGravatar',
-            'organization',
-            'street',
-            'city',
-            'phone',
-            'fax',
-            'email',
-            'simpleEmail',
-            'vatNumberLabel',
-            'vatNumber',
-            'showTreeContacts',
-            'showAdministrators',
-        ];
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->layout = 'layouts/administration';
-        $response = [];
-
-        $preferences = $this->listOfPreferences();
-        foreach ($preferences as $preference) {
-            $response[$preference] = $this->getPreference($preference);
-        }
-
-        $this->initializeOptions($request, $response);
-
-        return $this->viewResponse($this->name() . '::' . 'settings', $response);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     * @param array $response
-     */
-    private function initializeOptions(ServerRequestInterface $request, array & $response)
-    {
-        $response['title'] = $this->title();
-        $response['description'] = $this->description();
-
-        $contactsListObject = new ContactsList($this->userService, $request);
-        $defaultAdministrator = $contactsListObject->getAdministratorsList()[0];  // there is always at least 1 administrator
-
-        if ($response['responsibleFirst'] == '' && $response['responsibleSurname'] == '') {
-            $response['responsibleFirst'] = $defaultAdministrator->realName;          // tbd split in first name and surname
-            $response['responsibleSurname'] = $defaultAdministrator->realName;        // tbd split in first name and surname
-        }
-
-        if ($response['email'] == '') {
-            $response['email'] = $defaultAdministrator->email;
-        }
-    }
-
-    /**
-     * save the user preferences in the database
-     *
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $params = (array) $request->getParsedBody();
-        if ($params['save'] === '1') {
-            $this->postAdminActionSave($params);
-            FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.',
-                $this->title()), 'success');
-        }
-        return redirect($this->getConfigLink());
-    }
-
-    /**
-     * save the user preferences for all parameters
-     *
-     * @param array $params configuration parameters
-     */
-    private function postAdminActionSave(array $params)
-    {
-        $preferences = $this->listOfPreferences();
-        foreach ($preferences as $preference) {
-            $this->setPreference($preference, $params[$preference]);
-        }
     }
 
     /**
@@ -226,7 +135,7 @@ class ImprintFooterModule extends PrivacyPolicy
      * The person or organisation who created this module.
      *
      * {@inheritDoc}
-     * @see \Fisharebest\Webtrees\Module\ModuleCustomInterface::customModuleAuthorName()
+     * @see ModuleCustomInterface::customModuleAuthorName()
      */
     public function customModuleAuthorName(): string
     {
@@ -237,12 +146,12 @@ class ImprintFooterModule extends PrivacyPolicy
      * The version of this module.
      *
      * {@inheritDoc}
-     * @see \Fisharebest\Webtrees\Module\ModuleCustomInterface::customModuleVersion()
+     * @see ModuleCustomInterface::customModuleVersion()
      *
-     * We use a system where the version number is equal to the latest stable version of webtrees
-     * Interim versions get an extra sub number
+     * This module uses a system where the version number is equal to the latest stable version of webtrees.
+     * Interim versions get an extra sub number.
      *
-     * The dev version is always one step above the latest stable version of this module
+     * The dev version is always one step above the latest stable version of this module.
      * The subsequent stable version depends on the version number of the latest stable version of webtrees
      *
      */
@@ -313,6 +222,112 @@ class ImprintFooterModule extends PrivacyPolicy
     }
 
     /**
+     * generate list of preferences (control panel options)
+     *
+     * @return array<int,string>
+     */
+    private function listOfPreferences(): array
+    {
+        return [
+            'responsibleFirst',
+            'responsibleSurname',
+            'responsibleSex',
+            'showGravatar',
+            'organization',
+            'additionalAddress',
+            'street',
+            'city',
+            'phone',
+            'fax',
+            'email',
+            'simpleEmail',
+            'vatNumberLabel',
+            'vatNumber',
+            'showTreeContacts',
+            'showAdministrators',
+        ];
+    }
+
+    /**
+     * Open control panel page with options
+     *
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+        $response = $this->getInitializedOptions($request);
+        return $this->viewResponse($this->name() . '::' . 'settings', $response);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return array
+     */
+    private function getInitializedOptions(ServerRequestInterface $request): array
+    {
+        $response = [];
+
+        $response['title'] = $this->title();
+        $response['description'] = $this->description();
+
+        $preferences = $this->listOfPreferences();
+        foreach ($preferences as $preference) {
+            $response[$preference] = $this->getPreference($preference);
+        }
+/*
+        if ($response['responsibleFirst'] == '' && $response['responsibleSurname'] == '') {
+            $contactsListObject = new ContactsList($this->userService, $request);
+            // there is always at least 1 administrator; use this first one to initialize the responsible person
+            $defaultAdministrator = $contactsListObject->getAdministratorsList()[0];
+            $response['responsibleFirst'] = $defaultAdministrator->realName;     // tbd split in first name and surname
+            $response['responsibleSurname'] = $defaultAdministrator->realName;   // tbd split in first name and surname
+
+            if ($response['email'] == '') {
+                $response['email'] = $defaultAdministrator->email;
+            }
+        }
+*/
+        if ($response['responsibleSex'] == '') {
+            $response['responsibleSex'] = 'U';
+        }
+        return $response;
+    }
+
+    /**
+     * Save the user preferences in the database
+     *
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        //$params = (array) $request->getParsedBody();
+        //if ($params['save'] === '1') {
+        if (Validator::parsedBody($request)->string('save') === '1') {
+            $this->postAdminActionSave($request);
+            FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.',
+                $this->title()), 'success');
+        }
+        return redirect($this->getConfigLink());
+    }
+
+    /**
+     * Save the user preferences for all parameters
+     *
+     * @param ServerRequestInterface $request
+     */
+    private function postAdminActionSave(ServerRequestInterface $request)
+    {
+        $preferences = $this->listOfPreferences();
+        foreach ($preferences as $preference) {
+            $this->setPreference($preference, Validator::parsedBody($request)->string($preference));
+        }
+    }
+
+    /**
      * A footer, to be added at the bottom of every page.
      *
      * @param ServerRequestInterface $request
@@ -321,20 +336,19 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     public function getFooter(ServerRequestInterface $request): string
     {
-        $tree = Validator::attributes($request)->tree();                        // tbd there is sometimes an error
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->treeOptional();
 
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Page',
-            'tree'   => $tree ? $tree->name() : null,
+            'tree'   => $tree?->name(),
         ]);
 
         return view($this->name() . '::footer', ['url' => $url]);
     }
 
     /**
-     * Generate the page that will be shown when we click the link in the footer.
+     * Generate the page that will be shown when a user clicks the link in the footer.
      *
      * @param ServerRequestInterface $request
      *
@@ -343,12 +357,12 @@ class ImprintFooterModule extends PrivacyPolicy
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $contactsListObject = new ContactsList($this->userService, $request);
-        if (true || $this->showTreeContacts()) {
+        if ($this->showTreeContacts()) {
             $contactsTreeContacts = $contactsListObject->getTreeContactsList();
         } else {
             $contactsTreeContacts = [];
         }
-        if (true || $this->showAdministrators()) {
+        if ($this->showAdministrators()) {
             foreach ($contactsListObject->getAdministratorsList() as $admin) {
                 $contactsAdministrators[] = $admin->contact;
             }
@@ -359,13 +373,15 @@ class ImprintFooterModule extends PrivacyPolicy
         return $this->viewResponse($this->name() . '::page', [
             'title'                     => $this->title(),
             'tree'                      => Validator::attributes($request)->tree(),
+            //'tree'                      => Validator::attributes($request)->treeOptional(),
             'imprintHead1'              => I18N::translate('Responsible person'),
             'imprintHead2'              => I18N::translate('This website is operated by:'),
             'responsibleName'           => $this->responsibleName(),
-            'showGravatar'              => true,                                            // tbd
+            'showGravatar'              => $this->showGravatar(),
             'image'                     => $this->getGravatar($this->getPreference('email', ''),'40'),
             'organization'              => $this->organization(),
             'representedBy'             => I18N::translate('Represented by:'),
+            'additionalAddress'         => $this->additionalAddress(),
             'street'                    => $this->street(),
             'city'                      => $this->city(),
             'phoneLabel'                => I18N::translate('Phone'),
@@ -373,16 +389,14 @@ class ImprintFooterModule extends PrivacyPolicy
             'faxLabel'                  => I18N::translate('Fax'),
             'fax'                       => $this->fax(),
             'emailLabel'                => I18N::translate('eMail'),
-            'email'                     => $this->email(),
+            'email'                     => $this->email($request),
             'vatNumberLabel'            => $this->vatNumberLabel(),
             'vatNumber'                 => $this->vatNumber(),
-            //'showTreeContacts'          => $this->showTreeContacts(),
-            'showTreeContacts'          => true,                                        // tbd
+            'showTreeContacts'          => $this->showTreeContacts(),
             'headTreeContacts'          => I18N::plural('Additional contact','Additional contacts', count($contactsTreeContacts)),
             'countTreeContacts'         => count($contactsTreeContacts),
             'contactsTreeContacts'      => $contactsTreeContacts,
-            //'showAdministrators'        => $this->showAdministrators(),
-            'showAdministrators'        => true,                                        // tbd
+            'showAdministrators'        => $this->showAdministrators(),
             'headAdministrators'        => I18N::plural('Website administrator','Website administrators', count($contactsAdministrators)),
             'commentAdministrators'     => I18N::plural('The webtrees administrator is responsible to manage users and to set the preferences for this website.',
                                             'The webtrees administrators are responsible to manage users and to set the preferences for this website.', count($contactsAdministrators)),
@@ -432,6 +446,16 @@ class ImprintFooterModule extends PrivacyPolicy
     }
 
     /**
+     * should a gravatar image be shown?
+     *
+     * @return bool
+     */
+    private function showGravatar(): bool
+    {
+        return ($this->getPreference('showGravatar', '0') !== '0');
+    }
+
+    /**
      * organization
      *
      * @return string
@@ -439,6 +463,16 @@ class ImprintFooterModule extends PrivacyPolicy
     private function organization(): string
     {
         return $this->getPreference('organization', '');
+    }
+
+    /**
+     * additional address line
+     *
+     * @return string
+     */
+    private function additionalAddress(): string
+    {
+        return $this->getPreference('additionalAddress', '');
     }
 
     /**
@@ -486,11 +520,12 @@ class ImprintFooterModule extends PrivacyPolicy
      * - only eMail address
      * - eMail address and additionally parameter for subject and first line of body
      *
+     * @param ServerRequestInterface $request
      * @param bool $simpleEmail Optional, use true to force a simple Email address without subject and body
      *
      * @return string
      */
-    private function email(bool $simpleEmail = false): string
+    private function email(ServerRequestInterface $request, bool $simpleEmail = false): string
     {
         $emailAddress = $this->getPreference('email', '');
 
@@ -499,11 +534,11 @@ class ImprintFooterModule extends PrivacyPolicy
                 $emailLink = '<a href="mailto:' .
                     e($emailAddress) .
                     '" style="background-color:transparent;color:rgb(85,85,85);text-decoration:none;">' .
-                    $emailAddress .
+                    e($emailAddress) .
                     '</a>';
             } else {
                 $subject = /* I18N: subject of e-mail */
-                    I18N::translate('message via imprint of site %s', 'ahnen.hartenthaler.eu');
+                    I18N::translate('message via imprint of site %s', $this->getHostName($request));
                 if ($this->responsibleSex() == 'M') {
                     $body = /* I18N: first line of body of e-mail using surname */
                         I18N::translate('Dear Mr. %s', $this->responsibleSurname()) . ',';
@@ -516,13 +551,13 @@ class ImprintFooterModule extends PrivacyPolicy
                 }
 
                 $emailLink = '<a href="mailto:' .
-                    e($emailAddress .
-                        '?subject=' .
-                        $subject) .
+                    e($emailAddress) .
+                    '?subject=' .
+                    e($subject) .
                     '&amp;body=' .
                     e($body) .
                     '" style="background-color:transparent;color:rgb(85,85,85);text-decoration:none;">' .
-                    $emailAddress .
+                    e($emailAddress) .
                     '</a>';
             }
             return $emailLink;
@@ -538,7 +573,7 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     private function simpleEmail(): bool
     {
-        return ($this->getPreference('simpleEmail', '0') == '0');
+        return ($this->getPreference('simpleEmail', '0') !== '0');
     }
 
     /**
@@ -568,7 +603,7 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     private function showTreeContacts(): bool
     {
-        return ($this->getPreference('showTreeContacts', '0') == '0');
+        return ($this->getPreference('showTreeContacts', '0') !== '0');
     }
 
     /**
@@ -578,14 +613,28 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     private function showAdministrators(): bool
     {
-        return ($this->getPreference('showAdministrators', '0') == '0');
+        return ($this->getPreference('showAdministrators', '0') !== '0');
+    }
+
+    /**
+     * get name of this website host
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return string
+     */
+    private function getHostName(ServerRequestInterface $request): string
+    {
+        $baseUrl = $request->getAttribute('base_url', '');      //tbd
+        //$baseUrl = Validator::attributes($request)->isLocalUrl();          // tbd type is not string
+        return str_replace(array('http://','https://'), '', $baseUrl);
     }
 
     /**
      * Get either a Gravatar URL or complete image tag for a specified email address.
      *
      * @param string $email The email address
-     * @param string $s Optional, size in pixels, defaults to 80px [ 1 - 2048 ]
+     * @param string $s Optional, size in pixels, defaults to 80px [ 1..2048 ]
      * @param string $d Optional, default imageset to use [ 404 | mp | identicon | monsterid | wavatar ]
      * @param string $r Optional, maximum rating (inclusive) [ g | pg | r | x ]
      * @param bool   $img Optional, true to return a complete IMG tag, false for just the URL
@@ -594,7 +643,8 @@ class ImprintFooterModule extends PrivacyPolicy
      * @return string containing either just a URL or a complete image tag
      * @source https://gravatar.com/site/implement/images/php/
      */
-    public function getGravatar( string $email, string $s = '80', string $d = 'mp', string $r = 'g', bool $img = true,  array $atts = array() ) : string
+    private function getGravatar( string $email, string $s = '80', string $d = 'mp', string $r = 'g',
+                                 bool $img = true,  array $atts = array() ) : string
     {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5( strtolower( trim( $email ) ) );

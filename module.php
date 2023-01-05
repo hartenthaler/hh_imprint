@@ -1,10 +1,10 @@
 <?php
 
 /*
- * webtrees - extended family tab
+ * webtrees - imprint as footer element
  *
  * webtrees: online genealogy / web based family history software
- * Copyright (C) 2022 webtrees development team.
+ * Copyright (C) 2023 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,15 +23,15 @@
 namespace Hartenthaler\Webtrees\Module\Imprint;
 
 use Fisharebest\Webtrees\Webtrees;
-//use Fisharebest\Webtrees\FlashMessages;
 use Illuminate\Support\Collection;
 
 use function app;
+use function defined;
 use function str_contains;
 
 // webtrees major version switch
 if (defined("WT_MODULES_DIR")) {
-    // this is a webtrees 2.1 module. it cannot be used with webtrees 1.x (or 2.0.x). See README.md.
+    // this is a webtrees 2.1 module. it cannot be used with webtrees 1.x (or 2.0.x).
     return;
 }
 
@@ -62,14 +62,5 @@ Collection::make($filenames)
     ->each(static function (string $filename): void {
         require_once $filename;
     });
-
-/*
- * dependency check
-$ok = class_exists("Cissee\WebtreesExt\AbstractModule", true);
-if (!$ok) {
-    FlashMessages::addMessage("Missing dependency - Make sure to install all Vesta modules!");
-    return;
-}
- */
 
 return app(ImprintFooterModule::class);
