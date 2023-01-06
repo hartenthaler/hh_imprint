@@ -128,7 +128,7 @@ msgstr "Registrierungsnummer"
 
 #: ImprintFooterModule.php:383
 msgid "Represented by:"
-msgstr "Vertreten durch:"
+msgstr "vertreten durch:"
 
 #: ImprintFooterModule.php:396
 msgid "Additional contact"
