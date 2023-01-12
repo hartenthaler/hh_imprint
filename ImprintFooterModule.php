@@ -1,10 +1,24 @@
 <?php
 /*
- * webtrees - imprint
+ * webtrees - Legal Notice
+ * custom footer with a link to a page of information containing "Legal Notice / Privacy Policy"
+ * (in German: "Impressum / Datenschutzerklärung")
  *
- * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
+ * based on custom footer module of Josef Prause for Czech locale environment, see
+ * https://github.com/jpretired/jp-privacy-policy
+ *
+ * Partly inspired by mp, see:
+ * https://www.webtrees.net/index.php/en/forum/help-for-2-0/35233-how-to-edit-the-privacy-policy-and-the-footer#82090
+ *
+ * Later adopted the MikeT's way of contact the administrator, see:
+ * https://www.webtrees.net/index.php/en/forum/help-for-2-0/35233-how-to-edit-the-privacy-policy-and-the-footer#84085
+ *
+ * Diskussionen mit Peter Schulz und Burkhard Spiegel (inkl Antworten der Datenschutzbeauftragten, Link zur ct)
+ *
+ * Diskussionen mit anderen
  *
  * webtrees: online genealogy / web based family history software
+ * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
  * Copyright (C) 2023 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -24,26 +38,34 @@
 /*
  * tbd for next release
  * ==============================================================
- * Test: alle Kombinationen von: Adreßzusatz = leer und Straße = leer und Ort = leer
- * README.md: Screenshot des erzeugten Impressums
- * README.md: Aktualisierung des Screenshots des Verwaltungsmenüs
+ * Modul in "Legal Notice" umbenennen; dazu Repository auf GitHub umbenennen
+ * alle offenen issues aus GitHub
+ * alle Nutzereingaben mit trim() behandeln
+ * Status http/https automatisch ermitteln
+ * einheitliche Verwendung von "Copyright" statt "copy right"
+ * cookie Warnung einbauen, testen und dokumentieren (falls keine externe Cookie-Managementanwendung verwendet wird)
+ * Vorbelegung der verantwortlichen Person aus den Angaben für den ersten Website-Administrator (Vor-, Nachname, E-Mail)
+ * READme: Referenzen aus dieser Datei (ganz oben) prüfen und dann übernehmen
  *
  * tbd later on
  * ==============================================================
- * alle offenen issues aus GitHub
- * Fehlermeldung: Der Parameter "tree" fehlt, wenn die verantwortliche Person leer ist
- * Vorbelegung der verantwortlichen Person aus den Angaben für den ersten Website-Administrator (Vor-, Nachname, E-Mail)
- * Formatierung: Name und Adresse oben auf einer Linie
- * Test der Initialisierung bei Erstverwendung mit erstem Admin (Name und E-Mail)
+ * Verwaltungsmenü für Chapters: rekursive hierarchische Gestaltung des Menüs
+ * alle restlichen Konstanten aus diesem Modul als Option in das Verwaltungsmenü in den zugehörigen Abschnitt verschieben
+ * Auftragsdatenverarbeitung agreement first/last date / time in zwei Elemente zerlegen (Datum dd.mm.yyyy und Zeit hh:mm)
+ * alle Texte aus dem alten Modul "Datenschutzerklärung" überarbeiten
+ *      entsprechend der handschriftlichen Korrekturen
+ *      entsprechend der vorhandenen Vorlagen
+ *      in englischer Sprache als übersetzbare Textelemente
+ * Validierung "copy right start year" auf "4 digits" und Wert "1970..aktuelles Jahr"
  * Validierung der Base_URL aktivieren
- * Warum is require_once nötig?
+ * Warum ist require_once nötig?
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
  * Dokumentation in Deutsch für webtrees-Handbuch fertigstellen und README anpassen (Rückportierung)
  * Code review und Refactoring
  */
 
 /**
- * footer with a link to an "Imprint" page
+ * footer with a link to a "Legal Notice" page
  */
 
 declare(strict_types=1);
@@ -51,6 +73,7 @@ declare(strict_types=1);
 namespace Hartenthaler\Webtrees\Module\Imprint;
 
 use Fisharebest\Localization\Translation;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -67,10 +90,10 @@ use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function str_replace;
-use function strtolower;
 use function trim;
-use function md5;
+use function file_exists;
+use function assert;
+use function view;
 
 require_once('src/ContactsList.php');                           // tbd why is this necessary (see autoload.php)?
 
@@ -83,14 +106,31 @@ class ImprintFooterModule extends PrivacyPolicy
     /**
      * list of const for module administration
      */
-    public const CUSTOM_TITLE       = 'Imprint';
-    public const CUSTOM_MODULE      = 'hh_imprint';
+    public const CUSTOM_TITLE       = 'Legal Notice and Privacy Policy';
+    public const CUSTOM_MODULE      = 'hh_imprint';             // tbd change "imprint"
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
-    public const CUSTOM_GITHUB_USER = 'hartenthaler';
-    public const CUSTOM_WEBSITE     = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.15.0';
-    public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::CUSTOM_GITHUB_USER . '/' .
+    public const GITHUB_USER        = 'hartenthaler';
+    public const CUSTOM_WEBSITE     = 'https://github.com/' . self::GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
+    public const CUSTOM_VERSION     = '2.1.15.1';
+    public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
+
+    // tbd move the following 3 const to control panel where they can be changed by an administrator
+
+    // used third party services
+    private const THIRD_PARTY_SERVICES = [
+        'Google charts' => 'https://developers.google.com/',
+    ];
+
+    // used tracking and analysis services (beside the services offered by webtrees)
+    private const TRACKING_SERVICES = [
+        //'ClustrMaps™' => 'https://clustrmaps.com/',
+    ];
+
+    // used external cookies services (keyword and URL (including "/" at the end))
+    private const COOKIES_SERVICES = [
+        //'Usercentrics' => 'https://usercentrics.com/',
+    ];
 
     /** @var ModuleService */
     private ModuleService $moduleService;
@@ -125,7 +165,7 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     public function description(): string
     {
-        return /* I18N: Description of this module */ I18N::translate('Imprint as a footer element for this site.');
+        return /* I18N: Description of this module */ I18N::translate('Legal notice as a footer element for this site.');
     }
 
     /**
@@ -168,7 +208,7 @@ class ImprintFooterModule extends PrivacyPolicy
     }
 
     /**
-     * Where to get support for this module?  Perhaps a GitHub repository?
+     * Where to get support for this module?
      *
      * @return string
      */
@@ -189,6 +229,7 @@ class ImprintFooterModule extends PrivacyPolicy
 
     /**
      * Additional/updated translations.
+     * This module uses the po/mo system. It needs a .mo file.
      *
      * @param string $language
      *
@@ -196,13 +237,8 @@ class ImprintFooterModule extends PrivacyPolicy
      */
     public function customTranslations(string $language): array
     {
-        $lang_dir   = $this->resourcesFolder() . 'lang/';
-        $file       = $lang_dir . $language . '.mo';
-        if (file_exists($file)) {
-            return (new Translation($file))->asArray();
-        } else {
-            return [];
-        }
+        $file = $this->resourcesFolder() . 'lang' . DIRECTORY_SEPARATOR . $language . '.mo';
+        return file_exists($file) ? (new Translation($file))->asArray() : [];
     }
 
     /**
@@ -226,6 +262,9 @@ class ImprintFooterModule extends PrivacyPolicy
     private function listOfPreferences(): array
     {
         return [
+            'showCopyRight',
+            'copyRightStartYear',
+            'copyRightName',
             'responsibleFirst',
             'responsibleSurname',
             'responsibleSex',
@@ -242,6 +281,12 @@ class ImprintFooterModule extends PrivacyPolicy
             'vatNumber',
             'showTreeContacts',
             'showAdministrators',
+            'hostingCountry',
+            'hostingCompanyName',
+            'hostingCompanyUrl',
+            'hostingPrivacyNotice',
+            'hostingStartDate',
+            'hostingEndDate',
         ];
     }
 
@@ -254,8 +299,7 @@ class ImprintFooterModule extends PrivacyPolicy
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
-        $response = $this->getInitializedOptions($request);
-        return $this->viewResponse($this->name() . '::' . 'settings', $response);
+        return $this->viewResponse($this->name() . '::' . 'settings', $this->getInitializedOptions($request));
     }
 
     /**
@@ -267,13 +311,15 @@ class ImprintFooterModule extends PrivacyPolicy
     {
         $response = [];
 
-        $response['title'] = $this->title();
+        $response['title'] = $this->moduleTitle();
         $response['description'] = $this->description();
 
         $preferences = $this->listOfPreferences();
         foreach ($preferences as $preference) {
             $response[$preference] = $this->getPreference($preference);
         }
+
+        $response['chapters'] = $this->getChapters();
 /*
         if ($response['responsibleFirst'] == '' && $response['responsibleSurname'] == '') {
             $contactsListObject = new ContactsList($this->userService, $request);
@@ -322,6 +368,27 @@ class ImprintFooterModule extends PrivacyPolicy
         foreach ($preferences as $preference) {
             $this->setPreference($preference, Validator::parsedBody($request)->string($preference));
         }
+        $this->postAdminActionChapter($request);
+    }
+
+    /**
+     * save the user preferences for all parameters related to the chapters of this module in the database
+     *
+     * @param ServerRequestInterface $request
+     */
+    private function postAdminActionChapter(ServerRequestInterface $request)
+    {
+        $params = (array) $request->getParsedBody();                    // tbd use Validator
+        $order = implode(",", $params['order']);
+        $this->setPreference('order', $order);
+        foreach (LegalNoticeSupport::listChapterKeys() as $chapterKey) {
+            $this->setPreference('status-' . $chapterKey, '0');
+        }
+        foreach ($params as $key => $value) {
+            if (str_starts_with($key, 'status-')) {
+                $this->setPreference($key, $value);
+            }
+        }
     }
 
     /**
@@ -334,6 +401,9 @@ class ImprintFooterModule extends PrivacyPolicy
     public function getFooter(ServerRequestInterface $request): string
     {
         $tree = Validator::attributes($request)->treeOptional();
+        if ($tree === null) {
+            return '';
+        }
 
         $url = route('module', [
             'module' => $this->name(),
@@ -341,7 +411,19 @@ class ImprintFooterModule extends PrivacyPolicy
             'tree'   => $tree?->name(),
         ]);
 
-        return view($this->name() . '::footer', ['url' => $url]);
+        $user = $request->getAttribute('user');
+        assert($user instanceof UserInterface);
+
+        return view($this->name() . '::footer', [
+            'title'              => $this->moduleTitle(),
+            'url'                => $url,
+            'showCopyRight'      => $this->showCopyRight(),
+            'copyRightStartYear' => $this->copyRightStartYear(),
+            'copyRightName'      => $this->copyRightName(),
+            'cookiesWarning'     => LegalNoticeSupport::useBuildInCookiesWarning(
+                $tree, $user, self::TRACKING_SERVICES, self::COOKIES_SERVICES),
+            'cookiesMessage'     => I18N::translate('This website uses cookies.'),
+        ]);
     }
 
     /**
@@ -367,15 +449,29 @@ class ImprintFooterModule extends PrivacyPolicy
             $contactsAdministrators = [];
         }
 
+        $tree = Validator::attributes($request)->treeOptional();
+        $user = $request->getAttribute('user');             // tbd: replace by Validator::attributes($request)->user()
+        assert($user instanceof UserInterface);
+        $singular = count($contactsAdministrators) == 1;
+        $https = true;                                                            // tbd: automatisch ermitteln
+        $chapters = $this->getChapters();
+        foreach ($chapters as $chapter) {
+            if ($chapter->getKey() == 'DataProtection') {
+                $showDataProtection = $chapter->getChapter()->enabled;
+            }
+            if ($chapter->getKey() == 'LegalRegulations') {
+                $showLegalRegulations = $chapter->getChapter()->enabled;
+            }
+        }
+
         return $this->viewResponse($this->name() . '::page', [
-            'title'                     => $this->title(),
-            //'tree'                      => Validator::attributes($request)->tree(),
-            'tree'                      => Validator::attributes($request)->treeOptional(),
-            'imprintHead1'              => I18N::translate('Responsible person'),
-            'imprintHead2'              => I18N::translate('This website is operated by:'),
+            'title'                     => $this->moduleTitle(),
+            'tree'                      => $tree,
+            'legalNoticeHead1'          => I18N::translate('Responsible person'),
+            'legalNoticeHead2'          => I18N::translate('This website is operated by:'),
             'responsibleName'           => $this->responsibleName(),
             'showGravatar'              => $this->showGravatar(),
-            'image'                     => $this->getGravatar($this->getPreference('email', ''),'40'),
+            'image'                     => LegalNoticeSupport::getGravatar($this->getPreference('email', ''),'40'),
             'organization'              => $this->organization(),
             'representedBy'             => I18N::translate('Represented by:'),
             'additionalAddress'         => $this->additionalAddress(),
@@ -399,7 +495,64 @@ class ImprintFooterModule extends PrivacyPolicy
                                             'The webtrees administrators are responsible to manage users and to set the preferences for this website.', count($contactsAdministrators)),
             'countAdministrators'       => count($contactsAdministrators),
             'contactsAdministrators'    => $contactsAdministrators,
+            'chapters'                  => $chapters,
+            'showDataProtection'        => $showDataProtection,                                            // tbd
+            'showLegalRegulations'      => $showLegalRegulations,                                          // tbd
+            'singular'                  => $singular,
+            'https'                     => $https,
+            'analytics'                 => $this->analyticsModules($tree, $user),
+            'trackingServices'          => self::TRACKING_SERVICES,
+            'thirdPartyServices'        => self::THIRD_PARTY_SERVICES,
+            'cookiesServices'           => self::COOKIES_SERVICES,
+            //'usercentricsLanguages' => self::USERCENTRICS_LANGUAGES,
+            'hostingDomain'             => LegalNoticeSupport::getHostName($request),
+            'hostingCountry'            => I18N::translate($this->hostingCountry()),
+            'hostingCompanyName'        => $this->hostingCompanyName(),
+            'hostingCompanyUrl'         => $this->hostingCompanyUrl(),
+            'hostingPrivacyNotice'      => $this->hostingPrivacyNotice(),
+            'hostingStartDate'          => $this->hostingStartDate(),
+            'hostingEndDate'            => $this->hostingEndDate(),
         ]);
+    }
+
+    /**
+     * title of this module used in the headings
+     *
+     * @return string
+     */
+    private function moduleTitle(): string
+    {
+        return I18N::translate('Legal Notice and Privacy Policy');;
+    }
+
+    /**
+     * should a copy right notice be shown?
+     *
+     * @return bool
+     */
+    private function showCopyRight(): bool
+    {
+        return ($this->getPreference('showCopyRight', '0') !== '0');
+    }
+
+    /**
+     * show copy right start year               // tbd check "4 digits" and value "1970..aktuelles Jahr"
+     *
+     * @return string
+     */
+    private function copyRightStartYear(): string
+    {
+        return $this->getPreference('copyRightStartYear', '');
+    }
+
+    /**
+     * name of holder of copy right
+     *
+     * @return string
+     */
+    private function copyRightName(): string
+    {
+        return $this->getPreference('copyRightName', '');
     }
 
     /**
@@ -535,7 +688,7 @@ class ImprintFooterModule extends PrivacyPolicy
                     '</a>';
             } else {
                 $subject = /* I18N: subject of e-mail */
-                    I18N::translate('message via imprint of site %s', $this->getHostName($request));
+                    I18N::translate('message via legal notice of site %s', LegalNoticeSupport::getHostName($request));
                 if ($this->responsibleSex() == 'M') {
                     $body = /* I18N: first line of body of e-mail using surname */
                         I18N::translate('Dear Mr. %s', $this->responsibleSurname()) . ',';
@@ -614,44 +767,117 @@ class ImprintFooterModule extends PrivacyPolicy
     }
 
     /**
-     * get name of this website host
-     *
-     * @param ServerRequestInterface $request
+     * country of the webtrees server location (in English language)
+     * e.g. Germany
      *
      * @return string
      */
-    private function getHostName(ServerRequestInterface $request): string
+    private function hostingCountry(): string
     {
-        $baseUrl = $request->getAttribute('base_url', '');      //tbd
-        //$baseUrl = Validator::attributes($request)->isLocalUrl();          // tbd type is not string
-        return str_replace(array('http://','https://'), '', $baseUrl);
+        return $this->getPreference('hostingCountry', '');
     }
 
     /**
-     * Get either a Gravatar URL or complete image tag for a specified email address.
+     * hosting service company name
+     * e.g. Strato
      *
-     * @param string $email The email address
-     * @param string $s Optional, size in pixels, defaults to 80px [ 1..2048 ]
-     * @param string $d Optional, default imageset to use [ 404 | mp | identicon | monsterid | wavatar ]
-     * @param string $r Optional, maximum rating (inclusive) [ g | pg | r | x ]
-     * @param bool   $img Optional, true to return a complete IMG tag, false for just the URL
-     * @param array  $atts Optional, additional key/value attributes to include in the IMG tag
-     *
-     * @return string containing either just a URL or a complete image tag
-     * @source https://gravatar.com/site/implement/images/php/
+     * @return string
      */
-    private function getGravatar( string $email, string $s = '80', string $d = 'mp', string $r = 'g',
-                                 bool $img = true,  array $attributes = array() ) : string
+    private function hostingCompanyName(): string
     {
-        $url = 'https://www.gravatar.com/avatar/';
-        $url .= md5( strtolower( trim( $email ) ) );
-        $url .= "?s=$s&d=$d&r=$r";
-        if ( $img ) {
-            $url = '<img src="' . $url . '"';
-            foreach ( $attributes as $key => $val )
-                $url .= ' ' . $key . '="' . $val . '"';
-            $url .= ' />';
+        return $this->getPreference('hostingCompanyName', '');
+    }
+
+    /**
+     * hosting service link (URL)
+     * e.g. https://strato.de
+     *
+     * @return string
+     */
+    private function hostingCompanyUrl(): string
+    {
+        return $this->getPreference('hostingCompanyUrl', '');
+    }
+
+    /**
+     * hosting service link to privacy notice (URL)
+     * e.g. https://www.strato.de/datenschutz
+     *
+     * @return string
+     */
+    private function hostingPrivacyNotice(): string
+    {
+        return $this->getPreference('hostingPrivacyNotice', '');
+    }
+
+    /**
+     * hosting Auftragsverarbeitung agreement first date / time             // tbd should be 2 elements date + time
+     * e.g. 26.11.2018 um 00:12 Uhr
+     *
+     * @return string
+     */
+    private function hostingStartDate(): string
+    {
+        return $this->getPreference('hostingStartDate', '');
+    }
+
+    /**
+     * hosting Auftragsverarbeitung agreement last date / time             // tbd should be 2 elements date + time
+     * e.g. 25.11.2022 um 00:33 Uhr
+     *
+     * @return string
+     */
+    private function hostingEndDate(): string
+    {
+        return $this->getPreference('hostingEndDate', '');
+    }
+
+    /**
+     * ordered chapters
+     * set default values in case the settings are not stored in the database yet
+     *
+     * @return array<object> of ordered objects
+     */
+    private function getChapters(): array
+    {
+        $listChapters = LegalNoticeSupport::listChapterKeys();
+        $orderDefault = implode(',', $listChapters);
+        $order = explode(',', $this->getPreference('order', $orderDefault));
+
+        if (count($listChapters) > count($order)) {
+            $this->addChapters($listChapters, $order);
         }
-        return $url;
+
+        $chaptersList = [];
+        foreach ($order as $chapterKey) {
+            $parameter = LegalNoticeSupport::getChapterParameters()[$chapterKey];
+            $chaptersList[] = new Chapter(
+                                $chapterKey,
+                                $parameter['id'],
+                                $parameter['heading'],
+                                $parameter['level'],
+                                $parameter['link'],
+                                $this->getPreference('status-' . $chapterKey, 'on') == 'on',
+                                ''
+            );
+        }
+        return $chaptersList;
+    }
+
+    /**
+     * add chapters, which are newly defined
+     * tbd: it is not possible to delete chapters, only add new ones
+     *
+     * @param array $listChapters list of chapters defined by this module
+     * @param array $order list of ordered chapters out of parameters
+     */
+    private function addChapters(array $listChapters, array &$order)
+    {
+
+        foreach ($listChapters as $chapter) {
+            if (!in_array($chapter, $order)) {
+                $order[] = $chapter;                 // add new chapters at the end of the list
+            }
+        }
     }
 };

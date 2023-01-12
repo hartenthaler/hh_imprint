@@ -4,30 +4,46 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
 /**
- * @var string                      $title              title of this custom module
- * @var string                      $description        description of this module
- * @var string                      $responsibleFirst   first name(s) of responsible person
- * @var string                      $responsibleSurname surname(s) of responsible person
- * @var string                      $responsibleSex     gender of responsible person ('M', 'F', 'X')
- * @var string                      $showGravatar       option whether to show image from www.gravatar.com site for this user
- * @var string                      $organization       club name or organization name
- * @var string                      $additionalAddress  additional address line
- * @var string                      $street             street in address of responsible person
- * @var string                      $city               city in address of responsible person
- * @var string                      $phone              phone number of responsible person (optional)
- * @var string                      $fax                fax number of responsible person (optional)
- * @var string                      $email              eMail address of responsible person (optional)
- * @var string                      $simpleEmail        option whether to show only eMail address or to show additional header and body of eMail
- * @var string                      $vatNumberLabel     Label like "VAT ID No." or other registration number label
- * @var string                      $vatNumber          VAT ID No. or other registration number
-*  @var string                      $showTreeContacts   option whether to show tree contacts
- * @var string                      $showAdministrators option whether to show administrators of webtrees
+ * @var string                  $title                  title of this custom module
+ * @var string                  $description            description of this module
+ *
+ * @var bool                    $showCopyRight          option whether copy right should be shown
+ * @var string                  $copyRightStartYear     start year of copy right
+ * @var string                  $copyRightName          name of holder of copy right
+ *
+ * @var string                  $responsibleFirst       first name(s) of responsible person
+ * @var string                  $responsibleSurname     surname(s) of responsible person
+ * @var string                  $responsibleSex         gender of responsible person ('M', 'F', 'X')
+ * @var string                  $showGravatar           option whether to show image from www.gravatar.com site for this user
+ *
+ * @var string                  $organization           club name or organization name
+ *
+ * @var string                  $additionalAddress      additional address line
+ * @var string                  $street                 street in address of responsible person
+ * @var string                  $city                   city in address of responsible person
+ * @var string                  $phone                  phone number of responsible person (optional)
+ * @var string                  $fax                    fax number of responsible person (optional)
+ * @var string                  $email                  eMail address of responsible person (optional)
+ * @var string                  $simpleEmail            option whether to show only eMail address or to show additional header and body of eMail
+ *
+ * @var string                  $vatNumberLabel         label like "VAT ID No." or other registration number label
+ * @var string                  $vatNumber              VAT ID No. or other registration number
+ *
+ * @var string                  $showTreeContacts       option whether to show tree contacts
+ * @var string                  $showAdministrators     option whether to show administrators of webtrees
+ *
+ * @var array<object>           $chapters               list of chapter objects
+ *
+ * @var string                  $hostingCountry         country of the webtrees server location
+ * @var string                  $hostingCompanyName     hosting service company name
+ * @var string                  $hostingCompanyUrl      hosting service link
+ * @var string                  $hostingPrivacyNotice   hosting service link to privacy notice
+ * @var string                  $hostingStartDate       hosting Auftragsverarbeitung agreement first date / time
+ * @var string                  $hostingEndDate         hosting Auftragsverarbeitung agreement last date / time
  */
-
 ?>
 
 <?= view('components/breadcrumbs', [
@@ -36,10 +52,50 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 <h1><?= e($title) ?></h1>
 <p><?= e($description) ?></p>
 
-<div class="hh-imprint mb-5">
+<div class="hh-legal-notice mb-5">
     <form method="post">
         <?= csrf_field() ?>
         <input type="hidden" name="save" id="save" value="1">
+
+        <p></p>
+        <h4><?= I18N::translate('Copy right') . ' (' . I18N::translate('optional') . ')'  ?></h4>
+
+        <div class="row">
+            <!-- show copy right -->
+            <fieldset class="form-group mb-3">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 wt-page-options-label">
+                        <?= I18N::translate('Should a copy right notice be included in this page footer element?') ?>
+                    </legend>
+                    <div class="col-sm-9 wt-page-options-value">
+                        <?= view('components/radios-inline', [
+                            'id' => 'showCopyRight',
+                            'name' => 'showCopyRight',
+                            'options' => [I18N::translate('no'), I18N::translate('yes')],
+                            'selected' => (int)$showCopyRight
+                        ]) ?>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- copy right start year -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="copyRightStartYear">
+                <?= I18N::translate('Start year of copy right (e.g. "2020")') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="copyRightStartYear" name="copyRightStartYear" type="text"
+                       value="<?= $copyRightStartYear ?>">
+            </div>
+
+            <!-- name of holder of copy right -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="copyRightName">
+                <?= I18N::translate('Name of holder of copy right') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="copyRightName" name="copyRightName" type="text"
+                       value="<?= $copyRightName ?>">
+            </div>
+        </div>
 
         <p></p>
         <h4><?= I18N::translate('Responsible person') . ' (' . I18N::translate('mandatory') . ')' ?></h4>
@@ -99,7 +155,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p></p>
 
-        <h4><?= I18N::translate('Club or Organization') . ' (' . I18N::translate('optional') . ')'  ?></h4>
+        <h4><?= I18N::translate('Club or Organization') . ' (' . I18N::translate('optional') . ')' ?></h4>
 
         <div class="row">
             <!-- name of organization -->
@@ -252,9 +308,143 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p></p>
 
+        <h4><?= I18N::translate('Hosting service') . ' (' . I18N::translate('optional') . ')'  ?></h4>
+
+        <div class="row">
+            <!-- country of the webtrees server location -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingCountry">
+                <?= I18N::translate('Country of the webtrees server location (in English language, e.g. "Germany")') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingCountry" name="hostingCountry" type="text" value="<?= $hostingCountry ?>">
+            </div>
+
+            <!-- hosting service company name -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingCompanyName">
+                <?= I18N::translate('Name of hosting service company') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingCompanyName" name="hostingCompanyName" type="text" value="<?= $hostingCompanyName ?>">
+            </div>
+
+            <!-- hosting service link (URL) -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingCompanyUrl">
+                <?= I18N::translate('Hosting service link (URL)') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingCompanyUrl" name="hostingCompanyUrl" type="text" value="<?= $hostingCompanyUrl ?>">
+            </div>
+
+            <!-- hosting service link to privacy notice (URL) -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingPrivacyNotice">
+                <?= I18N::translate('Hosting service link to privacy notice (URL)') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingPrivacyNotice" name="hostingPrivacyNotice" type="text" value="<?= $hostingPrivacyNotice ?>">
+            </div>
+
+            <!-- hosting Auftragsverarbeitung agreement first date / time -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingStartDate">
+                <?= I18N::translate('First date of Auftragsverarbeitung agreement') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingStartDate" name="hostingStartDate" type="text" value="<?= $hostingStartDate ?>">
+            </div>
+
+            <!-- hosting Auftragsverarbeitung agreement last date / time -->
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="hostingEndDate">
+                <?= I18N::translate('Last date of Auftragsdatenverarbeitung agreement') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" id="hostingEndDate" name="hostingEndDate" type="text" value="<?= $hostingEndDate ?>">
+            </div>
+        </div>
+
+        <p></p>
+
+        <!-- tbd einen Block für die Hauptüberschriften Datenschutzerklärung/Rechtliche Regelungen -->
+            <!-- tbd rekursiv je einen Block mit den Unterkapiteln pro Hauptüberschrift -->
+            <!-- falls Hauptüberschrift abgewählt werden, soll der Unterblock ausgegraut werden -->
+            <!-- die Optionen sollen den passenden Abschnitten zugeordnet werden in denen sie verwendet werden -->
+        <h3><?= I18N::translate('In which sequence should the main chapters be shown?') ?></h3>
+        <table class="table table-bordered wt-table-menu">
+            <thead>
+                <tr>
+                    <th><?= I18N::translate('Chapter') ?></th>
+                    <th class="text-center"><?= I18N::translate('Enabled') ?></th>
+                    <th class="text-center"><?= I18N::translate('Move up') ?></th>
+                    <th class="text-center"><?= I18N::translate('Move down') ?></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($chapters as $chapter) : ?>
+                    <?php if ($chapter->getLevel() == 1): ?>
+                        <tr>
+                            <th scope="col">
+                                <input type="hidden" name="order[]" value="<?= $chapter->getKey() ?>">
+                                <span title="<?= $chapter->getHeading() ?>">
+                                    <?= $chapter->getHeading() ?>
+                                </span>
+                            </th>
+
+                            <td class="text-center">
+                                <label class="d-block">
+                                    <input type="checkbox" name="status-<?= $chapter->getKey() ?>" id="status-<?= $chapter->getKey() ?>" <?= ($chapter->getEnabled()) ? 'checked' : '' ?>>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('Enabled') ?>
+                                    </span>
+                                </label>
+                            </td>
+
+                            <td class="move up text-center">
+                                <a href="#" title="<?= I18N::translate('Move up') ?>">
+                                    <?= view('icons/arrow-up') ?>
+                                </a>
+                            </td>
+                            <td class="move down text-center">
+                                <a href="#" title="<?= I18N::translate('Move down') ?>">
+                                    <?= view('icons/arrow-down') ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+
+        <p></p>
+
         <button type="submit" class="btn btn-primary">
             <?= view('icons/save') ?>
             <?= I18N::translate('save') ?>
         </button>
     </form>
 </div>
+
+<?php View::push('javascript') ?>
+    <script>
+        $('.wt-table-menu td.move').click(function () {
+            var row = $(this).closest('tr');
+
+            if ($(this).hasClass('up')) {
+                row.prev().before(row);
+            } else {
+                row.next().after(row);
+            }
+
+            return false;
+        });
+    </script>
+<?php View::endpush() ?>
+
+<?php View::push('styles') ?>
+    <style>
+        .wt-table-menu tr:first-child .wt-icon-arrow-up {
+            display:none;
+        }
+        .wt-table-menu tr:last-child .wt-icon-arrow-down {
+            display:none;
+        }
+    </style>
+<?php View::endpush() ?>

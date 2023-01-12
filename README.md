@@ -6,7 +6,9 @@
 
 ![Latest Release](https://img.shields.io/github/v/release/hartenthaler/hh_imprint)
 
-This [webtrees](https://www.webtrees.net) module creates an imprint/legal notice in the footer of the web page.
+This [webtrees](https://www.webtrees.net) module creates a legal notice in the footer of the web page.
+
+Disclaimer: This is not a legal advice. You as administrator of your website are responsible for the content of the Legal Notice on your site.
 
 There is a German [manual page](https://wiki.genealogy.net/Webtrees_Handbuch/Anleitung_f%C3%BCr_Webmaster/Erweiterungsmodule/Impressum) available, too.
 
@@ -29,9 +31,9 @@ This Readme contains the following main sections
 <a name="description"></a>
 ## Description
 
-This module adds an imprint notice to all pages of a webtrees site.
+This module adds an legal notice footer to all pages of a webtrees site.
 
-There is maybe a need to present on your website an "Imprint"
+There is maybe a need to present on your website a "Legal Notice"
 (depending on your local law and the character of your site)
 * Germany: [§5 Telemediengesetz (TMG)](https://lxgesetze.de/tmg/5), 
 and [§4 Medienstaatsvertrag (MStV)](https://lxgesetze.de/mstv/4)
@@ -39,8 +41,9 @@ and [§4 Medienstaatsvertrag (MStV)](https://lxgesetze.de/mstv/4)
 * Switzerland: Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
 
 The webtrees admin can define the following data fields in the control panel for the responsible person
-* name of genealogical club or organization
+* copyright notice in the footer
 * name of responsible person
+* name of genealogical club or organization
 * address
 * phone and fax numbers
 * eMail address (with or without subject and body of eMail)
@@ -51,14 +54,26 @@ The webtrees admin can choose if the following additional parts should be shown
 * list of contact persons for a tree (genealogical and technical)
 * list of administrators of this site with their contact links
 
+The following parts are a first draft.
+They are only available in German.
+The administrator can enable or disable them, but the sequence cannot be chosen at the moment.
+* show a chapter about "Datenschutzerklärung"
+* show a chapter about "Rechtliche Regelungen"
+
+It is intended to add more content to those two chapters
+and to make them translatable.
+
 <a name="screenshots"></a>
 ## Screenshots
 
-Screenshot of imprint (in German language)
-<p align="center"><img src="resources/docs/imprint.png" alt="Screenshot of imprint" align="center" width="60%"></p>
+Screenshot of Legal Notice footer (in German language)
+<p align="center"><img src="resources/docs/legal_notice_footer.png" alt="Screenshot of Legal Notice" align="center" width="60%"></p>
+
+Screenshot of Legal Notice (in German language)
+<p align="center"><img src="resources/docs/legal_notice.png" alt="Screenshot of Legal Notice" align="center" width="60%"></p>
 
 Screenshot of control panel page (in German language)
-<p align="center"><img src="resources/docs/imprint_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
+<p align="center"><img src="resources/docs/legal_notice_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
 
 <a name="webtrees"></a>
 ## webtrees
@@ -66,7 +81,6 @@ Screenshot of control panel page (in German language)
 **[webtrees](https://webtrees.net/)** is an online collaborative genealogy application.
 This can be hosted on your own server by following the [Install instructions](https://webtrees.net/install/).
 If you are familiar with Docker, you might like to install **webtrees** using [this unofficial docker image](https://hub.docker.com/r/nathanvaughn/webtrees), [or this one](https://github.com/H2CK/webtrees).
-
 
 <a name="requirements"></a>
 ## Requirements
@@ -86,9 +100,9 @@ This section documents installation instructions for this module.
 2. Download the [latest release](https://github.com/hartenthaler/hh_imprint/releases/latest)
 3. Unzip the package into your `webtrees/modules_v4` directory of your web server
 4. Rename the folder to `hh_imprint`
-5. Login to **webtrees** as administrator, go to <span class="pointer">Control Panel/Modules/Website/Footers</span>, and find the module. It will be called "Imprint". Check if it has a tick for "Enabled".
+5. Login to **webtrees** as administrator, go to <span class="pointer">Control Panel/Modules/Website/Footers</span>, and find the module. It will be called "Legal Notice". Check if it has a tick for "Enabled".
 6. Click at the wrench symbol and add all desired information fields
-7. Maybe you like to deactivate the module "contact information" (depending whether you have activated this in the imprint module).
+7. Maybe you like to deactivate the module "contact information" (depending whether you have activated this in the "Legal Notice" module).
 8. Finally, click SAVE, to complete the installation.
 
 <a name="upgrade"></a>
@@ -125,6 +139,7 @@ There are now, beside English, Dutch (by TheDutchJewel) and German, no other tra
 
 If you'd like to contribute to this module, great! You can contribute by
 
+- Reading and commenting the legal chapters carefully - choose a specific topic and please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for that topic.
 - Contributing code - check out the issues for things that need attention. If you have changes you want to make not listed in an issue, please create one, then you can link your pull request.
 - Testing - it's all manual currently, please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for any bugs you find.
 

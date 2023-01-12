@@ -1,9 +1,52 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * @var string      $title                  title of this footer element
+ * @var string      $url                    link to Legal Notice
+ *
+ * @var bool        $showCopyRight          option whether copy right should be shown
+ * @var string      $copyRightStartYear     start year of copy right
+ * @var string      $copyRightName          name of holder of copy right
+ *
+ * @var bool        $cookiesWarning         option whether a cookies warning should be shown
+ * @var string      $cookiesMessage         message that cookies are used
+ */
+
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 
 ?>
 
-<div class="wt-footer wt-footer-custom text-center py-2">
-    <a href="<?= e($url) ?>"><?= I18N::translate('Imprint') ?></a>
+<div class="wt-footer wt-footer-custom hh-legal-notice text-center py-2">
+    <?php if ($showCopyRight) : ?>
+        &copy;&nbsp;
+        <?php if ($copyRightStartYear !== '') : ?>
+            <?= e($copyRightStartYear) ?>&nbsp;-
+        <?php endif ?>
+        <?= date("Y"); ?> <?= e($copyRightName) ?> |
+    <?php endif ?>
+    <a href="<?= e($url) ?>"><?= e($title) ?></a>
+
+    <?php if ($cookiesWarning) : ?>
+        <div class="alert alert-info alert-dismissible fade" id="cookie-warning">
+            <?= e($cookiesMessage) ?>
+
+            <button type="button" id="cookie-warning-button" class="close" data-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    <?php View::push('javascript') ?>
+        <script>
+            if (localStorage.getItem("cookie-warning") !== "ok") {
+                document.getElementById("cookie-warning").classList.add("show");
+            }
+            document.getElementById("cookie-warning-button").addEventListener("click", function () {
+                localStorage.setItem("cookie-warning", "ok");
+            });
+        </script>
+        <?php View::endpush() ?>
+    <?php endif ?>
 </div>

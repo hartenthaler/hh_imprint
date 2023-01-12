@@ -1,6 +1,6 @@
 <?php
 /*
- * webtrees - imprint as footer element
+ * webtrees - Legal Notice as footer element
  *
  * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
  *
@@ -36,7 +36,7 @@ use Psr\Http\Message\ServerRequestInterface;
  *
  * support methods for module hh_imprint
  *
- * generate lists of additional contacts to be displayed in the footer "Imprint" page
+ * generate lists of additional contacts to be displayed in the footer "Legal Notice" page
  *      - list of contact persons for a tree (genealogical and technical)
  *      - list of administrators of a site including their contact links
  */
