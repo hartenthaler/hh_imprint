@@ -15,7 +15,7 @@
  *
  * Diskussionen mit Peter Schulz und Burkhard Spiegel (inkl Antworten der Datenschutzbeauftragten, Link zur ct)
  *
- * Diskussionen mit anderen
+ * Diskussionen mit Lars van Ravenzwaaij
  *
  * webtrees: online genealogy / web based family history software
  * Copyright (C) 2023 Hermann Hartenthaler. All rights reserved.
@@ -43,25 +43,24 @@
  * Zeilenabstände in page.phtml und settings.phtml über CSS statt Leerzeilen realisieren
  * alle Nutzereingaben mit trim() behandeln
  * Status http/https automatisch ermitteln
- * einheitliche Verwendung von "Copyright" statt "copy right"
  * cookie Warnung einbauen, testen und dokumentieren (falls keine externe Cookie-Managementanwendung verwendet wird)
  * Vorbelegung der verantwortlichen Person aus den Angaben für den ersten Website-Administrator (Vor-, Nachname, E-Mail)
- * READme: Referenzen aus dieser Datei (ganz oben) prüfen und dann übernehmen
+ * READme: Referenzen aus dieser Datei (ganz oben) prüfen und dann übernehmen; ggf. ergänzen um wichtige Artikel
  *
  * tbd later on
  * ==============================================================
  * Verwaltungsmenü für Chapters: rekursive hierarchische Gestaltung des Menüs
- * alle restlichen Konstanten aus diesem Modul als Option in das Verwaltungsmenü in den zugehörigen Abschnitt verschieben
- * Auftragsdatenverarbeitung agreement first/last date / time in zwei Elemente zerlegen (Datum dd.mm.yyyy und Zeit hh:mm)
  * alle Texte aus dem alten Modul "Datenschutzerklärung" überarbeiten
  *      entsprechend der handschriftlichen Korrekturen
  *      entsprechend der vorhandenen Vorlagen
  *      in englischer Sprache als übersetzbare Textelemente
- * Validierung "copy right start year" auf "4 digits" und Wert "1970..aktuelles Jahr"
+ * alle restlichen Konstanten aus diesem Modul als Option in das Verwaltungsmenü in den zugehörigen Abschnitt verschieben
+ * Auftragsdatenverarbeitung agreement first/last date / time in zwei Elemente zerlegen (Datum dd.mm.yyyy und Zeit hh:mm)
+ * Validierung "copyright start year" auf "4 digits" und Wert "1970..aktuelles Jahr"
  * Validierung der Base_URL aktivieren
  * Warum ist require_once nötig?
  * E-Mail-Funktion: check if there is one @ inside emailAddress and no blanks; if address is not correct: use it as simple eMail
- * Dokumentation in Deutsch für webtrees-Handbuch fertigstellen und README anpassen (Rückportierung)
+ * Dokumentation in Deutsch für webtrees-Handbuch überarbeiten und README anpassen (Rückportierung)
  * Code review und Refactoring
  */
 
@@ -112,7 +111,7 @@ class ImprintFooterModule extends PrivacyPolicy
     public const CUSTOM_AUTHOR      = 'Hermann Hartenthaler';
     public const GITHUB_USER        = 'hartenthaler';
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::GITHUB_USER . '/' . self::CUSTOM_MODULE . '/';
-    public const CUSTOM_VERSION     = '2.1.15.1';
+    public const CUSTOM_VERSION     = '2.1.15.2';
     public const CUSTOM_LAST        = 'https://raw.githubusercontent.com/' . self::GITHUB_USER . '/' .
                                             self::CUSTOM_MODULE . '/main/latest-version.txt';
 
