@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Legal Notice for webtrees 2\n"
-"POT-Creation-Date: 2023-01-12 14:40+0100\n"
+"POT-Creation-Date: 2023-01-12 23:53+0100\n"
 "PO-Revision-Date: 2022-11-29 18:43+0100\n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -18,76 +18,84 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: ImprintFooterModule.php:172
+#: ImprintFooterModule.php:169
 msgid "Legal notice as a footer element for this site."
 msgstr ""
 
-#: ImprintFooterModule.php:429
+#: ImprintFooterModule.php:418 ImprintFooterModule.php:467
+msgid "Legal Notice"
+msgstr ""
+
+#: ImprintFooterModule.php:420
+msgid "and Privacy Policy"
+msgstr ""
+
+#: ImprintFooterModule.php:431
 msgid "This website uses cookies."
 msgstr ""
 
-#: ImprintFooterModule.php:474 resources/views/settings.phtml:101
+#: ImprintFooterModule.php:468 resources/views/settings.phtml:101
 msgid "Responsible person"
 msgstr ""
 
-#: ImprintFooterModule.php:475
+#: ImprintFooterModule.php:469
 msgid "This website is operated by:"
 msgstr ""
 
-#: ImprintFooterModule.php:480
+#: ImprintFooterModule.php:474
 msgid "Represented by:"
 msgstr ""
 
-#: ImprintFooterModule.php:484
+#: ImprintFooterModule.php:478
 msgid "Phone"
 msgstr ""
 
-#: ImprintFooterModule.php:486
+#: ImprintFooterModule.php:480
 msgid "Fax"
 msgstr ""
 
-#: ImprintFooterModule.php:488
+#: ImprintFooterModule.php:482
 msgid "eMail"
 msgstr ""
 
-#: ImprintFooterModule.php:493
+#: ImprintFooterModule.php:487
 msgid "Additional contact"
 msgid_plural "Additional contacts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:497
+#: ImprintFooterModule.php:491
 msgid "Website administrator"
 msgid_plural "Website administrators"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:498
+#: ImprintFooterModule.php:492
 msgid "The webtrees administrator is responsible to manage users and to set the preferences for this website."
 msgid_plural "The webtrees administrators are responsible to manage users and to set the preferences for this website."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:529
+#: ImprintFooterModule.php:523
 msgid "Legal Notice and Privacy Policy"
 msgstr ""
 
-#: ImprintFooterModule.php:695
+#: ImprintFooterModule.php:689
 #, php-format
 msgid "message via legal notice of site %s"
 msgstr ""
 
-#: ImprintFooterModule.php:698
+#: ImprintFooterModule.php:692
 #, php-format
 msgid "Dear Mr. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:701
+#: ImprintFooterModule.php:695
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:704
+#: ImprintFooterModule.php:698
 #, php-format
 msgid "Dear %s"
 msgstr ""
@@ -157,57 +165,61 @@ msgctxt "heading"
 msgid "Open-source and License"
 msgstr ""
 
-#: resources/views/page.phtml:331
+#: resources/views/footer.phtml:36
+msgid "close"
+msgstr ""
+
+#: resources/views/page.phtml:332
 msgid "This website uses third-party services to manage cookies."
 msgstr ""
 
-#: resources/views/page.phtml:341
+#: resources/views/page.phtml:342
 msgid "Tracking and analytics"
 msgstr ""
 
-#: resources/views/page.phtml:345
+#: resources/views/page.phtml:346
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
 
-#: resources/views/page.phtml:366
+#: resources/views/page.phtml:367
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
 
-#: resources/views/page.phtml:370
+#: resources/views/page.phtml:371
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
-#: resources/views/page.phtml:377
+#: resources/views/page.phtml:378
 msgid "Third party services"
 msgstr ""
 
-#: resources/views/page.phtml:381
+#: resources/views/page.phtml:382
 msgid "This website uses additional third-party services."
 msgstr ""
 
 #: resources/views/settings.phtml:61
-msgid "Copy right"
+msgid "Copyright"
 msgstr ""
 
-#: resources/views/settings.phtml:61 resources/views/settings.phtml:158
-#: resources/views/settings.phtml:177 resources/views/settings.phtml:202
-#: resources/views/settings.phtml:249 resources/views/settings.phtml:311
+#: resources/views/settings.phtml:61 resources/views/settings.phtml:157
+#: resources/views/settings.phtml:175 resources/views/settings.phtml:199
+#: resources/views/settings.phtml:245 resources/views/settings.phtml:305
 msgid "optional"
 msgstr ""
 
 #: resources/views/settings.phtml:68
-msgid "Should a copy right notice be included in this page footer element?"
+msgid "Should a copyright notice be included in this page footer element?"
 msgstr ""
 
 #: resources/views/settings.phtml:83
-msgid "Start year of copy right (e.g. \"2020\")"
+msgid "Start year of copyright (e.g. \"2020\")"
 msgstr ""
 
 #: resources/views/settings.phtml:92
-msgid "Name of holder of copy right"
+msgid "Name of holder of copyright"
 msgstr ""
 
-#: resources/views/settings.phtml:101 resources/views/settings.phtml:172
+#: resources/views/settings.phtml:101 resources/views/settings.phtml:170
 msgid "mandatory"
 msgstr ""
 
@@ -239,106 +251,106 @@ msgstr ""
 msgid "Should a gravatar image be shown (see www.gravatar.com)?"
 msgstr ""
 
-#: resources/views/settings.phtml:158
+#: resources/views/settings.phtml:157
 msgid "Club or Organization"
 msgstr ""
 
-#: resources/views/settings.phtml:163
+#: resources/views/settings.phtml:162
 msgid "Name of club or organization"
 msgstr ""
 
-#: resources/views/settings.phtml:172
+#: resources/views/settings.phtml:170
 msgid "Address data"
 msgstr ""
 
-#: resources/views/settings.phtml:177
+#: resources/views/settings.phtml:175
 msgid "Additional address line"
 msgstr ""
 
-#: resources/views/settings.phtml:185
+#: resources/views/settings.phtml:183
 msgid "Street name and house number"
 msgstr ""
 
-#: resources/views/settings.phtml:193
+#: resources/views/settings.phtml:191
 msgid "City including zip code"
 msgstr ""
 
-#: resources/views/settings.phtml:202
+#: resources/views/settings.phtml:199
 msgid "Communication data"
 msgstr ""
 
-#: resources/views/settings.phtml:207
+#: resources/views/settings.phtml:204
 msgid "Phone number (including country prefix, e.g. \"+49 30 123456\")"
 msgstr ""
 
-#: resources/views/settings.phtml:215
+#: resources/views/settings.phtml:212
 msgid "Fax number (including country prefix, e.g. \"+49 30 654321\")"
 msgstr ""
 
-#: resources/views/settings.phtml:223
+#: resources/views/settings.phtml:220
 msgid "eMail address"
 msgstr ""
 
-#: resources/views/settings.phtml:233
+#: resources/views/settings.phtml:230
 msgid "Should a simple eMail link be used (if \"no\": subject and body of eMail are generated, too)?"
 msgstr ""
 
-#: resources/views/settings.phtml:249
+#: resources/views/settings.phtml:245
 msgid "Registration data"
 msgstr ""
 
-#: resources/views/settings.phtml:254
+#: resources/views/settings.phtml:250
 msgid "Label like \"VAT ID No.\" or other registration number label"
 msgstr ""
 
-#: resources/views/settings.phtml:262
+#: resources/views/settings.phtml:258
 msgid "Registration number"
 msgstr ""
 
-#: resources/views/settings.phtml:271
+#: resources/views/settings.phtml:266
 msgid "Additional contacts to be shown"
 msgstr ""
 
-#: resources/views/settings.phtml:278
+#: resources/views/settings.phtml:273
 msgid "Should the tree contacts be shown (there are maybe genealogical and technical contacts defined)?"
 msgstr ""
 
-#: resources/views/settings.phtml:295
+#: resources/views/settings.phtml:290
 msgid "Should the administrators of this website be shown?"
 msgstr ""
 
-#: resources/views/settings.phtml:311
+#: resources/views/settings.phtml:305
 msgid "Hosting service"
 msgstr ""
 
-#: resources/views/settings.phtml:316
+#: resources/views/settings.phtml:310
 msgid "Country of the webtrees server location (in English language, e.g. \"Germany\")"
 msgstr ""
 
-#: resources/views/settings.phtml:324
+#: resources/views/settings.phtml:318
 msgid "Name of hosting service company"
 msgstr ""
 
-#: resources/views/settings.phtml:332
+#: resources/views/settings.phtml:326
 msgid "Hosting service link (URL)"
 msgstr ""
 
-#: resources/views/settings.phtml:340
+#: resources/views/settings.phtml:334
 msgid "Hosting service link to privacy notice (URL)"
 msgstr ""
 
-#: resources/views/settings.phtml:348
+#: resources/views/settings.phtml:342
 msgid "First date of Auftragsverarbeitung agreement"
 msgstr ""
 
-#: resources/views/settings.phtml:356
+#: resources/views/settings.phtml:350
 msgid "Last date of Auftragsdatenverarbeitung agreement"
 msgstr ""
 
-#: resources/views/settings.phtml:369
+#: resources/views/settings.phtml:363
 msgid "In which sequence should the main chapters be shown?"
 msgstr ""
 
-#: resources/views/settings.phtml:373
+#: resources/views/settings.phtml:367
 msgid "Chapter"
 msgstr ""
