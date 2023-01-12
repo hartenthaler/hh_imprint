@@ -1,41 +1,72 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Legal Notice for webtrees 2\n"
-"POT-Creation-Date: 2023-01-12 14:49+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
-"Language-Team: \n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Legal Notice for webtrees 2\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
-"X-Poedit-Basepath: ../..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2;translateContext:2,1c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: .git\n"
-
-#: ImprintFooterModule.php:172
-msgid "Legal notice as a footer element for this site."
-msgstr "Juridische Kennisgeving als voettekstelement voor deze site."
-
-#: ImprintFooterModule.php:429
-msgid "This website uses cookies."
-msgstr ""
 
 #: ImprintFooterModule.php:474 resources/views/settings.phtml:101
 msgid "Responsible person"
 msgstr "Verantwoordelijk persoon"
 
+#: resources/views/settings.phtml:106
+msgid "First name(s)"
+msgstr "Voornaam"
+
+#: resources/views/settings.phtml:115
+msgid "Surname(s)"
+msgstr "Achternaam"
+
+#: resources/views/settings.phtml:131
+msgid "male"
+msgstr "man"
+
+#: resources/views/settings.phtml:132
+msgid "female"
+msgstr "vrouw"
+
+#: resources/views/settings.phtml:249
+msgid "Registration data"
+msgstr "Registratiegegevens"
+
+#: resources/views/settings.phtml:202
+msgid "Communication data"
+msgstr "Contactgegevens"
+
+#: resources/views/settings.phtml:185
+msgid "Street name and house number"
+msgstr "Straatnaam en huisnummer"
+
+#: resources/views/settings.phtml:124
+msgid "Sex"
+msgstr "Geslacht"
+
+#: resources/views/settings.phtml:223
+msgid "eMail address"
+msgstr "E-mailadres"
+
+#: ImprintFooterModule.php:488
+msgid "eMail"
+msgstr "E-mail"
+
 #: ImprintFooterModule.php:475
 msgid "This website is operated by:"
 msgstr "Deze website wordt beheerd door:"
 
-#: ImprintFooterModule.php:480
-msgid "Represented by:"
-msgstr "Vertegenwoordigd door:"
+#: ImprintFooterModule.php:698
+msgid "Dear Mr. %s"
+msgstr "Geachte heer %s"
+
+#: ImprintFooterModule.php:701
+msgid "Dear Mrs. %s"
+msgstr "Geachte mevrouw %s"
+
+#: ImprintFooterModule.php:704
+msgid "Dear %s"
+msgstr "Geachte %s"
 
 #: ImprintFooterModule.php:484
 msgid "Phone"
@@ -45,9 +76,39 @@ msgstr "Telefoon"
 msgid "Fax"
 msgstr "Fax"
 
-#: ImprintFooterModule.php:488
-msgid "eMail"
-msgstr "E-mail"
+#: resources/views/settings.phtml:101 resources/views/settings.phtml:172
+msgid "mandatory"
+msgstr "verplicht"
+
+#: resources/views/settings.phtml:158
+msgid "Club or Organization"
+msgstr "Vereniging of organisatie"
+
+#: resources/views/settings.phtml:61 resources/views/settings.phtml:158
+#: resources/views/settings.phtml:177 resources/views/settings.phtml:202
+#: resources/views/settings.phtml:249 resources/views/settings.phtml:311
+msgid "optional"
+msgstr "optioneel"
+
+#: resources/views/settings.phtml:163
+msgid "Name of club or organization"
+msgstr "Naam van vereniging of organisatie"
+
+#: resources/views/settings.phtml:172
+msgid "Address data"
+msgstr "Adresgegevens"
+
+#: resources/views/settings.phtml:193
+msgid "City including zip code"
+msgstr "Postcode en plaats"
+
+#: resources/views/settings.phtml:262
+msgid "Registration number"
+msgstr "Registratienummer"
+
+#: ImprintFooterModule.php:480
+msgid "Represented by:"
+msgstr "Vertegenwoordigd door:"
 
 #: ImprintFooterModule.php:493
 msgid "Additional contact"
@@ -62,305 +123,209 @@ msgstr[0] "Websitebeheerder"
 msgstr[1] "Websitebeheerders"
 
 #: ImprintFooterModule.php:498
-msgid ""
-"The webtrees administrator is responsible to manage users and to set the "
-"preferences for this website."
-msgid_plural ""
-"The webtrees administrators are responsible to manage users and to set the "
-"preferences for this website."
-msgstr[0] ""
-"De websitebeheerder is verantwoordelijk voor het gebruikersbeheer en de "
-"voorkeursinstellingen van deze website."
-msgstr[1] ""
-"De websitebeheerders zijn verantwoordelijk voor het gebruikersbeheer en de "
-"voorkeursinstellingen van deze website."
-
-#: ImprintFooterModule.php:529
-msgid "Legal Notice and Privacy Policy"
-msgstr ""
-
-#: ImprintFooterModule.php:695
-#, php-format
-msgid "message via legal notice of site %s"
-msgstr "bericht via impressum van site %s"
-
-#: ImprintFooterModule.php:698
-#, php-format
-msgid "Dear Mr. %s"
-msgstr "Geachte heer %s"
-
-#: ImprintFooterModule.php:701
-#, php-format
-msgid "Dear Mrs. %s"
-msgstr "Geachte mevrouw %s"
-
-#: ImprintFooterModule.php:704
-#, php-format
-msgid "Dear %s"
-msgstr "Geachte %s"
-
-#: src/LegalNoticeSupport.php:137
-msgctxt "heading"
-msgid "Data protection"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:138
-msgctxt "heading"
-msgid "Purpose"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:139
-msgctxt "heading"
-msgid "Privacy"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:140
-msgctxt "heading"
-msgid "Processing of personal data"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:141
-msgctxt "heading"
-msgid "GDPR in connection with online genealogies"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:142
-msgctxt "heading"
-msgid "Right of providing information"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:143
-msgctxt "heading"
-msgid "Right to correction or deletion of personal data"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:144
-msgctxt "heading"
-msgid "Right of appeal"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:145
-msgctxt "heading"
-msgid "Legal regulations"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:146
-msgctxt "heading"
-msgid "Liability"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:147
-msgctxt "heading"
-msgid "Copyright"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:148
-msgctxt "heading"
-msgid "Duty to mitigate damages"
-msgstr ""
-
-#: src/LegalNoticeSupport.php:149
-msgctxt "heading"
-msgid "Open-source and License"
-msgstr ""
-
-#: resources/views/page.phtml:331
-msgid "This website uses third-party services to manage cookies."
-msgstr ""
-
-#: resources/views/page.phtml:341
-msgid "Tracking and analytics"
-msgstr ""
-
-#: resources/views/page.phtml:345
-msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
-
-#: resources/views/page.phtml:366
-msgid "These services may use cookies or other tracking technology."
-msgstr ""
-
-#: resources/views/page.phtml:370
-msgid ""
-"You can opt out of tracking by setting the “Do Not Track” header in your "
-"browser preferences."
-msgstr ""
-
-#: resources/views/page.phtml:377
-msgid "Third party services"
-msgstr ""
-
-#: resources/views/page.phtml:381
-msgid "This website uses additional third-party services."
-msgstr ""
-
-#: resources/views/settings.phtml:50
-msgid "Control panel"
-msgstr ""
-
-#: resources/views/settings.phtml:61 resources/views/settings.phtml:158
-#: resources/views/settings.phtml:177 resources/views/settings.phtml:202
-#: resources/views/settings.phtml:249 resources/views/settings.phtml:311
-msgid "optional"
-msgstr "optioneel"
-
-#: resources/views/settings.phtml:68
-msgid "Should a copy right notice be included in this page footer element?"
-msgstr ""
-
-#: resources/views/settings.phtml:83
-msgid "Start year of copy right (e.g. \"2020\")"
-msgstr ""
-
-#: resources/views/settings.phtml:92
-msgid "Name of holder of copy right"
-msgstr ""
-
-#: resources/views/settings.phtml:101 resources/views/settings.phtml:172
-msgid "mandatory"
-msgstr "verplicht"
-
-#: resources/views/settings.phtml:106
-msgid "First name(s)"
-msgstr "Voornaam"
-
-#: resources/views/settings.phtml:115
-msgid "Surname(s)"
-msgstr "Achternaam"
-
-#: resources/views/settings.phtml:124
-msgid "Sex"
-msgstr "Geslacht"
-
-#: resources/views/settings.phtml:131
-msgid "male"
-msgstr "man"
-
-#: resources/views/settings.phtml:132
-msgid "female"
-msgstr "vrouw"
-
-#: resources/views/settings.phtml:133
-msgid "other sex"
-msgstr "overig"
-
-#: resources/views/settings.phtml:143
-msgid "Should a gravatar image be shown (see www.gravatar.com)?"
-msgstr "Moet een gravatar-afbeelding worden getoond (zie www.gravatar.com)?"
-
-#: resources/views/settings.phtml:158
-msgid "Club or Organization"
-msgstr "Vereniging of organisatie"
-
-#: resources/views/settings.phtml:163
-msgid "Name of club or organization"
-msgstr "Naam van vereniging of organisatie"
-
-#: resources/views/settings.phtml:172
-msgid "Address data"
-msgstr "Adresgegevens"
-
-#: resources/views/settings.phtml:177
-msgid "Additional address line"
-msgstr "Extra adresregel"
-
-#: resources/views/settings.phtml:185
-msgid "Street name and house number"
-msgstr "Straatnaam en huisnummer"
-
-#: resources/views/settings.phtml:193
-msgid "City including zip code"
-msgstr "Postcode en plaats"
-
-#: resources/views/settings.phtml:202
-msgid "Communication data"
-msgstr "Contactgegevens"
-
-#: resources/views/settings.phtml:207
-msgid "Phone number (including country prefix, e.g. \"+49 30 123456\")"
-msgstr ""
-"Telefoonnummer (inclusief landcodevoorvoegsel, bijvoorbeeld \"+31 12 "
-"3456789\")"
-
-#: resources/views/settings.phtml:215
-msgid "Fax number (including country prefix, e.g. \"+49 30 654321\")"
-msgstr ""
-"Faxnummer (inclusief landcodevoorvoegsel, bijvoorbeeld \"+31 12 3456789\")"
-
-#: resources/views/settings.phtml:223
-msgid "eMail address"
-msgstr "E-mailadres"
-
-#: resources/views/settings.phtml:233
-msgid ""
-"Should a simple eMail link be used (if \"no\": subject and body of eMail are "
-"generated, too)?"
-msgstr ""
-"Moet een eenvoudige e-maillink worden gebruikt (indien \"nee\": onderwerp en "
-"inhoud van het bericht worden ook gegenereerd)?"
-
-#: resources/views/settings.phtml:249
-msgid "Registration data"
-msgstr "Registratiegegevens"
-
-#: resources/views/settings.phtml:254
-msgid "Label like \"VAT ID No.\" or other registration number label"
-msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
-
-#: resources/views/settings.phtml:262
-msgid "Registration number"
-msgstr "Registratienummer"
+msgid "The webtrees administrator is responsible to manage users and to set the preferences for this website."
+msgid_plural "The webtrees administrators are responsible to manage users and to set the preferences for this website."
+msgstr[0] "De websitebeheerder is verantwoordelijk voor het gebruikersbeheer en de voorkeursinstellingen van deze website."
+msgstr[1] "De websitebeheerders zijn verantwoordelijk voor het gebruikersbeheer en de voorkeursinstellingen van deze website."
 
 #: resources/views/settings.phtml:271
 msgid "Additional contacts to be shown"
 msgstr "Extra te tonen contactpersonen"
 
+#: resources/views/settings.phtml:143
+msgid "Should a gravatar image be shown (see www.gravatar.com)?"
+msgstr "Moet een gravatar-afbeelding worden getoond (zie www.gravatar.com)?"
+
+#: resources/views/settings.phtml:177
+msgid "Additional address line"
+msgstr "Extra adresregel"
+
+#: resources/views/settings.phtml:207
+msgid "Phone number (including country prefix, e.g. \"+49 30 123456\")"
+msgstr "Telefoonnummer (inclusief landcodevoorvoegsel, bijvoorbeeld \"+31 12 3456789\")"
+
+#: resources/views/settings.phtml:215
+msgid "Fax number (including country prefix, e.g. \"+49 30 654321\")"
+msgstr "Faxnummer (inclusief landcodevoorvoegsel, bijvoorbeeld \"+31 12 3456789\")"
+
+#: resources/views/settings.phtml:233
+msgid "Should a simple eMail link be used (if \"no\": subject and body of eMail are generated, too)?"
+msgstr "Moet een eenvoudige e-maillink worden gebruikt (indien \"nee\": onderwerp en inhoud van het bericht worden ook gegenereerd)?"
+
+#: resources/views/settings.phtml:254
+msgid "Label like \"VAT ID No.\" or other registration number label"
+msgstr "Soort registratienummer, bijvoorbeeld \"btw-nummer\""
+
 #: resources/views/settings.phtml:278
-msgid ""
-"Should the tree contacts be shown (there are maybe genealogical and "
-"technical contacts defined)?"
-msgstr ""
-"Moeten de stamboomcontactpersonen worden getoond (er zijn misschien "
-"genealogische en technische contactpersonen gedefinieerd)?"
+msgid "Should the tree contacts be shown (there are maybe genealogical and technical contacts defined)?"
+msgstr "Moeten de stamboomcontactpersonen worden getoond (er zijn misschien genealogische en technische contactpersonen gedefinieerd)?"
 
 #: resources/views/settings.phtml:295
 msgid "Should the administrators of this website be shown?"
 msgstr "Moeten de beheerders van deze website worden getoond?"
 
+#: resources/views/settings.phtml:133
+msgid "other sex"
+msgstr "overig"
+
+#: ImprintFooterModule.php:172
+msgid "Legal notice as a footer element for this site."
+msgstr "Juridische kennisgeving als voettekstelement voor deze site."
+
+#: ImprintFooterModule.php:429
+msgid "This website uses cookies."
+msgstr "Deze website maakt gebruik van cookies."
+
+#: ImprintFooterModule.php:695
+msgid "message via legal notice of site %s"
+msgstr "bericht via impressum van site %s"
+
+#: src/LegalNoticeSupport.php:137
+msgctxt "heading"
+msgid "Data protection"
+msgstr "Gegevensbescherming"
+
+#: src/LegalNoticeSupport.php:138
+msgctxt "heading"
+msgid "Purpose"
+msgstr "Doel"
+
+#: src/LegalNoticeSupport.php:139
+msgctxt "heading"
+msgid "Privacy"
+msgstr "Privacy"
+
+#: src/LegalNoticeSupport.php:140
+msgctxt "heading"
+msgid "Processing of personal data"
+msgstr "Verwerking van persoonsgegevens"
+
+#: src/LegalNoticeSupport.php:141
+msgctxt "heading"
+msgid "GDPR in connection with online genealogies"
+msgstr "GDPR en online-stamboomonderzoek"
+
+#: src/LegalNoticeSupport.php:142
+msgctxt "heading"
+msgid "Right of providing information"
+msgstr "Recht op informatieverstrekking"
+
+#: src/LegalNoticeSupport.php:143
+msgctxt "heading"
+msgid "Right to correction or deletion of personal data"
+msgstr "Recht op correctie of verwijdering van persoonsgegevens"
+
+#: src/LegalNoticeSupport.php:144
+msgctxt "heading"
+msgid "Right of appeal"
+msgstr "Recht van beroep"
+
+#: src/LegalNoticeSupport.php:145
+msgctxt "heading"
+msgid "Legal regulations"
+msgstr "Wettelijke bepalingen"
+
+#: src/LegalNoticeSupport.php:146
+msgctxt "heading"
+msgid "Liability"
+msgstr "Aansprakelijkheid"
+
+#: src/LegalNoticeSupport.php:147
+msgctxt "heading"
+msgid "Copyright"
+msgstr "Auteursrecht"
+
+#: src/LegalNoticeSupport.php:148
+msgctxt "heading"
+msgid "Duty to mitigate damages"
+msgstr "Verplichting tot schadebeperking"
+
+#: src/LegalNoticeSupport.php:149
+msgctxt "heading"
+msgid "Open-source and License"
+msgstr "Open-source en licentie"
+
+#: resources/views/page.phtml:331
+msgid "This website uses third-party services to manage cookies."
+msgstr "Deze website maakt gebruik van diensten van derden om cookies te beheren."
+
+#: resources/views/page.phtml:341
+msgid "Tracking and analytics"
+msgstr "Tracking en analyseren"
+
+#: resources/views/page.phtml:345
+msgid "This website uses third-party services to learn about visitor behavior."
+msgstr "Deze website maakt gebruik van diensten van derden om inzicht te krijgen in het gedrag van gebruikers."
+
+#: resources/views/page.phtml:366
+msgid "These services may use cookies or other tracking technology."
+msgstr "Deze diensten kunnen gebruik maken van cookies of andere volgtechnologie."
+
+#: resources/views/page.phtml:370
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
+msgstr "U kunt het volgen uitschakelen door in uw browservoorkeuren de \"Niet volgen\"-kop in te stellen."
+
+#: resources/views/page.phtml:377
+msgid "Third party services"
+msgstr "Diensten van derden"
+
+#: resources/views/page.phtml:381
+msgid "This website uses additional third-party services."
+msgstr "Deze website maakt gebruik van aanvullende diensten van derden."
+
+#: resources/views/settings.phtml:68
+msgid "Should a copy right notice be included in this page footer element?"
+msgstr "Moet in de paginavoettekst een auteursrechtvermelding worden opgenomen?"
+
+#: resources/views/settings.phtml:83
+msgid "Start year of copy right (e.g. \"2020\")"
+msgstr "Beginjaar van het auteursrecht (bv. \"2020\")"
+
+#: resources/views/settings.phtml:92
+msgid "Name of holder of copy right"
+msgstr "Naam van de houder van het auteursrecht"
+
 #: resources/views/settings.phtml:311
 msgid "Hosting service"
-msgstr ""
-
-#: resources/views/settings.phtml:316
-msgid ""
-"Country of the webtrees server location (in English language, e.g. "
-"\"Germany\")"
-msgstr ""
+msgstr "Hostingdienst"
 
 #: resources/views/settings.phtml:324
 msgid "Name of hosting service company"
-msgstr ""
+msgstr "Naam van hostingbedrijf"
 
 #: resources/views/settings.phtml:332
 msgid "Hosting service link (URL)"
-msgstr ""
+msgstr "Link naar hostingbedrijf (URL)"
 
 #: resources/views/settings.phtml:340
 msgid "Hosting service link to privacy notice (URL)"
-msgstr ""
-
-#: resources/views/settings.phtml:348
-msgid "First date of Auftragsverarbeitung agreement"
-msgstr ""
-
-#: resources/views/settings.phtml:356
-msgid "Last date of Auftragsdatenverarbeitung agreement"
-msgstr ""
+msgstr "Link naar privacyverklaring van hostingbedrijf (URL)"
 
 #: resources/views/settings.phtml:369
 msgid "In which sequence should the main chapters be shown?"
-msgstr ""
+msgstr "In welke volgorde moeten de belangrijkste hoofdstukken worden getoond?"
 
 #: resources/views/settings.phtml:373
 msgid "Chapter"
-msgstr ""
+msgstr "Hoofdstuk"
+
+#: ImprintFooterModule.php:529
+msgid "Legal Notice and Privacy Policy"
+msgstr "Juridische kennisgeving en privacybeleid"
+
+#: resources/views/settings.phtml:316
+msgid "Country of the webtrees server location (in English language, e.g. \"Germany\")"
+msgstr "Land van de webtrees-serverlocatie (in het Engels, bijvoorbeeld \"Netherlands\")"
+
+#: resources/views/settings.phtml:348
+msgid "First date of Auftragsverarbeitung agreement"
+msgstr "Eerste datum van orderverwerkingsovereenkomst"
+
+#: resources/views/settings.phtml:356
+msgid "Last date of Auftragsdatenverarbeitung agreement"
+msgstr "Laatste datum van de opdracht tot gegevensverwerking"
+
+#: resources/views/settings.phtml:50
+msgid "Control panel"
+msgstr "Controlepaneel"
+
