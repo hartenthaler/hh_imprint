@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Legal Notice for webtrees 2\n"
-"POT-Creation-Date: 2023-01-12 12:42+0100\n"
+"POT-Creation-Date: 2023-01-12 14:49+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: ImprintFooterModule.php:171
+#: ImprintFooterModule.php:172
 msgid "Legal notice as a footer element for this site."
 msgstr "Juridische Kennisgeving als voettekstelement voor deze site."
 
@@ -75,22 +75,26 @@ msgstr[1] ""
 "De websitebeheerders zijn verantwoordelijk voor het gebruikersbeheer en de "
 "voorkeursinstellingen van deze website."
 
-#: ImprintFooterModule.php:685
+#: ImprintFooterModule.php:529
+msgid "Legal Notice and Privacy Policy"
+msgstr ""
+
+#: ImprintFooterModule.php:695
 #, php-format
 msgid "message via legal notice of site %s"
 msgstr "bericht via impressum van site %s"
 
-#: ImprintFooterModule.php:688
+#: ImprintFooterModule.php:698
 #, php-format
 msgid "Dear Mr. %s"
 msgstr "Geachte heer %s"
 
-#: ImprintFooterModule.php:691
+#: ImprintFooterModule.php:701
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr "Geachte mevrouw %s"
 
-#: ImprintFooterModule.php:694
+#: ImprintFooterModule.php:704
 #, php-format
 msgid "Dear %s"
 msgstr "Geachte %s"
@@ -160,38 +164,38 @@ msgctxt "heading"
 msgid "Open-source and License"
 msgstr ""
 
-#: resources/views/page.phtml:329
+#: resources/views/page.phtml:331
 msgid "This website uses third-party services to manage cookies."
 msgstr ""
 
-#: resources/views/page.phtml:339
+#: resources/views/page.phtml:341
 msgid "Tracking and analytics"
 msgstr ""
 
-#: resources/views/page.phtml:343
+#: resources/views/page.phtml:345
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
 
-#: resources/views/page.phtml:364
+#: resources/views/page.phtml:366
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
 
-#: resources/views/page.phtml:368
+#: resources/views/page.phtml:370
 msgid ""
 "You can opt out of tracking by setting the “Do Not Track” header in your "
 "browser preferences."
 msgstr ""
 
-#: resources/views/page.phtml:375
+#: resources/views/page.phtml:377
 msgid "Third party services"
 msgstr ""
 
-#: resources/views/page.phtml:379
+#: resources/views/page.phtml:381
 msgid "This website uses additional third-party services."
 msgstr ""
 
-#: resources/views/settings.phtml:61
-msgid "Copy right"
+#: resources/views/settings.phtml:50
+msgid "Control panel"
 msgstr ""
 
 #: resources/views/settings.phtml:61 resources/views/settings.phtml:158
@@ -328,7 +332,9 @@ msgid "Hosting service"
 msgstr ""
 
 #: resources/views/settings.phtml:316
-msgid "Country of the webtrees server location"
+msgid ""
+"Country of the webtrees server location (in English language, e.g. "
+"\"Germany\")"
 msgstr ""
 
 #: resources/views/settings.phtml:324
@@ -344,11 +350,11 @@ msgid "Hosting service link to privacy notice (URL)"
 msgstr ""
 
 #: resources/views/settings.phtml:348
-msgid "Hosting Auftragsverarbeitung agreement first date / time"
+msgid "First date of Auftragsverarbeitung agreement"
 msgstr ""
 
 #: resources/views/settings.phtml:356
-msgid "Hosting Auftragsverarbeitung agreement last date / time"
+msgid "Last date of Auftragsdatenverarbeitung agreement"
 msgstr ""
 
 #: resources/views/settings.phtml:369
