@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 /**
- * @var string                      $title                  title of this module
- * @var Fisharebest\Webtrees\Tree   $tree                   related tree (or none)
+ * @var string                      $legalNoticeTitle       title of this module
  * @var string                      $legalNoticeHead1       main title of this page
  * @var string                      $legalNoticeHead2       subtitle of this page
  *
@@ -66,8 +65,8 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<p class="wt-footer wt-footer-contact hh-legal-notice my-2">
-    <h2><?= e($title) ?></h2>
+<div class="wt-footer wt-footer-contact hh-legal-notice my-2">
+    <h2><?= e($legalNoticeTitle) ?></h2>
     <p>&nbsp;</p>
     <h4><?= e($legalNoticeHead1) ?></h4>
 
@@ -157,6 +156,8 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <?php if ($showDataProtection): ?>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
     <h2><?= e($chapters[0]->getHeading()) ?></h2>
 
     <h3>Zweck</h3>
@@ -391,11 +392,21 @@ use Illuminate\Support\Collection;
         </p>
     <?php endif ?>
 
-    <h4>Anbieter des Hostings für den webtrees-Server</h4>
+    <h4>Hosting für den webtrees-Server</h4>
 
     <p>
-        Diese Website wird beim Hosting-Anbieter <a href="<?= e($hostingCompanyUrl) ?>"><?= e($hostingCompanyName) ?></a> betrieben.
-        Details entnehmen Sie bitte der <a href="<?= e($hostingPrivacyNotice) ?>">Datenschutzerklärung</a> von <?= e($hostingCompanyName) ?>.
+        <?php if ($hostingCompanyName !== '') : ?>
+            Diese Website wird beim Hosting-Anbieter
+            <?php if ($hostingCompanyUrl !== '') : ?>
+                <a href="<?= e($hostingCompanyUrl) ?>"><?= e($hostingCompanyName) ?></a>
+            <?php else : ?>
+                <?= e($hostingCompanyName) ?>
+            <?php endif ?>
+            betrieben.
+            <?php if ($hostingPrivacyNotice !== '' && $hostingCompanyName !== '') : ?>
+                Details entnehmen Sie bitte der <a href="<?= e($hostingPrivacyNotice) ?>">Datenschutzerklärung</a> von <?= e($hostingCompanyName) ?>.
+            <?php endif ?>
+        <?php endif ?>
     </p>
 
     <p>
@@ -501,6 +512,9 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <?php if ($showLegalRegulations): ?>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
     <h2><?= e($chapters[1]->getHeading()) ?></h2>
 
     <h3>Haftung</h3>

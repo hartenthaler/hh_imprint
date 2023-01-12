@@ -23,15 +23,15 @@ This Readme contains the following main sections
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Upgrade](#upgrade)
+* [Contributing](#contributing)
 * [Translation](#translation)
 * [Contact Support](#support)
-* [Programming and Testing](#programming)
 * [License](#license)
 
 <a name="description"></a>
 ## Description
 
-This module adds an legal notice footer to all pages of a webtrees site.
+This module adds a legal notice footer to all pages of a webtrees site.
 
 There is maybe a need to present on your website a "Legal Notice"
 (depending on your local law and the character of your site)
@@ -41,7 +41,6 @@ and [§4 Medienstaatsvertrag (MStV)](https://lxgesetze.de/mstv/4)
 * Switzerland: Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
 
 The webtrees admin can define the following data fields in the control panel for the responsible person
-* copyright notice in the footer
 * name of responsible person
 * name of genealogical club or organization
 * address
@@ -50,6 +49,7 @@ The webtrees admin can define the following data fields in the control panel for
 * VAT ID number or other registration number (like a club registration number)
 
 The webtrees admin can choose if the following additional parts should be shown
+* copyright notice in the footer
 * image of the responsible person using the [Gravatar](https://gravatar.com/)
 * list of contact persons for a tree (genealogical and technical)
 * list of administrators of this site with their contact links
@@ -70,7 +70,7 @@ Screenshot of Legal Notice footer (in German language)
 <p align="center"><img src="resources/docs/legal_notice_footer.png" alt="Screenshot of Legal Notice" align="center" width="60%"></p>
 
 Screenshot of Legal Notice (in German language)
-<p align="center"><img src="resources/docs/legal_notice.png" alt="Screenshot of Legal Notice" align="center" width="60%"></p>
+<p align="center"><img src="resources/docs/legal_notice.png" alt="Screenshot of Legal Notice" align="center" width="80%"></p>
 
 Screenshot of control panel page (in German language)
 <p align="center"><img src="resources/docs/legal_notice_control_panel.png" alt="Screenshot of control panel menu" align="center" width="80%"></p>
@@ -100,8 +100,8 @@ This section documents installation instructions for this module.
 2. Download the [latest release](https://github.com/hartenthaler/hh_imprint/releases/latest)
 3. Unzip the package into your `webtrees/modules_v4` directory of your web server
 4. Rename the folder to `hh_imprint`
-5. Login to **webtrees** as administrator, go to <span class="pointer">Control Panel/Modules/Website/Footers</span>, and find the module. It will be called "Legal Notice". Check if it has a tick for "Enabled".
-6. Click at the wrench symbol and add all desired information fields
+5. Login to **webtrees** as administrator, go to <span class="pointer">Control Panel/Modules/Website/Footers</span>, and find the module. It will be called "Legal Notice and Privacy Policy". Check if it has a tick for "Enabled".
+6. Click at the wrench symbol and add all desired information fields.
 7. Maybe you like to deactivate the module "contact information" (depending whether you have activated this in the "Legal Notice" module).
 8. Finally, click SAVE, to complete the installation.
 
@@ -110,6 +110,15 @@ This section documents installation instructions for this module.
 
 To update simply replace the `hh_imprint` files
 with the new ones from the latest release.
+
+<a name="contributing"></a>
+## Contributinging
+
+If you'd like to contribute to this module, great! You can contribute by
+
+- Reading and commenting the legal chapters carefully - choose a specific topic and please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for that topic.
+- Contributing code - check out the issues for things that need attention. If you have changes you want to make not listed in an issue, please create one, then you can link your pull request.
+- Testing - it's all manual currently, please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for any bugs you find.
 
 <a name="translation"></a>
 ## Translation
@@ -133,15 +142,6 @@ There are now, beside English, Dutch (by TheDutchJewel) and German, no other tra
 **Issues**: for any ideas you have, or when finding a bug you can raise an [issue](https://github.com/hartenthaler/hh_imprint/issues).
 
 **Forum**: general webtrees support can be found at the [webtrees forum](http://www.webtrees.net/).
-
-<a name="programming"></a>
-## Programming and Testing
-
-If you'd like to contribute to this module, great! You can contribute by
-
-- Reading and commenting the legal chapters carefully - choose a specific topic and please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for that topic.
-- Contributing code - check out the issues for things that need attention. If you have changes you want to make not listed in an issue, please create one, then you can link your pull request.
-- Testing - it's all manual currently, please [create an issue](https://github.com/hartenthaler/hh_imprint/issues) for any bugs you find.
 
 <a name="license"></a>
 ## License

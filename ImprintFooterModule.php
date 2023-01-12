@@ -40,6 +40,7 @@
  * ==============================================================
  * Modul in "Legal Notice" umbenennen; dazu Repository auf GitHub umbenennen
  * alle offenen issues aus GitHub
+ * Zeilenabstände in page.phtml und settings.phtml über CSS statt Leerzeilen realisieren
  * alle Nutzereingaben mit trim() behandeln
  * Status http/https automatisch ermitteln
  * einheitliche Verwendung von "Copyright" statt "copy right"
@@ -414,8 +415,13 @@ class ImprintFooterModule extends PrivacyPolicy
         $user = $request->getAttribute('user');
         assert($user instanceof UserInterface);
 
+        $title = I18N::translate('Legal Notice');
+        if ($this->isChapterEnabled('DataProtection')) {
+            $title .= ' ' . I18N::translate('and Privacy Policy');
+        }
+
         return view($this->name() . '::footer', [
-            'title'              => $this->moduleTitle(),
+            'title'              => $title,
             'url'                => $url,
             'showCopyRight'      => $this->showCopyRight(),
             'copyRightStartYear' => $this->copyRightStartYear(),
@@ -454,19 +460,11 @@ class ImprintFooterModule extends PrivacyPolicy
         assert($user instanceof UserInterface);
         $singular = count($contactsAdministrators) == 1;
         $https = true;                                                            // tbd: automatisch ermitteln
-        $chapters = $this->getChapters();
-        foreach ($chapters as $chapter) {
-            if ($chapter->getKey() == 'DataProtection') {
-                $showDataProtection = $chapter->getChapter()->enabled;
-            }
-            if ($chapter->getKey() == 'LegalRegulations') {
-                $showLegalRegulations = $chapter->getChapter()->enabled;
-            }
-        }
 
         return $this->viewResponse($this->name() . '::page', [
-            'title'                     => $this->moduleTitle(),
+            'title'                     => $this->title(),
             'tree'                      => $tree,
+            'legalNoticeTitle'          => I18N::translate('Legal Notice'),
             'legalNoticeHead1'          => I18N::translate('Responsible person'),
             'legalNoticeHead2'          => I18N::translate('This website is operated by:'),
             'responsibleName'           => $this->responsibleName(),
@@ -495,9 +493,9 @@ class ImprintFooterModule extends PrivacyPolicy
                                             'The webtrees administrators are responsible to manage users and to set the preferences for this website.', count($contactsAdministrators)),
             'countAdministrators'       => count($contactsAdministrators),
             'contactsAdministrators'    => $contactsAdministrators,
-            'chapters'                  => $chapters,
-            'showDataProtection'        => $showDataProtection,                                            // tbd
-            'showLegalRegulations'      => $showLegalRegulations,                                          // tbd
+            'chapters'                  => $this->getChapters(),
+            'showDataProtection'        => $this->isChapterEnabled('DataProtection'),                                            // tbd
+            'showLegalRegulations'      => $this->isChapterEnabled('LegalRegulations'),                                          // tbd
             'singular'                  => $singular,
             'https'                     => $https,
             'analytics'                 => $this->analyticsModules($tree, $user),
@@ -879,5 +877,23 @@ class ImprintFooterModule extends PrivacyPolicy
                 $order[] = $chapter;                 // add new chapters at the end of the list
             }
         }
+    }
+
+    /**
+     * is a specific chapter enabled?
+     *
+     * @param string $chapterKey
+     * @return bool
+     */
+    private function isChapterEnabled(string $chapterKey): bool
+    {
+        $enabled = false;
+        $chapters = $this->getChapters();
+        foreach ($chapters as $chapter) {
+            if ($chapter->getKey() == $chapterKey) {
+                $enabled = $chapter->getEnabled();
+            }
+        }
+        return $enabled;
     }
 };

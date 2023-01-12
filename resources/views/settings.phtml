@@ -10,9 +10,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
  * @var string                  $title                  title of this custom module
  * @var string                  $description            description of this module
  *
- * @var bool                    $showCopyRight          option whether copy right should be shown
- * @var string                  $copyRightStartYear     start year of copy right
- * @var string                  $copyRightName          name of holder of copy right
+ * @var bool                    $showCopyRight          option whether copyright should be shown
+ * @var string                  $copyRightStartYear     start year of copyright
+ * @var string                  $copyRightName          name of holder of copyright
  *
  * @var string                  $responsibleFirst       first name(s) of responsible person
  * @var string                  $responsibleSurname     surname(s) of responsible person
@@ -57,15 +57,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
         <?= csrf_field() ?>
         <input type="hidden" name="save" id="save" value="1">
 
-        <p></p>
-        <h4><?= I18N::translate('Copy right') . ' (' . I18N::translate('optional') . ')'  ?></h4>
+        <p>&nbsp;</p>
+        <h4><?= I18N::translate('Copyright') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
-            <!-- show copy right -->
+            <!-- show copyright -->
             <fieldset class="form-group mb-3">
                 <div class="row">
                     <legend class="col-form-label col-sm-3 wt-page-options-label">
-                        <?= I18N::translate('Should a copy right notice be included in this page footer element?') ?>
+                        <?= I18N::translate('Should a copyright notice be included in this page footer element?') ?>
                     </legend>
                     <div class="col-sm-9 wt-page-options-value">
                         <?= view('components/radios-inline', [
@@ -80,7 +80,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
             <!-- copy right start year -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="copyRightStartYear">
-                <?= I18N::translate('Start year of copy right (e.g. "2020")') ?>
+                <?= I18N::translate('Start year of copyright (e.g. "2020")') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="copyRightStartYear" name="copyRightStartYear" type="text"
@@ -89,7 +89,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
             <!-- name of holder of copy right -->
             <label class="col-sm-3 col-form-label wt-page-options-label" for="copyRightName">
-                <?= I18N::translate('Name of holder of copy right') ?>
+                <?= I18N::translate('Name of holder of copyright') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <input class="form-control" id="copyRightName" name="copyRightName" type="text"
@@ -97,7 +97,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
         </div>
 
-        <p></p>
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Responsible person') . ' (' . I18N::translate('mandatory') . ')' ?></h4>
 
         <div class="row">
@@ -153,8 +153,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
                 </div>
             </fieldset>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Club or Organization') . ' (' . I18N::translate('optional') . ')' ?></h4>
 
         <div class="row">
@@ -167,8 +166,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
         </div>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Address data') . ' (' . I18N::translate('mandatory') . ')'  ?></h4>
 
         <div class="row">
@@ -197,8 +195,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
         </div>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Communication data') . ' (' . I18N::translate('optional') . ')'   ?></h4>
 
         <div class="row">
@@ -244,8 +241,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </fieldset>
         </div>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Registration data') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
@@ -266,8 +262,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
         </div>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Additional contacts to be shown') ?></h4>
 
         <div class="row">
@@ -306,8 +301,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </fieldset>
         </div>
 
-        <p></p>
-
+        <p>&nbsp;</p>
         <h4><?= I18N::translate('Hosting service') . ' (' . I18N::translate('optional') . ')'  ?></h4>
 
         <div class="row">
@@ -360,7 +354,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </div>
         </div>
 
-        <p></p>
+        <p>&nbsp;</p>
 
         <!-- tbd einen Block für die Hauptüberschriften Datenschutzerklärung/Rechtliche Regelungen -->
             <!-- tbd rekursiv je einen Block mit den Unterkapiteln pro Hauptüberschrift -->
@@ -413,7 +407,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
             </tbody>
         </table>
 
-        <p></p>
+        <p>&nbsp;</p>
 
         <button type="submit" class="btn btn-primary">
             <?= view('icons/save') ?>
