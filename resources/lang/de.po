@@ -210,9 +210,6 @@ msgid "This website uses additional third-party services."
 msgstr "Diese Website verwendet zusätzliche Dienste von Drittanbietern."
 
 #: resources/views/settings.phtml:61
-#, fuzzy
-#| msgctxt "heading"
-#| msgid "Copyright"
 msgid "Copyright"
 msgstr "Urheberrecht"
 
@@ -223,20 +220,14 @@ msgid "optional"
 msgstr "optional"
 
 #: resources/views/settings.phtml:68
-#, fuzzy
-#| msgid "Should a copy right notice be included in this page footer element?"
 msgid "Should a copyright notice be included in this page footer element?"
 msgstr "Soll ein Copyright-Hinweis im Fußzeilenelement eingefügt werden?"
 
 #: resources/views/settings.phtml:83
-#, fuzzy
-#| msgid "Start year of copy right (e.g. \"2020\")"
 msgid "Start year of copyright (e.g. \"2020\")"
 msgstr "Startjahr des Copyrights (z.B. \"2020\")"
 
 #: resources/views/settings.phtml:92
-#, fuzzy
-#| msgid "Name of holder of copy right"
 msgid "Name of holder of copyright"
 msgstr "Inhaber des Copyrights"
 
