@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Imprint for webtrees 2\n"
-"POT-Creation-Date: 2023-01-05 19:04+0100\n"
+"Project-Id-Version: Legal Notice for webtrees 2\n"
+"POT-Creation-Date: 2023-01-12 12:30+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -17,173 +17,343 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: resources/views/footer.phtml:8
-msgid "Imprint"
-msgstr "Impressum"
+#: ImprintFooterModule.php:171
+msgid "Legal notice as a footer element for this site."
+msgstr "Impressum als Element im Fußzeilenbereich."
 
-#: ImprintFooterModule.php:377 resources/views/settings.phtml:45
+#: ImprintFooterModule.php:429
+msgid "This website uses cookies."
+msgstr "Diese Website verwendet Cookies."
+
+#: ImprintFooterModule.php:474 resources/views/settings.phtml:101
 msgid "Responsible person"
 msgstr "Verantwortliche Person"
 
-#: resources/views/settings.phtml:50
-msgid "First name(s)"
-msgstr "Vorname(n)"
-
-#: resources/views/settings.phtml:59
-msgid "Surname(s)"
-msgstr "Nachname(n)"
-
-#: resources/views/settings.phtml:75
-msgid "male"
-msgstr "männlich"
-
-#: resources/views/settings.phtml:76
-msgid "female"
-msgstr "weiblich"
-
-#: resources/views/settings.phtml:193
-msgid "Registration data"
-msgstr "Registrierungsdaten"
-
-#: resources/views/settings.phtml:146
-msgid "Communication data"
-msgstr "Kommunikationsdaten"
-
-#: resources/views/settings.phtml:129
-msgid "Street name and house number"
-msgstr "Straße und Hausnummer"
-
-#: ImprintFooterModule.php:131
-msgid "Imprint as a footer element for this site."
-msgstr "Impressum als Element im Fußzeilenbereich."
-
-#: resources/views/settings.phtml:68
-msgid "Sex"
-msgstr "Geschlecht"
-
-#: resources/views/settings.phtml:167
-msgid "eMail address"
-msgstr "E-Mail-Adresse"
-
-#: ImprintFooterModule.php:391
-msgid "eMail"
-msgstr "E-Mail"
-
-#: ImprintFooterModule.php:378
+#: ImprintFooterModule.php:475
 msgid "This website is operated by:"
 msgstr "Diese Website wird betrieben von:"
 
-#: ImprintFooterModule.php:541
-msgid "message via imprint of site %s"
-msgstr "Nachricht über das Impressum der Website %s"
-
-#: ImprintFooterModule.php:544
-msgid "Dear Mr. %s"
-msgstr "Sehr geehrter Herr %s"
-
-#: ImprintFooterModule.php:547
-msgid "Dear Mrs. %s"
-msgstr "Sehr geehrte Frau %s"
-
-#: ImprintFooterModule.php:550
-msgid "Dear %s"
-msgstr "Sehr geehrte/r %s"
-
-#: ImprintFooterModule.php:387
-msgid "Phone"
-msgstr "Telefon"
-
-#: ImprintFooterModule.php:389
-msgid "Fax"
-msgstr "Fax"
-
-#: resources/views/settings.phtml:45 resources/views/settings.phtml:116
-msgid "mandatory"
-msgstr "erforderlich"
-
-#: resources/views/settings.phtml:102
-msgid "Club or Organization"
-msgstr "Verein oder Organisation"
-
-#: resources/views/settings.phtml:102 resources/views/settings.phtml:121
-#: resources/views/settings.phtml:146 resources/views/settings.phtml:193
-msgid "optional"
-msgstr "optional"
-
-#: resources/views/settings.phtml:107
-msgid "Name of club or organization"
-msgstr "Name des Vereins oder der Organisation"
-
-#: resources/views/settings.phtml:116
-msgid "Address data"
-msgstr "Adressdaten"
-
-#: resources/views/settings.phtml:137
-msgid "City including zip code"
-msgstr "Ort mit Postleitzahl"
-
-#: resources/views/settings.phtml:206
-msgid "Registration number"
-msgstr "Registrierungsnummer"
-
-#: ImprintFooterModule.php:383
+#: ImprintFooterModule.php:480
 msgid "Represented by:"
 msgstr "vertreten durch:"
 
-#: ImprintFooterModule.php:396
+#: ImprintFooterModule.php:484
+msgid "Phone"
+msgstr "Telefon"
+
+#: ImprintFooterModule.php:486
+msgid "Fax"
+msgstr "Fax"
+
+#: ImprintFooterModule.php:488
+msgid "eMail"
+msgstr "E-Mail"
+
+#: ImprintFooterModule.php:493
 msgid "Additional contact"
 msgid_plural "Additional contacts"
 msgstr[0] "Weiterer Kontakt"
 msgstr[1] "Weitere Kontakte"
 
-#: ImprintFooterModule.php:400
+#: ImprintFooterModule.php:497
 msgid "Website administrator"
 msgid_plural "Website administrators"
 msgstr[0] "Website-Verwalter"
 msgstr[1] "Website-Verwalter"
 
-#: ImprintFooterModule.php:401
-msgid "The webtrees administrator is responsible to manage users and to set the preferences for this website."
-msgid_plural "The webtrees administrators are responsible to manage users and to set the preferences for this website."
-msgstr[0] "Der Website-Verwalter ist für die Benutzerverwaltung zuständig und definiert die Einstellungen für diese Website."
-msgstr[1] "Die Website-Verwalter sind für die Benutzerverwaltung zuständig und definieren die Einstellungen für diese Website."
+#: ImprintFooterModule.php:498
+msgid ""
+"The webtrees administrator is responsible to manage users and to set the "
+"preferences for this website."
+msgid_plural ""
+"The webtrees administrators are responsible to manage users and to set the "
+"preferences for this website."
+msgstr[0] ""
+"Der Website-Verwalter ist für die Benutzerverwaltung zuständig und definiert "
+"die Einstellungen für diese Website."
+msgstr[1] ""
+"Die Website-Verwalter sind für die Benutzerverwaltung zuständig und "
+"definieren die Einstellungen für diese Website."
 
-#: resources/views/settings.phtml:77
+#: ImprintFooterModule.php:685
+#, php-format
+msgid "message via legal notice of site %s"
+msgstr "Nachricht über das Impressum der Website %s"
+
+#: ImprintFooterModule.php:688
+#, php-format
+msgid "Dear Mr. %s"
+msgstr "Sehr geehrter Herr %s"
+
+#: ImprintFooterModule.php:691
+#, php-format
+msgid "Dear Mrs. %s"
+msgstr "Sehr geehrte Frau %s"
+
+#: ImprintFooterModule.php:694
+#, php-format
+msgid "Dear %s"
+msgstr "Sehr geehrte/r %s"
+
+#: src/LegalNoticeSupport.php:137
+msgctxt "heading"
+msgid "Data protection"
+msgstr "Datenschutzerklärung"
+
+#: src/LegalNoticeSupport.php:138
+msgctxt "heading"
+msgid "Purpose"
+msgstr "Zweck"
+
+#: src/LegalNoticeSupport.php:139
+msgctxt "heading"
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: src/LegalNoticeSupport.php:140
+msgctxt "heading"
+msgid "Processing of personal data"
+msgstr "Verarbeitung von personenbezogenen Daten"
+
+#: src/LegalNoticeSupport.php:141
+msgctxt "heading"
+msgid "GDPR in connection with online genealogies"
+msgstr "DSGVO im Zusammenhang mit Online-Genealogien"
+
+#: src/LegalNoticeSupport.php:142
+msgctxt "heading"
+msgid "Right of providing information"
+msgstr "Auskunftsrecht"
+
+#: src/LegalNoticeSupport.php:143
+msgctxt "heading"
+msgid "Right to correction or deletion of personal data"
+msgstr "Recht auf Korrektur oder Löschung von persönlichen Daten"
+
+#: src/LegalNoticeSupport.php:144
+msgctxt "heading"
+msgid "Right of appeal"
+msgstr "Beschwerderecht"
+
+#: src/LegalNoticeSupport.php:145
+msgctxt "heading"
+msgid "Legal regulations"
+msgstr "Rechtliche Regelungen"
+
+#: src/LegalNoticeSupport.php:146
+msgctxt "heading"
+msgid "Liability"
+msgstr "Haftung"
+
+#: src/LegalNoticeSupport.php:147
+msgctxt "heading"
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+#: src/LegalNoticeSupport.php:148
+msgctxt "heading"
+msgid "Duty to mitigate damages"
+msgstr "Schadenminderungspflicht"
+
+#: src/LegalNoticeSupport.php:149
+msgctxt "heading"
+msgid "Open-source and License"
+msgstr "Open-Source und Lizenz"
+
+#: resources/views/page.phtml:329
+msgid "This website uses third-party services to manage cookies."
+msgstr ""
+
+#: resources/views/page.phtml:339
+msgid "Tracking and analytics"
+msgstr ""
+
+#: resources/views/page.phtml:343
+msgid "This website uses third-party services to learn about visitor behavior."
+msgstr ""
+
+#: resources/views/page.phtml:364
+msgid "These services may use cookies or other tracking technology."
+msgstr ""
+
+#: resources/views/page.phtml:368
+msgid ""
+"You can opt out of tracking by setting the “Do Not Track” header in your "
+"browser preferences."
+msgstr ""
+
+#: resources/views/page.phtml:375
+msgid "Third party services"
+msgstr ""
+
+#: resources/views/page.phtml:379
+msgid "This website uses additional third-party services."
+msgstr ""
+
+#: resources/views/settings.phtml:61
+msgid "Copy right"
+msgstr ""
+
+#: resources/views/settings.phtml:61 resources/views/settings.phtml:158
+#: resources/views/settings.phtml:177 resources/views/settings.phtml:202
+#: resources/views/settings.phtml:249 resources/views/settings.phtml:311
+msgid "optional"
+msgstr "optional"
+
+#: resources/views/settings.phtml:68
+msgid "Should a copy right notice be included in this page footer element?"
+msgstr ""
+
+#: resources/views/settings.phtml:83
+msgid "Start year of copy right (e.g. \"2020\")"
+msgstr ""
+
+#: resources/views/settings.phtml:92
+msgid "Name of holder of copy right"
+msgstr ""
+
+#: resources/views/settings.phtml:101 resources/views/settings.phtml:172
+msgid "mandatory"
+msgstr "erforderlich"
+
+#: resources/views/settings.phtml:106
+msgid "First name(s)"
+msgstr "Vorname(n)"
+
+#: resources/views/settings.phtml:115
+msgid "Surname(s)"
+msgstr "Nachname(n)"
+
+#: resources/views/settings.phtml:124
+msgid "Sex"
+msgstr "Geschlecht"
+
+#: resources/views/settings.phtml:131
+msgid "male"
+msgstr "männlich"
+
+#: resources/views/settings.phtml:132
+msgid "female"
+msgstr "weiblich"
+
+#: resources/views/settings.phtml:133
 msgid "other sex"
 msgstr "divers"
 
-#: resources/views/settings.phtml:215
-msgid "Additional contacts to be shown"
-msgstr "Zusätzlich anzuzeigende Ansprechpartner"
-
-#: resources/views/settings.phtml:87
+#: resources/views/settings.phtml:143
 msgid "Should a gravatar image be shown (see www.gravatar.com)?"
 msgstr "Soll ein Gravatar-Bild angezeigt werden (siehe www.gravatar.com)?"
 
-#: resources/views/settings.phtml:121
+#: resources/views/settings.phtml:158
+msgid "Club or Organization"
+msgstr "Verein oder Organisation"
+
+#: resources/views/settings.phtml:163
+msgid "Name of club or organization"
+msgstr "Name des Vereins oder der Organisation"
+
+#: resources/views/settings.phtml:172
+msgid "Address data"
+msgstr "Adressdaten"
+
+#: resources/views/settings.phtml:177
 msgid "Additional address line"
 msgstr "Adresszusatz"
 
-#: resources/views/settings.phtml:151
+#: resources/views/settings.phtml:185
+msgid "Street name and house number"
+msgstr "Straße und Hausnummer"
+
+#: resources/views/settings.phtml:193
+msgid "City including zip code"
+msgstr "Ort mit Postleitzahl"
+
+#: resources/views/settings.phtml:202
+msgid "Communication data"
+msgstr "Kommunikationsdaten"
+
+#: resources/views/settings.phtml:207
 msgid "Phone number (including country prefix, e.g. \"+49 30 123456\")"
 msgstr "Telefonnummer (inkl. Landesvorwahl, z.B. \"+49 30 123456\")"
 
-#: resources/views/settings.phtml:159
+#: resources/views/settings.phtml:215
 msgid "Fax number (including country prefix, e.g. \"+49 30 654321\")"
 msgstr "Telefaxnummer (inkl. Landesvorwahl, z.B. \"+49 30 654321\")"
 
-#: resources/views/settings.phtml:177
-msgid "Should a simple eMail link be used (if \"no\": subject and body of eMail are generated, too)?"
-msgstr "Soll ein einfacher E-Mail-Link verwendet werden (falls \"nein\": Betreff und Inhalt der E-Mail werden auch erzeugt)?"
+#: resources/views/settings.phtml:223
+msgid "eMail address"
+msgstr "E-Mail-Adresse"
 
-#: resources/views/settings.phtml:198
+#: resources/views/settings.phtml:233
+msgid ""
+"Should a simple eMail link be used (if \"no\": subject and body of eMail are "
+"generated, too)?"
+msgstr ""
+"Soll ein einfacher E-Mail-Link verwendet werden (falls \"nein\": Betreff und "
+"Inhalt der E-Mail werden auch erzeugt)?"
+
+#: resources/views/settings.phtml:249
+msgid "Registration data"
+msgstr "Registrierungsdaten"
+
+#: resources/views/settings.phtml:254
 msgid "Label like \"VAT ID No.\" or other registration number label"
-msgstr "Bezeichnung wie \"Umsatzsteuer-Identifikationsnummer\" oder andere Registrierungsnummer-Bezeichnung"
+msgstr ""
+"Bezeichnung wie \"Umsatzsteuer-Identifikationsnummer\" oder andere "
+"Registrierungsnummer-Bezeichnung"
 
-#: resources/views/settings.phtml:222
-msgid "Should the tree contacts be shown (there are maybe genealogical and technical contacts defined)?"
-msgstr "Sollen die Kontaktpersonen des Stammbaums angezeigt werden (eventuell sind genealogische und technische Ansprechpartner definiert)?"
+#: resources/views/settings.phtml:262
+msgid "Registration number"
+msgstr "Registrierungsnummer"
 
-#: resources/views/settings.phtml:239
+#: resources/views/settings.phtml:271
+msgid "Additional contacts to be shown"
+msgstr "Zusätzlich anzuzeigende Ansprechpartner"
+
+#: resources/views/settings.phtml:278
+msgid ""
+"Should the tree contacts be shown (there are maybe genealogical and "
+"technical contacts defined)?"
+msgstr ""
+"Sollen die Kontaktpersonen des Stammbaums angezeigt werden (eventuell sind "
+"genealogische und technische Ansprechpartner definiert)?"
+
+#: resources/views/settings.phtml:295
 msgid "Should the administrators of this website be shown?"
 msgstr "Sollen die Administratoren dieser Website angezeigt werden?"
+
+#: resources/views/settings.phtml:311
+msgid "Hosting service"
+msgstr ""
+
+#: resources/views/settings.phtml:316
+msgid "Country of the webtrees server location"
+msgstr ""
+
+#: resources/views/settings.phtml:324
+msgid "Name of hosting service company"
+msgstr ""
+
+#: resources/views/settings.phtml:332
+msgid "Hosting service link (URL)"
+msgstr ""
+
+#: resources/views/settings.phtml:340
+msgid "Hosting service link to privacy notice (URL)"
+msgstr ""
+
+#: resources/views/settings.phtml:348
+msgid "Hosting Auftragsverarbeitung agreement first date / time"
+msgstr ""
+
+#: resources/views/settings.phtml:356
+msgid "Hosting Auftragsverarbeitung agreement last date / time"
+msgstr ""
+
+#: resources/views/settings.phtml:369
+msgid "In which sequence should the main chapters be shown?"
+msgstr ""
+
+#: resources/views/settings.phtml:373
+msgid "Chapter"
+msgstr ""
