@@ -21,14 +21,9 @@
  * along with this program; If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Hartenthaler\Webtrees\Module\Imprint;
+declare(strict_types=1);
 
-/**
- * class Chapter
- *
-
- */
-
+namespace Hartenthaler\Webtrees\Module\LegalNotice;
 
 /**
  * class Chapter
@@ -42,12 +37,12 @@ class Chapter
     /**
      * @var object $chapter
      *  ->key               string      key
-     *  ->id                int         unique chapter id                    // tbd kann vielleicht entfallen
+     *  ->id                int         unique chapter id
      *  ->heading           string      translated chapter heading
      *  ->level             int         level of heading (1=top level)
      *  ->link              int         link to id of next higher level
-     *  ->enabled           bool        chapter should be shown
-     *  ->content           string      content of this chapter
+     *  ->enabled           bool        true if chapter should be shown
+     *  ->content           string      content of this chapter (used if contentIWe is false)
      */
     private object $chapter;
 
@@ -56,13 +51,14 @@ class Chapter
     /**
      * construct object
      *
-     * @param string $key
-     * @param int $id
-     * @param string $heading
-     * @param int $level
-     * @param int $link
-     * @param bool $enabled
-     * @param string $content
+     * @param string        $key
+     * @param int           $id
+     * @param string        $heading
+     * @param int           $level
+     * @param int           $link
+     * @param bool          $enabled
+     * @param bool          $contentIWe
+     * @param array<string> $content    list of paragraphs
      */
     public function __construct
         (
@@ -72,7 +68,8 @@ class Chapter
             int     $level,
             int     $link,
             bool    $enabled,
-            string  $content
+            bool    $contentIWe,
+            array   $content
         )
     {
         $this->chapter = (object)[];
@@ -82,6 +79,7 @@ class Chapter
         $this->chapter->level           = $level;
         $this->chapter->link            = $link;
         $this->chapter->enabled         = $enabled;
+        $this->chapter->contentIWe      = $contentIWe;
         $this->chapter->content         = $content;
     }
 
@@ -106,6 +104,16 @@ class Chapter
     }
 
     /**
+     * get id of chapter
+     *
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->chapter->id;
+    }
+
+    /**
      * get level of chapter (1=top level)
      *
      * @return int
@@ -116,6 +124,36 @@ class Chapter
     }
 
     /**
+     * get link of this chapter to next higher hierarchy id
+     *
+     * @return int
+     */
+    public function getLink(): int
+    {
+        return $this->chapter->link;
+    }
+
+    /**
+     * get chapter content (list of paragraphs)
+     *
+     * @return array
+     */
+    public function getContent(): array
+    {
+        return $this->chapter->content;
+    }
+
+    /**
+     * get chapter enabling status
+     *
+     * @return bool
+     */
+    public function getEnabled(): bool
+    {
+        return $this->chapter->enabled;
+    }
+
+    /**
      * get chapter heading
      *
      * @return string
@@ -123,15 +161,5 @@ class Chapter
     public function getHeading(): string
     {
         return $this->chapter->heading;
-    }
-
-    /**
-     * get chapter enabling status
-     *
-     * @return string
-     */
-    public function getEnabled(): bool
-    {
-        return $this->chapter->enabled;
     }
 }

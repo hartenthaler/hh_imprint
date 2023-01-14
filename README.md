@@ -53,15 +53,17 @@ The webtrees admin can choose if the following additional parts should be shown
 * image of the responsible person using the [Gravatar](https://gravatar.com/)
 * list of contact persons for a tree (genealogical and technical)
 * list of administrators of this site with their contact links
+* chapter about "Legal Regulations" with several sections
 
-The following parts are a first draft.
-They are only available in German.
-The administrator can enable or disable them, but the sequence cannot be chosen at the moment.
-* show a chapter about "Datenschutzerklärung"
-* show a chapter about "Rechtliche Regelungen"
+Those sections can be reordered and individually enabled or disabled.
+There are two styles provided for those sections: "I" style and "We" style,
+depending on the number of website administrators.
 
-It is intended to add more content to those two chapters
-and to make them translatable.
+The chapter "Datenschutzerklärung" is a first draft.
+It is only available in German.
+The administrator can enable or disable this chapter, but the sequence cannot be chosen at the moment.
+It is intended to add more content to this chapter
+and to make the content translatable.
 
 <a name="screenshots"></a>
 ## Screenshots

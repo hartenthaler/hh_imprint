@@ -409,6 +409,55 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
         <p>&nbsp;</p>
 
+        <h3><?= I18N::translate('In which sequence should the sections of the chapter "Legal Regulations" be shown?') ?></h3>
+        <table class="table table-bordered wt-table-menu">
+            <thead>
+            <tr>
+                <th><?= I18N::translate('Section') ?></th>
+                <th class="text-center"><?= I18N::translate('Enabled') ?></th>
+                <th class="text-center"><?= I18N::translate('Move up') ?></th>
+                <th class="text-center"><?= I18N::translate('Move down') ?></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($chapters as $chapter) : ?>
+                <?php if ($chapter->getLink() == 9 && $chapter->getLevel() == 2): ?>
+                    <tr>
+                        <th scope="col">
+                            <input type="hidden" name="order[]" value="<?= $chapter->getKey() ?>">
+                            <span title="<?= $chapter->getHeading() ?>">
+                                <?= $chapter->getHeading() ?>
+                            </span>
+                        </th>
+
+                        <td class="text-center">
+                            <label class="d-block">
+                                <input type="checkbox" name="status-<?= $chapter->getKey() ?>" id="status-<?= $chapter->getKey() ?>" <?= ($chapter->getEnabled()) ? 'checked' : '' ?>>
+                                <span class="sr-only">
+                                    <?= I18N::translate('Enabled') ?>
+                                </span>
+                            </label>
+                        </td>
+
+                        <td class="move up text-center">
+                            <a href="#" title="<?= I18N::translate('Move up') ?>">
+                                <?= view('icons/arrow-up') ?>
+                            </a>
+                        </td>
+                        <td class="move down text-center">
+                            <a href="#" title="<?= I18N::translate('Move down') ?>">
+                                <?= view('icons/arrow-down') ?>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endif ?>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+
+        <p>&nbsp;</p>
+
         <button type="submit" class="btn btn-primary">
             <?= view('icons/save') ?>
             <?= I18N::translate('save') ?>

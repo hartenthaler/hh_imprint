@@ -23,7 +23,7 @@
 
 declare(strict_types=1);
 
-namespace Hartenthaler\Webtrees\Module\Imprint;
+namespace Hartenthaler\Webtrees\Module\LegalNotice;
 
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Services\UserService;
@@ -126,13 +126,15 @@ class ContactsList
     private function findAdministrators(UserService $userService, ServerRequestInterface $request): void
     {
         $this->administratorsList = [];
-        $administrators = $userService->administrators();     // Collection<int,User>
+        $administrators = $userService->administrators();               // Collection<int,User>
         foreach ($administrators as $admin) {
             $administrator = (object)[];
+
             $administrator->userId = $admin->id();
             $administrator->realName = $admin->realName();
             $administrator->email = $admin->email();
             $administrator->contact = $userService->contactLink($admin, $request);
+
             $this->administratorsList[] = $administrator;
         }
     }

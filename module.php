@@ -20,7 +20,9 @@
  * along with this program; If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace Hartenthaler\Webtrees\Module\Imprint;
+declare(strict_types=1);
+
+namespace Hartenthaler\Webtrees\Module\LegalNotice;
 
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
@@ -63,4 +65,4 @@ Collection::make($filenames)
         require_once $filename;
     });
 
-return app(ImprintFooterModule::class);
+return app(LegalNoticeFooterModule::class);

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
 /**
  * @var string                      $title                  // tbd wird nicht verwendet muss aber vorhanden sein (Vesta-Error)
  * @var \Fisharebest\Webtrees\Tree  $tree                   // tbd wird nicht verwendet muss aber vorhanden sein (Vesta-Error)
@@ -42,30 +45,26 @@ declare(strict_types=1);
  * @var array<int|object>           $contactsAdministrators list of administrators
  *
  * @var array<object>               $chapters               list of chapter objects
- * @var bool                        $showDataProtection
- * @var bool                        $showLegalRegulations
+ * @var bool                        $showDataProtection                                                         // tbd
+ * @var bool                        $showLegalRegulations                                                       // tbd
  *
  * // tbd die folgenden Parameter sollten alle entfallen, da diese Informationen in die Chapter einfliessen
  * @var bool                        $singular               is the report written using "I" or "We"?
- * @var bool                        $https
  * @var Collection                  $analytics
  * @var array                       $trackingServices
  * @var array                       $thirdPartyServices
  * @var array                       $cookiesServices
  * // @var array                       $usercentricsLanguages
  *
- * @var string                      $hostingDomain
- * @var string                      $hostingCountry
- * @var string                      $hostingCompanyName
- * @var string                      $hostingCompanyUrl
- * @var string                      $hostingPrivacyNotice
- * @var string                      $hostingStartDate
- * @var string                      $hostingEndDate
+ * @var bool                        $https                  host URL starts with https
+ * @var string                      $hostingDomain          domain name of host
+ * @var string                      $hostingCountry         country where the host is located (in English)
+ * @var string                      $hostingCompanyName     name of hosting company
+ * @var string                      $hostingCompanyUrl      URL of hosting company
+ * @var string                      $hostingPrivacyNotice   URL of privacy notice of hosting company
+ * @var string                      $hostingStartDate       date of first agreement Auftragsdatenverarbeitung with hosting company
+ * @var string                      $hostingEndDate         date of last agreement Auftragsdatenverarbeitung with hosting company
  */
-
-use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
-
 ?>
 
 <div class="wt-footer wt-footer-contact hh-legal-notice my-2">
@@ -158,19 +157,23 @@ use Illuminate\Support\Collection;
         </ul>
     <?php endif ?>
 
-    <?php if ($showDataProtection): ?>
+    <?php if ($chapters['DataProtection']->getEnabled()): ?>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <h2><?= e($chapters[0]->getHeading()) ?></h2>
+    <h2><?= e($chapters['DataProtection']->getHeading()) ?></h2>
 
     <h3>Zweck</h3>
 
-    <p>Diese Website verarbeitet personenbezogene Daten zum Zwecke der historischen und genealogischen Forschung.
+    <p>
+        Diese Website verarbeitet personenbezogene Daten zum Zwecke der historischen und genealogischen Forschung.
         Sie beschäftigt sich mit der Familien- und Ahnenforschung meiner eigenen Familie,
         der angeheirateten entfernteren Verwandtschaft und der Erforschung von weiteren Personen,
-        etwa Trägern meines Familiennamens.</p>
+        etwa Trägern meines Familiennamens.
+    </p>
 
-    <p>Dazu gehören</p>
+    <p>
+        Dazu gehören
+    </p>
     <ul>
         <li>Zurverfügungstellung des Onlineangebotes, seiner Funktionen und Inhalte</li>
         <li>Beantwortung von Kontaktanfragen und Kommunikation mit den Nutzern</li>
@@ -185,15 +188,22 @@ use Illuminate\Support\Collection;
         <?php else : ?>
             Wir nehmen den Schutz der hier gespeicherten Daten sehr ernst.
         <?php endif ?>
+
+        <?php if ($hostingCountry !== '') : ?>
+            Der Host für diese Anwendung steht in <?= e($hostingCountry) ?>.
+        <?php endif ?>
+
+        <?php if ($https) : ?>
+            Die Übertragung zum Browser eines Nutzers ist verschlüsselt (https).
+        <?php endif ?>
+
+        Die verwendete Software (webtrees) bietet sehr viele Schutzmechanismen.
     </p>
 
-    <p>Der Host für diese Anwendung steht in <?= e($hostingCountry) ?><?php if ($https) : ?>,
-            die Übertragung zum Browser eines Nutzers ist verschlüsselt (https)
-        <?php endif ?>
-        und die verwendete Software (webtrees) bietet sehr viele Schutzmechanismen.</p>
-
-    <p>Es werden sowohl Daten verarbeitet, die den Nutzern dieses Angebotes zuzuordnen sind,
-        als auch Daten über lebende und bereits verstorbene Personen.</p>
+    <p>
+        Es werden sowohl Daten verarbeitet, die den Nutzern dieses Angebotes zuzuordnen sind,
+        als auch Daten über lebende und bereits verstorbene Personen.
+    </p>
 
     <ul>
         <li>Bestandsdaten (Namen, Geburts-, Heirats- und Todesdaten, ...)</li>
@@ -203,12 +213,15 @@ use Illuminate\Support\Collection;
         <li>Kommunikationsdaten (Geräte-Informationen, verwendeter Browser, IP-Adressen, ...)</li>
     </ul>
 
-    <p>Um Sie in vollem Umfang über die Verwendung personenbezogener Daten zu informieren,
-        werden Sie gebeten, die folgenden Datenschutzhinweise zur Kenntnis zu nehmen.</p>
+    <p>
+        Um Sie in vollem Umfang über die Verwendung personenbezogener Daten zu informieren,
+        werden Sie gebeten, die folgenden Datenschutzhinweise zur Kenntnis zu nehmen.
+    </p>
 
     <h3>Verwendete Begrifflichkeiten</h3>
 
-    <p><b>„Personenbezogene Daten“</b> sind alle Informationen,
+    <p>
+        <b>„Personenbezogene Daten“</b> sind alle Informationen,
         die sich auf eine identifizierte oder identifizierbare natürliche Person
         (im Folgenden <b>„betroffene Person“</b>) beziehen;
         als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt,
@@ -216,31 +229,38 @@ use Illuminate\Support\Collection;
         zu einer Online-Kennung (z.B. Cookie)
         oder zu einem oder mehreren besonderen Merkmalen identifiziert werden kann,
         die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder
-        sozialen Identität dieser betroffenen Person sind.</p>
+        sozialen Identität dieser betroffenen Person sind.
+    </p>
 
-    <p><b>„Verarbeitung“</b> ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte
+    <p>
+        <b>„Verarbeitung“</b> ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte
         Vorgang im Zusammenhang mit personenbezogenen Daten.
-        Der Begriff reicht weit und umfasst praktisch jeden Umgang mit diesen Daten.</p>
+        Der Begriff reicht weit und umfasst praktisch jeden Umgang mit diesen Daten.
+    </p>
 
     <p>Als <b>„Verantwortliche Person“</b> wird hier die natürliche Person bezeichnet, die allein oder gemeinsam mit
-        anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
+        anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
+    </p>
 
     <h3>Kategorien von Daten</h3>
 
     <h4>Persönliche Daten zu Ahnen, Familienmitgliedern und weiteren Personen</h4>
 
-    <p>Es werden persönliche Daten auch von lebenden Personen zum Zweck der Familien- und Ahnenforschung gespeichert
+    <p>
+        Es werden persönliche Daten auch von lebenden Personen zum Zweck der Familien- und Ahnenforschung gespeichert
         (siehe oben: Bestandsdaten und Inhaltsdaten).
         Die Familien- und Ahnenforschung ist ein <b>„berechtigtes Interesse“</b> gemäß
         Artikel 6&nbsp;(f) der Datenschutzgrundverordnung (EU-DSGVO).
         Persönliche Daten, die Sie auf dieser Website finden, wie zum Beispiel Namen, E-Mail-Adressen,
         Fotos, Adressen oder Lebensdaten
         werden nur zum Zweck der Familien- und Ahnenforschung verwendet und sicher verwahrt.
-        Sie werden zeitlich unbeschränkt aufbewahrt, da sie von historischem Wert für die Genealogie sind.</p>
+        Sie werden zeitlich unbeschränkt aufbewahrt, da sie von historischem Wert für die Genealogie sind.
+    </p>
 
     <h4>Abgestufte Zugangsrechte zu den Personendaten</h4>
 
-    <p>Große Teile der Inhalte dieser Website sind frei zugänglich.
+    <p>
+        Große Teile der Inhalte dieser Website sind frei zugänglich.
         Nicht so die Daten von noch lebenden Personen.
         Auf diese haben nur registrierte Nutzer Zugriff,
         denen abgestufte Rechte zugeordnet werden.
@@ -252,12 +272,15 @@ use Illuminate\Support\Collection;
         <?php endif ?>
         Die Inhalte hier sind zu einem guten Teil innerhalb der Familie 'vertraulich' weitergegeben worden.
         Das müssen sie auch bleiben; deshalb sind wir alle darauf angewiesen,
-        dass jeder Einzelne diese Daten vertraulich behandelt.</p>
+        dass jeder Einzelne diese Daten vertraulich behandelt.
+    </p>
 
     <h4>Persönliche Daten zu Nutzern mit einem Benutzerkonto</h4>
 
-    <p>Die personenbezogenen Daten, die Sie zur Einrichtung eines Kontos selbst zur Verfügung stellen,
-        werden gespeichert und verarbeitet (siehe oben: Kontaktdaten)</p>
+    <p>
+        Die personenbezogenen Daten, die Sie zur Einrichtung eines Kontos selbst zur Verfügung stellen,
+        werden gespeichert und verarbeitet (siehe: Kontaktdaten)
+    </p>
 
     <ul>
         <li>Name</li>
@@ -265,12 +288,16 @@ use Illuminate\Support\Collection;
         <li>Passwort</li>
     </ul>
 
-    <p>Andere personenbezogene Daten, die Sie aktiv zur Verfügung stellen, werden ebenfalls gespeichert und verwendet.
+    <p>
+        Andere personenbezogene Daten, die Sie aktiv zur Verfügung stellen, werden ebenfalls gespeichert und verwendet.
         Dazu gehören etwa Daten durch die Vervollständigung Ihrer persönlichen Daten auf Ihrer persönlichen Seite
-        oder durch die Herstellung von Familienbeziehungen.</p>
+        oder durch die Herstellung von Familienbeziehungen.
+    </p>
 
-    <p>Des weiteren werden Daten mit Bezug zu Ihrem Benutzerkonto erfasst,
-        die durch Ihre Aktivitäten auf unserer Website entstehen, etwa beim Bearbeiten von Datensätzen.</p>
+    <p>
+        Des weiteren werden Daten mit Bezug zu Ihrem Benutzerkonto erfasst,
+        die durch Ihre Aktivitäten auf unserer Website entstehen, etwa beim Bearbeiten von Datensätzen.
+    </p>
 
     <p>
         <?php if ($singular) : ?>
@@ -279,29 +306,35 @@ use Illuminate\Support\Collection;
             Wir verwenden Ihre E-Mail-Adresse gelegentlich,
         <?php endif ?>
         um Sie per E-Mail über wichtige Angelegenheiten im Zusammenhang mit der Website zu informieren
-        oder um Sie gegebenenfalls bei Rückfragen zu von Ihnen vorgenommenen Änderungen zu kontaktieren.</p>
+        oder um Sie gegebenenfalls bei Rückfragen zu von Ihnen vorgenommenen Änderungen zu kontaktieren.
+    </p>
 
-    <p>Wenn Sie Ihr Benutzerkonto hier deaktivieren lassen,
+    <p>
+        Wenn Sie Ihr Benutzerkonto hier deaktivieren lassen,
         bleiben die von Ihnen eingegebenen genealogischen Daten zum Nutzen unserer genealogischen Forschung erhalten.
         Die Daten zu Ihrer Person bleiben ebenfalls erhalten,
-        nur Ihr Zugang zu den hier speziell geschützten Bereichen wird gesperrt.</p>
+        nur Ihr Zugang zu den hier speziell geschützten Bereichen wird gesperrt.
+    </p>
 
     <h4>Persönliche Daten zu Besuchern dieser Website</h4>
 
     <p>Darüber hinaus werden im Prinzip personenbeziehbare Daten der nicht angemeldeten Nutzer dieses Angebotes
-        (Besucher) gespeichert
-        (siehe oben: Nutzungsdaten und Kommunikationsdaten).</p>
+        (Besucher) gespeichert (siehe: Nutzungsdaten und Kommunikationsdaten).</p>
 
     <h4>Sicherheitsmaßnahmen</h4>
 
-    <p>Es werden nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik,
+    <p>
+        Es werden nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik,
         der Implementierungskosten und der Art, des Umfangs, der Umstände und der Zwecke der Verarbeitung
         sowie der unterschiedlichen Eintrittswahrscheinlichkeiten und des Ausmaßes der Bedrohung
         der Rechte und Freiheiten natürlicher Personen geeignete technische und organisatorische Maßnahmen getroffen,
-        um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p>
+        um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.
+    </p>
 
-    <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit,
-        Integrität und Verfügbarkeit von Daten unter anderem durch die Kontrolle des Zugangs zu den Daten.</p>
+    <p>
+        Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit,
+        Integrität und Verfügbarkeit von Daten unter anderem durch die Kontrolle des Zugangs zu den Daten.
+    </p>
 
     <h4>Generelles Risiko</h4>
 
@@ -514,92 +547,20 @@ use Illuminate\Support\Collection;
     </p>
     <?php endif ?>
 
-    <?php if ($showLegalRegulations): ?>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-
-    <h2><?= e($chapters[1]->getHeading()) ?></h2>
-
-    <h3>Haftung</h3>
-
-    <p>
-        Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht,
-        nicht mehr oder nicht vollständig entsprechen sollten,
-        bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer Gültigkeit davon unberührt.
-    </p>
-
-    <h4>Haftung für Inhalte dieser Webseiten</h4>
-
-    <p>
-        Die Inhalte meiner Seiten wurden mit größter Sorgfalt erstellt.
-        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen.
-        Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-        Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen
-        oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-        Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen
-        bleiben hiervon unberührt.
-        Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis
-        einer konkreten Rechtsverletzung möglich.
-        Bei Bekanntwerden von entsprechenden Rechtsverletzungen
-        werde ich diese Inhalte umgehend korrigieren oder entfernen.
-    </p>
-
-    <h4>Haftung für Links</h4>
-
-    <p>
-        Diese Web-Anwendung enthält Links zu externen Webseiten, auf deren Inhalte ich keinen Einfluss habe.
-        Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen.
-        Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-        Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
-        Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
-        Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch
-        ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
-        Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend entfernen.
-    </p>
-
-    <h3>Urheberrecht</h3>
-
-    <p>
-        Der Betreiber dieser Website ist bemüht, stets die Urheberrechte anderer zu beachten
-        bzw. auf selbst erstellte sowie lizenzfreie Werke zurückzugreifen.
-        Beiträge Dritter zu unserer Website sind durch die Nennung einer Quelle als solche gekennzeichnet,
-        wenn sie nicht frei verwendet werden dürfen.
-    </p>
-
-    <p>
-        Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Webseite unterliegen dem Urheberrecht
-        in <?= e($hostingCountry) ?>.
-        Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung der Inhalte unserer Website
-        außerhalb der Grenzen des Urheberrechtes bedürfen unserer schriftlichen Zustimmung.
-        Eine kommerzielle Nutzung der hier bereitgestellten Informationen ist generell untersagt.
-    </p>
-
-    <p>
-        Downloads und Kopien dieser Seiten sind nur für die private Nutzung gestattet.
-        Wer Teile unserer Daten in eigenen Stammbäumen verwenden will, ist verpflichtet
-        <?= e($hostingDomain) ?> als Quelle zu benennen.
-        Insbesondere die Bilder dürfen auch dort nur für Familienmitglieder&nbsp;zugänglich sein.
-    </p>
-
-    <h4>Verwendung unserer Daten im Impressum</h4>
-
-    <p>
-        Der Nutzung der im Rahmen der Impressumspflicht von uns veröffentlichten Kontaktdaten durch Dritte
-        zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien
-        wird hiermit ausdrücklich widersprochen.
-        Der Betreiber der Seiten behält sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung
-        von Werbeinformationen, etwa durch Spam-Mails, vor.
-    </p>
-
-    <h3>Schadenminderungspflicht</h3>
-
-    <p>
-        Sollte Ihnen auf unseren Webseiten ein etwaiger Missstand auffallen, bitte ich Sie,
-        mich zur Vermeidung unnötiger Rechtsstreite und Kosten vorher zu kontaktieren.
-        Ich bin mir sicher, dass wir einvernehmlich und formlos zu einer Lösung kommen.
-        Die Kostennote einer anwaltlichen Abmahnung wird daher im Sinne der Schadenminderungspflicht
-        als unbegründet zurückgewiesen, wenn ich nicht zuvor über meine E-Mail-Adresse kontaktiert
-        und auf diesen etwaigen Missstand hingewiesen wurde.
-    </p>
+    <?php if ($chapters['LegalRegulations']->getEnabled()): ?>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h2><?= e($chapters['LegalRegulations']->getHeading()) ?></h2>
+        <?php foreach ($chapters as $chapter): ?>
+            <?php if ($chapter->getLink() == $chapters['LegalRegulations']->getId() && $chapter->getEnabled()) : ?>
+                <?php $paragraphs = $chapter->getContent() ?>
+                <?php if ($paragraphs !== '') : ?>
+                    <h3><?= e($chapter->getHeading()) ?></h3>
+                    <?php foreach ($paragraphs as $paragraph): ?>
+                        <p><?= e($paragraph) ?></p>
+                    <?php endforeach ?>
+                <?php endif ?>
+            <?php endif ?>
+        <?php endforeach ?>
     <?php endif ?>
 </div>
