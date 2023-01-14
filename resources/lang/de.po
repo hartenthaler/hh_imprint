@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Legal Notice for webtrees 2\n"
-"POT-Creation-Date: 2023-01-12 23:56+0100\n"
+"POT-Creation-Date: 2023-01-14 12:51+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -18,59 +18,59 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: ImprintFooterModule.php:169
+#: LegalNoticeFooterModule.php:167
 msgid "Legal notice as a footer element for this site."
 msgstr "Impressum und Datenschutzerklärung als Element im Fußzeilenbereich."
 
-#: ImprintFooterModule.php:418 ImprintFooterModule.php:467
+#: LegalNoticeFooterModule.php:419 LegalNoticeFooterModule.php:472
 msgid "Legal Notice"
 msgstr "Impressum"
 
-#: ImprintFooterModule.php:420
+#: LegalNoticeFooterModule.php:421
 msgid "and Privacy Policy"
 msgstr "und Datenschutzerklärung"
 
-#: ImprintFooterModule.php:431
+#: LegalNoticeFooterModule.php:438
 msgid "This website uses cookies."
 msgstr "Diese Website verwendet Cookies."
 
-#: ImprintFooterModule.php:468 resources/views/settings.phtml:101
+#: LegalNoticeFooterModule.php:473 resources/views/settings.phtml:101
 msgid "Responsible person"
 msgstr "Verantwortliche Person"
 
-#: ImprintFooterModule.php:469
+#: LegalNoticeFooterModule.php:474
 msgid "This website is operated by:"
 msgstr "Diese Website wird betrieben von:"
 
-#: ImprintFooterModule.php:474
+#: LegalNoticeFooterModule.php:479
 msgid "Represented by:"
 msgstr "vertreten durch:"
 
-#: ImprintFooterModule.php:478
+#: LegalNoticeFooterModule.php:483
 msgid "Phone"
 msgstr "Telefon"
 
-#: ImprintFooterModule.php:480
+#: LegalNoticeFooterModule.php:485
 msgid "Fax"
 msgstr "Fax"
 
-#: ImprintFooterModule.php:482
+#: LegalNoticeFooterModule.php:487
 msgid "eMail"
 msgstr "E-Mail"
 
-#: ImprintFooterModule.php:487
+#: LegalNoticeFooterModule.php:492
 msgid "Additional contact"
 msgid_plural "Additional contacts"
 msgstr[0] "Weiterer Kontakt"
 msgstr[1] "Weitere Kontakte"
 
-#: ImprintFooterModule.php:491
+#: LegalNoticeFooterModule.php:496
 msgid "Website administrator"
 msgid_plural "Website administrators"
 msgstr[0] "Website-Verwalter"
 msgstr[1] "Website-Verwalter"
 
-#: ImprintFooterModule.php:492
+#: LegalNoticeFooterModule.php:497
 msgid ""
 "The webtrees administrator is responsible to manage users and to set the "
 "preferences for this website."
@@ -84,116 +84,505 @@ msgstr[1] ""
 "Die Website-Verwalter sind für die Benutzerverwaltung zuständig und "
 "definieren die Einstellungen für diese Website."
 
-#: ImprintFooterModule.php:523
+#: LegalNoticeFooterModule.php:528
 msgid "Legal Notice and Privacy Policy"
 msgstr "Impressum und Datenschutzerklärung"
 
-#: ImprintFooterModule.php:689
+#: LegalNoticeFooterModule.php:694
 #, php-format
 msgid "message via legal notice of site %s"
 msgstr "Nachricht über das Impressum der Website %s"
 
-#: ImprintFooterModule.php:692
+#: LegalNoticeFooterModule.php:697
 #, php-format
 msgid "Dear Mr. %s"
 msgstr "Sehr geehrter Herr %s"
 
-#: ImprintFooterModule.php:695
+#: LegalNoticeFooterModule.php:700
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr "Sehr geehrte Frau %s"
 
-#: ImprintFooterModule.php:698
+#: LegalNoticeFooterModule.php:703
 #, php-format
 msgid "Dear %s"
 msgstr "Sehr geehrte/r %s"
 
-#: src/LegalNoticeSupport.php:137
+#: src/LegalNoticeSupport.php:149
 msgctxt "heading"
 msgid "Data protection"
 msgstr "Datenschutzerklärung"
 
-#: src/LegalNoticeSupport.php:138
+#: src/LegalNoticeSupport.php:150
 msgctxt "heading"
 msgid "Purpose"
 msgstr "Zweck"
 
-#: src/LegalNoticeSupport.php:139
+#: src/LegalNoticeSupport.php:151
 msgctxt "heading"
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: src/LegalNoticeSupport.php:140
+#: src/LegalNoticeSupport.php:152
 msgctxt "heading"
 msgid "Processing of personal data"
 msgstr "Verarbeitung von personenbezogenen Daten"
 
-#: src/LegalNoticeSupport.php:141
+#: src/LegalNoticeSupport.php:153
 msgctxt "heading"
 msgid "GDPR in connection with online genealogies"
 msgstr "DSGVO im Zusammenhang mit Online-Genealogien"
 
-#: src/LegalNoticeSupport.php:142
+#: src/LegalNoticeSupport.php:154
 msgctxt "heading"
 msgid "Right of providing information"
 msgstr "Auskunftsrecht"
 
-#: src/LegalNoticeSupport.php:143
+#: src/LegalNoticeSupport.php:155
 msgctxt "heading"
 msgid "Right to correction or deletion of personal data"
 msgstr "Recht auf Korrektur oder Löschung von persönlichen Daten"
 
-#: src/LegalNoticeSupport.php:144
+#: src/LegalNoticeSupport.php:156
 msgctxt "heading"
 msgid "Right of appeal"
 msgstr "Beschwerderecht"
 
-#: src/LegalNoticeSupport.php:145
+#: src/LegalNoticeSupport.php:157
 msgctxt "heading"
 msgid "Legal regulations"
 msgstr "Rechtliche Regelungen"
 
-#: src/LegalNoticeSupport.php:146
+#: src/LegalNoticeSupport.php:158
 msgctxt "heading"
-msgid "Liability"
-msgstr "Haftung"
+msgid "Liability for the content of these websites"
+msgstr "Haftung für den Inhalt dieser Webseiten"
 
-#: src/LegalNoticeSupport.php:147
+#: src/LegalNoticeSupport.php:159
 msgctxt "heading"
-msgid "Copyright"
-msgstr "Urheberrecht"
+msgid "Liability for links"
+msgstr "Haftung für Links"
 
-#: src/LegalNoticeSupport.php:148
+#: src/LegalNoticeSupport.php:160
+msgctxt "heading"
+msgid "Copyright and distribution of genealogical data"
+msgstr "Copyright und Weitergabe genealogischer Daten"
+
+#: src/LegalNoticeSupport.php:161
+msgctxt "heading"
+msgid "Use of the address data in the Legal Notice"
+msgstr "Nutzung der Adressdaten im Impressum"
+
+#: src/LegalNoticeSupport.php:162
 msgctxt "heading"
 msgid "Duty to mitigate damages"
 msgstr "Schadenminderungspflicht"
 
-#: src/LegalNoticeSupport.php:149
+#: src/LegalNoticeSupport.php:163
 msgctxt "heading"
 msgid "Open-source and License"
 msgstr "Open-Source und Lizenz"
 
-#: resources/views/page.phtml:332
+#: src/LegalNoticeSupport.php:164
+msgctxt "heading"
+msgid "Severability Clause"
+msgstr "Salvatorische Klausel"
+
+#: src/LegalNoticeSupport.php:192
+msgid ""
+"The contents of my pages were created with great care. However, I cannot "
+"guarantee that the content is correct, complete or up-to-date. I am "
+"responsible for my own content on these pages according to general laws; "
+"However, I am not obliged to monitor transmitted or stored third-party "
+"information or to investigate circumstances that indicate illegal activity. "
+"An obligation to remove or block the use of information according to general "
+"laws remains unaffected. However, liability in this regard is only possible "
+"from the point in time at which knowledge of a specific infringement of the "
+"law is known. As soon as I become aware of any legal violations, I will "
+"remove this content immediately."
+msgstr ""
+"Die Inhalte meiner Seiten wurden mit größter Sorgfalt erstellt. Für die "
+"Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch "
+"keine Gewähr übernehmen. Ich bin für eigene Inhalte auf diesen Seiten nach "
+"den allgemeinen Gesetzen verantwortlich; ich bin jedoch nicht verpflichtet, "
+"übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach "
+"Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Eine "
+"Verpflichtung zur Entfernung oder Sperrung der Nutzung von Informationen "
+"nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche "
+"Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten "
+"Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden "
+"Rechtsverletzungen werde ich diese Inhalte umgehend entfernen."
+
+#: src/LegalNoticeSupport.php:193
+msgid ""
+"If you, as a user of this site, are entitled to create content yourself or "
+"upload files, you are obliged to comply with all legal requirements and to "
+"protect personal data by using the mechanisms of webtrees. If in doubt, "
+"please feel free to contact me."
+msgstr ""
+"Wenn Sie als Nutzer dieser Seiten berechtigt sein sollten, selbst Inhalte zu "
+"erstellen oder Dateien hochzuladen, sind Sie verpflichtet, alle gesetzlichen "
+"Anforderungen zu erfüllen und für den Schutz von persönlichen Daten durch "
+"die Nutzung der Mechanismen von webtrees zu sorgen. Im Zweifelsfall können "
+"Sie sich gerne an mich wenden."
+
+#: src/LegalNoticeSupport.php:194
+msgid ""
+"The contents of our pages were created with great care. However, we cannot "
+"guarantee that the content is correct, complete or up-to-date. We are "
+"responsible for our own content on these pages according to general laws; "
+"however, we are not obliged to monitor transmitted or stored third-party "
+"information or to investigate circumstances that indicate illegal activity. "
+"An obligation to remove or block the use of information according to general "
+"laws remains unaffected. However, liability in this regard is only possible "
+"from the point in time at which knowledge of a specific infringement of the "
+"law is known. As soon as we become aware of any legal violations, we will "
+"remove this content immediately."
+msgstr ""
+"Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die "
+"Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch "
+"keine Gewähr übernehmen. Wir sind für eigene Inhalte auf diesen Seiten nach "
+"den allgemeinen Gesetzen verantwortlich; wir sind jedoch nicht verpflichtet, "
+"übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach "
+"Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Eine "
+"Verpflichtung zur Entfernung oder Sperrung der Nutzung von Informationen "
+"nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche "
+"Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten "
+"Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden "
+"Rechtsverletzungen werden wir diese Inhalte umgehend entfernen."
+
+#: src/LegalNoticeSupport.php:195
+msgid ""
+"If you, as a user of this site, are entitled to create content yourself or "
+"upload files, you are obliged to comply with all legal requirements and to "
+"protect personal data by using the mechanisms of webtrees. If in doubt, "
+"please feel free to contact us."
+msgstr ""
+"Wenn Sie als Nutzer dieser Seiten berechtigt sein sollten, selbst Inhalte zu "
+"erstellen oder Dateien hochzuladen, sind Sie verpflichtet alle gesetzlichen "
+"Anforderungen zu erfüllen und für den Schutz von persönlichen Daten durch "
+"die Nutzung der Mechanismen von webtrees zu sorgen. Im Zweifelsfall können "
+"Sie sich gerne an uns wenden."
+
+#: src/LegalNoticeSupport.php:196
+msgid ""
+"This web application contains links to external websites over which I have "
+"no control. Therefore I cannot assume any liability for this external "
+"content. The respective provider or operator of the pages is always "
+"responsible for the content of the linked pages. The linked pages were "
+"checked for possible legal violations at the time of linking. Illegal "
+"content was not recognizable at the time of linking. However, a permanent "
+"control of the content of the linked pages is not reasonable without "
+"concrete evidence of an infringement. As soon as I become aware of legal "
+"violations, I will remove such links immediately."
+msgstr ""
+"Diese Web-Anwendung enthält Links zu externen Webseiten, auf deren Inhalte "
+"ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch "
+"keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der "
+"jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten "
+"Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße "
+"überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht "
+"erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist "
+"jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. "
+"Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend "
+"entfernen."
+
+#: src/LegalNoticeSupport.php:197
+msgid ""
+"This web application contains links to external websites over which we have "
+"no control. Therefore we cannot assume any liability for this external "
+"content. The respective provider or operator of the pages is always "
+"responsible for the content of the linked pages. The linked pages were "
+"checked for possible legal violations at the time of linking. Illegal "
+"content was not recognizable at the time of linking. However, a permanent "
+"control of the content of the linked pages is not reasonable without "
+"concrete evidence of an infringement. As soon as we become aware of legal "
+"violations, we will remove such links immediately."
+msgstr ""
+"Diese Web-Anwendung enthält Links zu externen Webseiten, auf deren Inhalte "
+"wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch "
+"keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der "
+"jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten "
+"Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße "
+"überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht "
+"erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist "
+"jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. "
+"Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend "
+"entfernen."
+
+#: src/LegalNoticeSupport.php:198
+msgid ""
+"I always endeavor to observe the copyrights of others or to use self-created "
+"and license-free works. Third-party contributions to this website are marked "
+"as such by naming a source if they cannot be used freely. Should you "
+"nevertheless become aware of a copyright infringement, please inform me "
+"accordingly. As soon as I become aware of legal violations, I will remove "
+"such content immediately."
+msgstr ""
+"Ich bin stets bemüht, die Urheberrechte anderer zu beachten bzw. auf selbst "
+"erstellte sowie lizenzfreie Werke zurückzugreifen. Beiträge Dritter zu "
+"unserer Website sind durch die Nennung einer Quelle als solche "
+"gekennzeichnet, wenn sie nicht frei verwendet werden dürfen. Sollten Sie "
+"trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitte ich um "
+"einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werde "
+"ich derartige Inhalte umgehend entfernen."
+
+#: src/LegalNoticeSupport.php:200
+msgid ""
+"The content and works created by me and the registered users on this website "
+"are subject to copyright. If you contribute content as a registered user of "
+"this website, you transfer all rights to it to me. The distribution and any "
+"kind of exploitation of the content of this website outside the limits of "
+"copyright require my written consent. Commercial use of the information "
+"provided here is generally prohibited."
+msgstr ""
+"Die von mir und von den registrierten Nutzern erstellten Inhalte und Werke "
+"auf diesen Webseiten unterliegen dem Urheberrecht. Wenn Sie als "
+"registrierter Nutzer dieser Website Inhalte beitragen sollten, übertragen "
+"Sie alle Rechte daran an mich. Die Verbreitung und jede Art der Verwertung "
+"der Inhalte dieser Website außerhalb der Grenzen des Urheberrechtes bedürfen "
+"meiner schriftlichen Zustimmung. Eine kommerzielle Nutzung der hier "
+"bereitgestellten Informationen ist generell untersagt."
+
+#: src/LegalNoticeSupport.php:202
+#, php-format
+msgid ""
+"The content and works created by me and the registered users on this website "
+"are subject to copyright in %s. If you contribute content as a registered "
+"user of this website, you transfer all rights to it to me. The distribution "
+"and any kind of exploitation of the content of this website outside the "
+"limits of copyright require my written consent. Commercial use of the "
+"information provided here is generally prohibited."
+msgstr ""
+"Die von mir und von den registrierten Nutzern erstellten Inhalte und Werke "
+"auf diesen Webseiten unterliegen dem Urheberrecht in %s. Wenn Sie als "
+"registrierter Nutzer dieser Website Inhalte beitragen sollten, übertragen "
+"Sie alle Rechte daran an mich. Die Verbreitung und jede Art der Verwertung "
+"der Inhalte dieser Website außerhalb der Grenzen des Urheberrechtes bedürfen "
+"meiner schriftlichen Zustimmung. Eine kommerzielle Nutzung der hier "
+"bereitgestellten Informationen ist generell untersagt."
+
+#: src/LegalNoticeSupport.php:204
+#, php-format
+msgid ""
+"Copying or downloading genealogical data for private use is permitted. "
+"Anyone who wants to use parts of our data in their own family trees is "
+"obliged to name %s as the source. In particular, the protected images may "
+"only be accessible there for family members. The information on living "
+"people must not be copied to other websites where the privacy of these "
+"people cannot be guaranteed. A lot of time and effort was put into the "
+"webtrees database. I don't want others to simply copy our work together. I "
+"expect you to follow these guidelines as well. This database remains my "
+"property and will not be sold, donated or rented in any way."
+msgstr ""
+"Das Kopieren oder Herunterladen genealogischer Daten für die private Nutzung "
+"ist gestattet. Wer Teile unserer Daten in eigenen Stammbäumen verwenden "
+"will, ist verpflichtet %s als Quelle zu benennen. Insbesondere die "
+"geschützten Bilder dürfen auch dort nur für Familienmitglieder zugänglich "
+"sein. Die Informationen zu lebenden Personen dürfen nicht auf andere "
+"Websites kopiert werden, bei denen die Privatsphäre dieser Personen nicht "
+"garantiert werden kann. Es wurde viel Zeit und Aufwand in die webtrees "
+"Datenbank gesteckt. Ich will nicht, dass andere unsere gemeinsame Arbeit "
+"einfach kopieren. Ich erwarte, dass Sie diese Richtlinien ebenfalls "
+"befolgen. Diese Datenbank bleibt mein Eigentum und wird in keiner Weise "
+"verkauft, gespendet oder vermietet werden."
+
+#: src/LegalNoticeSupport.php:205
+msgid ""
+"We always endeavor to observe the copyrights of others or to use self-"
+"created and license-free works. Third-party contributions to this website "
+"are marked as such by naming a source if they cannot be used freely. Should "
+"you nevertheless become aware of a copyright infringement, please inform us "
+"accordingly. As soon as we become aware of legal violations, we will remove "
+"such content immediately."
+msgstr ""
+"Wir sind stets bemüht, die Urheberrechte anderer zu beachten bzw. auf selbst "
+"erstellte sowie lizenzfreie Werke zurückzugreifen. Beiträge Dritter zu "
+"unserer Website sind durch die Nennung einer Quelle als solche "
+"gekennzeichnet, wenn sie nicht frei verwendet werden dürfen. Sollten Sie "
+"trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um "
+"einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen "
+"werden wir derartige Inhalte umgehend entfernen."
+
+#: src/LegalNoticeSupport.php:207
+msgid ""
+"The content and works created by us and by the registered users on this "
+"website are subject to copyright. If you contribute content as a registered "
+"user of this website, you transfer all rights to it to us. The distribution "
+"and any kind of exploitation of the content of this website outside the "
+"limits of copyright require our written consent. Commercial use of the "
+"information provided here is generally prohibited."
+msgstr ""
+"Die von uns und von den registrierten Nutzern erstellten Inhalte und Werke "
+"auf diesen Webseiten unterliegen dem Urheberrecht. Wenn Sie als "
+"registrierter Nutzer dieser Website Inhalte beitragen sollten, übertragen "
+"Sie alle Rechte daran an uns. Die Verbreitung und jede Art der Verwertung "
+"der Inhalte unserer Website außerhalb der Grenzen des Urheberrechtes "
+"bedürfen unserer schriftlichen Zustimmung. Eine kommerzielle Nutzung der "
+"hier bereitgestellten Informationen ist generell untersagt."
+
+#: src/LegalNoticeSupport.php:209
+#, php-format
+msgid ""
+"The content and works created by us and by the registered users on this "
+"website are subject to copyright in %s. If you contribute content as a "
+"registered user of this website, you transfer all rights to it to us. The "
+"distribution and any kind of exploitation of the content of this website "
+"outside the limits of copyright require our written consent. Commercial use "
+"of the information provided here is generally prohibited."
+msgstr ""
+"Die von uns und von den registrierten Nutzern erstellten Inhalte und Werke "
+"auf diesen Webseiten unterliegen dem Urheberrecht in %s. Wenn Sie als "
+"registrierter Nutzer dieser Website Inhalte beitragen sollten, übertragen "
+"Sie alle Rechte daran an uns. Die Verbreitung und jede Art der Verwertung "
+"der Inhalte unserer Website außerhalb der Grenzen des Urheberrechtes "
+"bedürfen unserer schriftlichen Zustimmung. Eine kommerzielle Nutzung der "
+"hier bereitgestellten Informationen ist generell untersagt."
+
+#: src/LegalNoticeSupport.php:211
+#, php-format
+msgid ""
+"Copying or downloading genealogical data for private use is permitted. "
+"Anyone who wants to use parts of our data in their own family trees is "
+"obliged to name %s as the source. In particular, the protected images may "
+"only be accessible there for family members. The information on living "
+"people must not be copied to other websites where the privacy of these "
+"people cannot be guaranteed. A lot of time and effort was put into the "
+"webtrees database. We don't want others to simply copy our work together. We "
+"expect you to follow these guidelines as well. This database remains our "
+"property and will not be sold, donated or rented in any way."
+msgstr ""
+"Das Kopieren oder Herunterladen genealogischer Daten für die private Nutzung "
+"ist gestattet. Wer Teile unserer Daten in eigenen Stammbäumen verwenden "
+"will, ist verpflichtet %s als Quelle zu benennen. Insbesondere die "
+"geschützten Bilder dürfen auch dort nur für Familienmitglieder zugänglich "
+"sein. Die Informationen zu lebenden Personen dürfen nicht auf andere "
+"Websites kopiert werden, bei denen die Privatsphäre dieser Personen nicht "
+"garantiert werden kann. Es wurde viel Zeit und Aufwand in die webtrees "
+"Datenbank gesteckt. Wir wollen nicht, dass andere unsere gemeinsame Arbeit "
+"einfach kopieren. Wir erwarten, dass Sie diese Richtlinien ebenfalls "
+"befolgen. Diese Datenbank bleibt unser Eigentum und wird in keiner Weise "
+"verkauft, gespendet oder vermietet werden."
+
+#: src/LegalNoticeSupport.php:212
+msgid ""
+"The use of the contact data published by us as part of the imprint "
+"obligation by third parties for the purpose of sending unsolicited "
+"advertising and information material is hereby expressly prohibited. I "
+"expressly reserve the right to take legal action in the event of unsolicited "
+"advertising being sent, such as spam e-mails."
+msgstr ""
+"Der Nutzung der im Rahmen der Impressumspflicht von uns veröffentlichten "
+"Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich "
+"angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich "
+"widersprochen. Ich behalte mir ausdrücklich rechtliche Schritte im Falle der "
+"unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor."
+
+#: src/LegalNoticeSupport.php:213
+msgid ""
+"The use of the contact data published by us as part of the imprint "
+"obligation by third parties for the purpose of sending unsolicited "
+"advertising and information material is hereby expressly prohibited. We "
+"expressly reserve the right to take legal action in the event of unsolicited "
+"advertising being sent, such as spam e-mails."
+msgstr ""
+"Der Nutzung der im Rahmen der Impressumspflicht von uns veröffentlichten "
+"Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich "
+"angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich "
+"widersprochen. Wir behalten uns ausdrücklich rechtliche Schritte im Falle "
+"der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, "
+"vor."
+
+#: src/LegalNoticeSupport.php:214
+msgid ""
+"Should you notice any irregularities on our website, please contact me "
+"beforehand to avoid unnecessary legal disputes and costs. I am sure that we "
+"will come to an amicable and informal solution. The cost note of a legal "
+"warning will therefore be rejected as unfounded in the sense of the "
+"obligation to mitigate the damage if I have not been contacted via my e-mail "
+"address beforehand and have been informed of this possible grievance."
+msgstr ""
+"Sollte Ihnen auf unseren Webseiten ein etwaiger Missstand auffallen, bitte "
+"ich Sie, mich zur Vermeidung unnötiger Rechtsstreite und Kosten vorher zu "
+"kontaktieren. Ich bin mir sicher, dass wir einvernehmlich und formlos zu "
+"einer Lösung kommen. Die Kostennote einer anwaltlichen Abmahnung wird daher "
+"im Sinne der Schadenminderungspflicht als unbegründet zurückgewiesen, wenn "
+"ich nicht zuvor über meine E-Mail-Adresse kontaktiert und auf diesen "
+"etwaigen Missstand hingewiesen wurde."
+
+#: src/LegalNoticeSupport.php:215
+msgid ""
+"Should you notice any irregularities on our website, we ask you to contact "
+"us beforehand to avoid unnecessary legal disputes and costs. We are sure "
+"that we will come to an amicable and informal solution. The cost note of a "
+"legal warning will therefore be rejected as unfounded in the sense of the "
+"obligation to mitigate the damage if we have not been contacted beforehand "
+"via one of our e-mail addresses and have been informed of this possible "
+"grievance."
+msgstr ""
+"Sollte Ihnen auf unseren Webseiten ein etwaiger Missstand auffallen, bitte "
+"wir Sie, uns zur Vermeidung unnötiger Rechtsstreite und Kosten vorher zu "
+"kontaktieren. Wir sind uns sicher, dass wir einvernehmlich und formlos zu "
+"einer Lösung kommen. Die Kostennote einer anwaltlichen Abmahnung wird daher "
+"im Sinne der Schadenminderungspflicht als unbegründet zurückgewiesen, wenn "
+"wir nicht zuvor über eine unserer E-Mail-Adressen kontaktiert und auf diesen "
+"etwaigen Missstand hingewiesen wurden."
+
+#: src/LegalNoticeSupport.php:216
+msgid ""
+"This website uses the genealogy program webtrees - an open source software. "
+"The source code is publicly available on GitHub and can be changed by "
+"anyone. Usage is free. This program was developed by people from many "
+"countries and is provided under the terms of the GNU General Public License "
+"Version 3 or a later version. The developers and the entire webtrees "
+"community are volunteering their time and skills to the project. Apart from "
+"the few donations from users, the developers receive no compensation for the "
+"time they invest in the project. There are also no external sources of "
+"income to support the project."
+msgstr ""
+"Diese Website nutzt das Genealogieprogramm webtrees - eine Open-Source-"
+"Software. Der Quelltext ist auf GitHub öffentlich einsehbar und kann von "
+"jedermann geändert werden. Die Nutzung ist kostenlos. Dieses Programm wurde "
+"von Menschen aus vielen Ländern entwickelt und wird unter den Bedingungen "
+"der GNU General Public License Version 3 oder einer neueren Version "
+"bereitgestellt. Die Entwickler und die gesamte webtrees-Gemeinschaft stellen "
+"ihre Zeit und ihre Fähigkeiten freiwillig für das Projekt zur Verfügung. "
+"Abgesehen von den wenigen Spenden der Nutzer erhalten die Entwickler keine "
+"Vergütung für die Zeit, die sie in das Projekt investieren. Es gibt auch "
+"keine externen Einnahmequellen, um das Projekt zu unterstützen."
+
+#: src/LegalNoticeSupport.php:217
+msgid ""
+"If parts or individual formulations of this text do not, no longer or not "
+"completely correspond to the applicable legal situation, the remaining parts "
+"of the text remain unaffected in their content and validity."
+msgstr ""
+"Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden "
+"Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, "
+"bleiben die übrigen Teile des Textes in ihrem Inhalt und ihrer Gültigkeit "
+"davon unberührt."
+
+#: resources/views/page.phtml:368
 msgid "This website uses third-party services to manage cookies."
 msgstr ""
 "Diese Website verwendet Dienste von Drittanbietern zum Management der "
 "Cookies."
 
-#: resources/views/page.phtml:342
+#: resources/views/page.phtml:378
 msgid "Tracking and analytics"
 msgstr "Tracking und Analyse"
 
-#: resources/views/page.phtml:346
+#: resources/views/page.phtml:382
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
 "Diese Website verwendet Dienste von Drittanbietern, um Erkenntnisse über das "
 "Verhalten der Nutzer zu gewinnen."
 
-#: resources/views/page.phtml:367
+#: resources/views/page.phtml:403
 msgid "These services may use cookies or other tracking technology."
 msgstr "Diese Dienste können Cookies oder andere Tracking-Techniken verwenden."
 
-#: resources/views/page.phtml:371
+#: resources/views/page.phtml:407
 msgid ""
 "You can opt out of tracking by setting the “Do Not Track” header in your "
 "browser preferences."
@@ -201,11 +590,11 @@ msgstr ""
 "Sie können sich vom Tracking abmelden, indem Sie in ihren "
 "Browsereinstellungen \"Nicht nachverfolgen\" auswählen."
 
-#: resources/views/page.phtml:378
+#: resources/views/page.phtml:414
 msgid "Third party services"
 msgstr "Drittanbieter"
 
-#: resources/views/page.phtml:382
+#: resources/views/page.phtml:418
 msgid "This website uses additional third-party services."
 msgstr "Diese Website verwendet zusätzliche Dienste von Drittanbietern."
 
@@ -380,3 +769,15 @@ msgstr "In welcher Reihenfolge sollen die Kapitel angezeigt werden?"
 #: resources/views/settings.phtml:367
 msgid "Chapter"
 msgstr "Kapitel"
+
+#: resources/views/settings.phtml:412
+msgid ""
+"In which sequence should the sections of the chapter \"Legal Regulations\" "
+"be shown?"
+msgstr ""
+"In welcher Reihenfolge sollen die Abschnitte im Kapitel \"Rechtliche "
+"Regelungen\" angezeigt werden?"
+
+#: resources/views/settings.phtml:416
+msgid "Section"
+msgstr "Abschnitt"

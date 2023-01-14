@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Legal Notice for webtrees 2\n"
-"POT-Creation-Date: 2023-01-12 23:53+0100\n"
+"POT-Creation-Date: 2023-01-14 12:39+0100\n"
 "PO-Revision-Date: 2022-11-29 18:43+0100\n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -18,182 +18,277 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: ImprintFooterModule.php:169
+#: LegalNoticeFooterModule.php:167
 msgid "Legal notice as a footer element for this site."
 msgstr ""
 
-#: ImprintFooterModule.php:418 ImprintFooterModule.php:467
+#: LegalNoticeFooterModule.php:419 LegalNoticeFooterModule.php:472
 msgid "Legal Notice"
 msgstr ""
 
-#: ImprintFooterModule.php:420
+#: LegalNoticeFooterModule.php:421
 msgid "and Privacy Policy"
 msgstr ""
 
-#: ImprintFooterModule.php:431
+#: LegalNoticeFooterModule.php:438
 msgid "This website uses cookies."
 msgstr ""
 
-#: ImprintFooterModule.php:468 resources/views/settings.phtml:101
+#: LegalNoticeFooterModule.php:473 resources/views/settings.phtml:101
 msgid "Responsible person"
 msgstr ""
 
-#: ImprintFooterModule.php:469
+#: LegalNoticeFooterModule.php:474
 msgid "This website is operated by:"
 msgstr ""
 
-#: ImprintFooterModule.php:474
+#: LegalNoticeFooterModule.php:479
 msgid "Represented by:"
 msgstr ""
 
-#: ImprintFooterModule.php:478
+#: LegalNoticeFooterModule.php:483
 msgid "Phone"
 msgstr ""
 
-#: ImprintFooterModule.php:480
+#: LegalNoticeFooterModule.php:485
 msgid "Fax"
 msgstr ""
 
-#: ImprintFooterModule.php:482
+#: LegalNoticeFooterModule.php:487
 msgid "eMail"
 msgstr ""
 
-#: ImprintFooterModule.php:487
+#: LegalNoticeFooterModule.php:492
 msgid "Additional contact"
 msgid_plural "Additional contacts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:491
+#: LegalNoticeFooterModule.php:496
 msgid "Website administrator"
 msgid_plural "Website administrators"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:492
+#: LegalNoticeFooterModule.php:497
 msgid "The webtrees administrator is responsible to manage users and to set the preferences for this website."
 msgid_plural "The webtrees administrators are responsible to manage users and to set the preferences for this website."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ImprintFooterModule.php:523
+#: LegalNoticeFooterModule.php:528
 msgid "Legal Notice and Privacy Policy"
 msgstr ""
 
-#: ImprintFooterModule.php:689
+#: LegalNoticeFooterModule.php:694
 #, php-format
 msgid "message via legal notice of site %s"
 msgstr ""
 
-#: ImprintFooterModule.php:692
+#: LegalNoticeFooterModule.php:697
 #, php-format
 msgid "Dear Mr. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:695
+#: LegalNoticeFooterModule.php:700
 #, php-format
 msgid "Dear Mrs. %s"
 msgstr ""
 
-#: ImprintFooterModule.php:698
+#: LegalNoticeFooterModule.php:703
 #, php-format
 msgid "Dear %s"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:137
+#: src/LegalNoticeSupport.php:149
 msgctxt "heading"
 msgid "Data protection"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:138
+#: src/LegalNoticeSupport.php:150
 msgctxt "heading"
 msgid "Purpose"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:139
+#: src/LegalNoticeSupport.php:151
 msgctxt "heading"
 msgid "Privacy"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:140
+#: src/LegalNoticeSupport.php:152
 msgctxt "heading"
 msgid "Processing of personal data"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:141
+#: src/LegalNoticeSupport.php:153
 msgctxt "heading"
 msgid "GDPR in connection with online genealogies"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:142
+#: src/LegalNoticeSupport.php:154
 msgctxt "heading"
 msgid "Right of providing information"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:143
+#: src/LegalNoticeSupport.php:155
 msgctxt "heading"
 msgid "Right to correction or deletion of personal data"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:144
+#: src/LegalNoticeSupport.php:156
 msgctxt "heading"
 msgid "Right of appeal"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:145
+#: src/LegalNoticeSupport.php:157
 msgctxt "heading"
 msgid "Legal regulations"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:146
+#: src/LegalNoticeSupport.php:158
 msgctxt "heading"
-msgid "Liability"
+msgid "Liability for the content of these websites"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:147
+#: src/LegalNoticeSupport.php:159
 msgctxt "heading"
-msgid "Copyright"
+msgid "Liability for links"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:148
+#: src/LegalNoticeSupport.php:160
+msgctxt "heading"
+msgid "Copyright and distribution of genealogical data"
+msgstr ""
+
+#: src/LegalNoticeSupport.php:161
+msgctxt "heading"
+msgid "Use of the address data in the Legal Notice"
+msgstr ""
+
+#: src/LegalNoticeSupport.php:162
 msgctxt "heading"
 msgid "Duty to mitigate damages"
 msgstr ""
 
-#: src/LegalNoticeSupport.php:149
+#: src/LegalNoticeSupport.php:163
 msgctxt "heading"
 msgid "Open-source and License"
 msgstr ""
 
-#: resources/views/footer.phtml:36
-msgid "close"
+#: src/LegalNoticeSupport.php:164
+msgctxt "heading"
+msgid "Severability Clause"
 msgstr ""
 
-#: resources/views/page.phtml:332
+#: src/LegalNoticeSupport.php:192
+msgid "The contents of my pages were created with great care. However, I cannot guarantee that the content is correct, complete or up-to-date. I am responsible for my own content on these pages according to general laws; However, I am not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. An obligation to remove or block the use of information according to general laws remains unaffected. However, liability in this regard is only possible from the point in time at which knowledge of a specific infringement of the law is known. As soon as I become aware of any legal violations, I will remove this content immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:193
+msgid "If you, as a user of this site, are entitled to create content yourself or upload files, you are obliged to comply with all legal requirements and to protect personal data by using the mechanisms of webtrees. If in doubt, please feel free to contact me."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:194
+msgid "The contents of our pages were created with great care. However, we cannot guarantee that the content is correct, complete or up-to-date. We are responsible for our own content on these pages according to general laws; however, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. An obligation to remove or block the use of information according to general laws remains unaffected. However, liability in this regard is only possible from the point in time at which knowledge of a specific infringement of the law is known. As soon as we become aware of any legal violations, we will remove this content immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:195
+msgid "If you, as a user of this site, are entitled to create content yourself or upload files, you are obliged to comply with all legal requirements and to protect personal data by using the mechanisms of webtrees. If in doubt, please feel free to contact us."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:196
+msgid "This web application contains links to external websites over which I have no control. Therefore I cannot assume any liability for this external content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, a permanent control of the content of the linked pages is not reasonable without concrete evidence of an infringement. As soon as I become aware of legal violations, I will remove such links immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:197
+msgid "This web application contains links to external websites over which we have no control. Therefore we cannot assume any liability for this external content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, a permanent control of the content of the linked pages is not reasonable without concrete evidence of an infringement. As soon as we become aware of legal violations, we will remove such links immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:198
+msgid "I always endeavor to observe the copyrights of others or to use self-created and license-free works. Third-party contributions to this website are marked as such by naming a source if they cannot be used freely. Should you nevertheless become aware of a copyright infringement, please inform me accordingly. As soon as I become aware of legal violations, I will remove such content immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:200
+msgid "The content and works created by me and the registered users on this website are subject to copyright. If you contribute content as a registered user of this website, you transfer all rights to it to me. The distribution and any kind of exploitation of the content of this website outside the limits of copyright require my written consent. Commercial use of the information provided here is generally prohibited."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:202
+#, php-format
+msgid "The content and works created by me and the registered users on this website are subject to copyright in %s. If you contribute content as a registered user of this website, you transfer all rights to it to me. The distribution and any kind of exploitation of the content of this website outside the limits of copyright require my written consent. Commercial use of the information provided here is generally prohibited."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:204
+#, php-format
+msgid "Copying or downloading genealogical data for private use is permitted. Anyone who wants to use parts of our data in their own family trees is obliged to name %s as the source. In particular, the protected images may only be accessible there for family members. The information on living people must not be copied to other websites where the privacy of these people cannot be guaranteed. A lot of time and effort was put into the webtrees database. I don't want others to simply copy our work together. I expect you to follow these guidelines as well. This database remains my property and will not be sold, donated or rented in any way."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:205
+msgid "We always endeavor to observe the copyrights of others or to use self-created and license-free works. Third-party contributions to this website are marked as such by naming a source if they cannot be used freely. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. As soon as we become aware of legal violations, we will remove such content immediately."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:207
+msgid "The content and works created by us and by the registered users on this website are subject to copyright. If you contribute content as a registered user of this website, you transfer all rights to it to us. The distribution and any kind of exploitation of the content of this website outside the limits of copyright require our written consent. Commercial use of the information provided here is generally prohibited."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:209
+#, php-format
+msgid "The content and works created by us and by the registered users on this website are subject to copyright in %s. If you contribute content as a registered user of this website, you transfer all rights to it to us. The distribution and any kind of exploitation of the content of this website outside the limits of copyright require our written consent. Commercial use of the information provided here is generally prohibited."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:211
+#, php-format
+msgid "Copying or downloading genealogical data for private use is permitted. Anyone who wants to use parts of our data in their own family trees is obliged to name %s as the source. In particular, the protected images may only be accessible there for family members. The information on living people must not be copied to other websites where the privacy of these people cannot be guaranteed. A lot of time and effort was put into the webtrees database. We don't want others to simply copy our work together. We expect you to follow these guidelines as well. This database remains our property and will not be sold, donated or rented in any way."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:212
+msgid "The use of the contact data published by us as part of the imprint obligation by third parties for the purpose of sending unsolicited advertising and information material is hereby expressly prohibited. I expressly reserve the right to take legal action in the event of unsolicited advertising being sent, such as spam e-mails."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:213
+msgid "The use of the contact data published by us as part of the imprint obligation by third parties for the purpose of sending unsolicited advertising and information material is hereby expressly prohibited. We expressly reserve the right to take legal action in the event of unsolicited advertising being sent, such as spam e-mails."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:214
+msgid "Should you notice any irregularities on our website, please contact me beforehand to avoid unnecessary legal disputes and costs. I am sure that we will come to an amicable and informal solution. The cost note of a legal warning will therefore be rejected as unfounded in the sense of the obligation to mitigate the damage if I have not been contacted via my e-mail address beforehand and have been informed of this possible grievance."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:215
+msgid "Should you notice any irregularities on our website, we ask you to contact us beforehand to avoid unnecessary legal disputes and costs. We are sure that we will come to an amicable and informal solution. The cost note of a legal warning will therefore be rejected as unfounded in the sense of the obligation to mitigate the damage if we have not been contacted beforehand via one of our e-mail addresses and have been informed of this possible grievance."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:216
+msgid "This website uses the genealogy program webtrees - an open source software. The source code is publicly available on GitHub and can be changed by anyone. Usage is free. This program was developed by people from many countries and is provided under the terms of the GNU General Public License Version 3 or a later version. The developers and the entire webtrees community are volunteering their time and skills to the project. Apart from the few donations from users, the developers receive no compensation for the time they invest in the project. There are also no external sources of income to support the project."
+msgstr ""
+
+#: src/LegalNoticeSupport.php:217
+msgid "If parts or individual formulations of this text do not, no longer or not completely correspond to the applicable legal situation, the remaining parts of the text remain unaffected in their content and validity."
+msgstr ""
+
+#: resources/views/page.phtml:368
 msgid "This website uses third-party services to manage cookies."
 msgstr ""
 
-#: resources/views/page.phtml:342
+#: resources/views/page.phtml:378
 msgid "Tracking and analytics"
 msgstr ""
 
-#: resources/views/page.phtml:346
+#: resources/views/page.phtml:382
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
 
-#: resources/views/page.phtml:367
+#: resources/views/page.phtml:403
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
 
-#: resources/views/page.phtml:371
+#: resources/views/page.phtml:407
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
-#: resources/views/page.phtml:378
+#: resources/views/page.phtml:414
 msgid "Third party services"
 msgstr ""
 
-#: resources/views/page.phtml:382
+#: resources/views/page.phtml:418
 msgid "This website uses additional third-party services."
 msgstr ""
 
@@ -353,4 +448,12 @@ msgstr ""
 
 #: resources/views/settings.phtml:367
 msgid "Chapter"
+msgstr ""
+
+#: resources/views/settings.phtml:412
+msgid "In which sequence should the sections of the chapter \"Legal Regulations\" be shown?"
+msgstr ""
+
+#: resources/views/settings.phtml:416
+msgid "Section"
 msgstr ""
